@@ -32,6 +32,11 @@ var app = (function()
 		updateTimer = setInterval(displayBeaconList, 500);
 	}
 
+
+
+
+
+
 	function startScan()
 	{
 		// The delegate object holds the iBeacon callback functions
@@ -56,7 +61,7 @@ var app = (function()
 		// (Not used in this example, included as a reference.)
 		delegate.didStartMonitoringForRegion = function(pluginResult)
 		{
-			console.log('didStartMonitoringForRegion:' + JSON.stringify(pluginResult))
+			// console.log('didStartMonitoringForRegion:' + JSON.stringify(pluginResult))
 		};
 
 		// Set the delegate object to use.
@@ -85,6 +90,11 @@ var app = (function()
 				.done();
 		}
 	}
+
+
+
+
+
 
 	function displayBeaconList()
 	{
