@@ -3,8 +3,27 @@
 // var beacons = {}; // available beacon list.
 var beaconstmp = {}; // json for debouncing
 
-var app = (function(bLibrary)
+
+
+
+
+
+
+var beaconLibrary = {};
+jQuery.getJSON("beacon.json", function(beacons)
 {
+	beaconLibrary = beacons;
+});
+
+
+
+
+
+
+var app = (function(bLibrary){
+
+	// console.log("Hi abc " + JSON.stringify(bLibrary));
+	// console.log("Hi abc " + JSON.stringify(beaconLibrary));
 
 	var app = {}; 	// Application object.
 	// Specify your beacon 128bit UUIDs here.
@@ -29,6 +48,10 @@ var app = (function(bLibrary)
 
 
 
+
+
+
+
 	app.initialize = function(){
 		document.addEventListener(
 			'deviceready',
@@ -44,6 +67,9 @@ var app = (function(bLibrary)
 		// Display refresh timer.
 		updateTimer = setInterval(displayBeaconList, 500);
 	}
+
+
+
 
 
 
@@ -67,7 +93,7 @@ var app = (function(bLibrary)
 				var key = beacon.uuid + ':' + beacon.major + ':' + beacon.minor;
 				beacons[key] = beacon; // From here get the beacons array.
 			}
-			// Here will read in the beacon scan result & output the sorted beacon result. /////////////////////////////////
+			// Here will read in the beacon scan result & output the sorted beacon result. /////////////////////////////////			
 			beaconState(pluginResult);
 		};
 
@@ -108,8 +134,12 @@ var app = (function(bLibrary)
 
 
 
-	function beaconState(pluginResult)
-	{
+
+
+
+
+
+	function beaconState(pluginResult){
 		// update beacon dictionary:
 		for (var i in pluginResult.beacons)
 		{
@@ -119,7 +149,7 @@ var app = (function(bLibrary)
 
 			var key = beacon.uuid + ':' + beacon.major + ':' + beacon.minor;
 			// build up main beacons object with all available (appeared at leat onces) beacons in it.
-			beacons[key] = beacon; 
+			beacons[key] = beacon;			
 		}
 
 		// Here I pass the beacons object into "Beacons Buffer System"
@@ -136,18 +166,19 @@ var app = (function(bLibrary)
 		var arrayvar = beaconsRSSI.slice();
 		arrayvar.unshift(clone(beacons)); // push new scan result from top.
 		if(arrayvar.length > bufferDepth){
-			arrayvar.pop(); // If stack deeper as 5, pop out the deepst.
+			arrayvar.pop(); // If stack deeper as 'bufferDepth', pop out the deepst.
 		}
 
-		// this.setState({ beaconsRSSI: arrayvar }); // start to update beaconsRSSI buffer.
-		beaconsRSSI = arrayvar;
+		beaconsRSSI = arrayvar; // beaconsRSSI is 2D array.
 
+/*
 		// Demo log out the buffer system working status.
-		// var cl = '';
-		// $.each(this.state.beaconsRSSI, function(key,beacon){
-		// 	cl += beacon["fda50693-a4e2-4fb1-afcf-c6eb07647825:10:1"]["numStamp"] + " ";
-		// });	
-		// console.log(cl); // show object in different layer have different numStamp.
+		var cl = '';
+		$.each(beaconsRSSI, function(key,beacon){
+			cl += beacon["fda50693-a4e2-4fb1-afcf-c6eb07647825:10:1"]["numStamp"] + " ";
+		});	
+		console.log(cl); // show object in different layer have different numStamp.
+*/
 
 		var maxNumStamp = 0; // The most up-to-Date 'numStamp' of the whole array.
 		$.each(beaconsRSSI, function(key,beacon){
@@ -305,9 +336,9 @@ var app = (function(bLibrary)
 			key = key.toUpperCase();
 			// From here, we indexing the beacon library and try to add some infomation from 
 			// the JSON library into our final beacons object.
-			beacon.triggerAddress = bLibrary.["beacons"][key]["triggerAddress"]; // this.props
-			beacon.triggerDistance = bLibrary.["beacons"][key]["triggerDistance"];
-			beacon.triggerDistanceI = bLibrary.["beacons"][key]["triggerDistanceI"];
+			beacon.triggerAddress = beaconLibrary["beacons"][key]["triggerAddress"]; // this.props
+			beacon.triggerDistance = beaconLibrary["beacons"][key]["triggerDistance"];
+			beacon.triggerDistanceI = beaconLibrary["beacons"][key]["triggerDistanceI"];
 		}
 
 		////////////// MODULE DIVIDER //////////////////////////////////
@@ -323,13 +354,13 @@ var app = (function(bLibrary)
 			var tDI= beacon.triggerDistanceI;
 			if(entered == 0){
 				if(rE >= tD){
-					mediator.publish("beacon.entered", beacon.triggerAddress);
+					// mediator.publish("beacon.entered", beacon.triggerAddress);
 					// this.setState({entered: k}); // start lock
 					entered = k;
 					// console.log('beacon entered:' + k);
 					if(rE >= tDI){
 						if(entered_small == 0){
-							mediator.publish("beacon.entered.small", beacon.triggerAddress);
+							// mediator.publish("beacon.entered.small", beacon.triggerAddress);
 							// this.setState({entered_small: k});
 							entered_small = k;
 							// console.log('enter beacon small:' + k);
@@ -339,13 +370,13 @@ var app = (function(bLibrary)
 			} else if(k == entered){ // When this beacon has the lock
 				if(rE >= tDI){
 					if(entered_small == 0){
-						mediator.publish("beacon.entered.small", beacon.triggerAddress);
+						// mediator.publish("beacon.entered.small", beacon.triggerAddress);
 						//this.setState({entered_small: k});
 						entered_small = k;
 						// console.log('enter beacon small:' + k);
 					}
 				} else if(rE < tD){
-					mediator.publish("beacon.left", beacon.triggerAddress);
+					// mediator.publish("beacon.left", beacon.triggerAddress);
 					// this.setState({entered: 0}); //free the lock
 					entered = 0;
 					// this.setState({entered_small: 0});
@@ -354,7 +385,7 @@ var app = (function(bLibrary)
 					// console.log(beacon.rssiE);
 				} else if(rE < tDI && rE >= tD){
 					if(entered_small == k){
-						mediator.publish("beacon.left.small", beacon.triggerAddress);
+						// mediator.publish("beacon.left.small", beacon.triggerAddress);
 						// this.setState({entered_small: 0}); // ONLY when beacon leave the big circle will free this lock. (Debouncing)
 						// console.log('enter left small:' + k);
 						// console.log(beacon.rssiE);
@@ -375,27 +406,7 @@ var app = (function(bLibrary)
 			if(majorOri != beacon.major){
 				majorOri = beacon.major;
 				zebra = !zebra;	
-			}
-	/*
-			_beacons.push(<Beacon 
-					uid={key}
-					rssi={beacon.rssi}
-					rssiE={beacon.rssiE}
-					accuracyE = {beacon.accuracyE}
-					minor={beacon.minor}
-					major={beacon.major}
-					proximity={beacon.proximity}
-					accuracy={beacon.accuracy}
-					uuid={beacon.uuid}
-					timeStamp={beacon.timeStamp}
-					triggerDistance={beacon.triggerDistance || 1}
-					triggerAddress={beacon.triggerAddress || {} }
-					nearst = {beacon.nearst}
-					nearGroup = {beacon.nearGroup}
-					zebra = {zebra}
-					/>);
-		}.bind(this));
-	*/
+			}	
 		});
 
 		/*this.setState(function(state){ 
@@ -452,12 +463,9 @@ var app = (function(bLibrary)
 		});
 	}
 
-
-
-
-
 	return app;
-}()); // from here inject the library of beaconinfo.
-
+}(beaconLibrary)); // from here inject the library of beaconinfo.
 
 app.initialize();
+
+

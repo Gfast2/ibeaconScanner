@@ -1,0 +1,404 @@
+{
+  "beacons": {
+    "FDA50693-A4E2-4FB1-AFCF-C6EB07647825:10:1": {
+      "triggerDistanceI": -62,
+      "triggerDistance": -64,
+      "rssi":-59,
+      "triggerAddress": {
+        "buildingID": "building1",
+        "floorID": "floor1",
+        "roomID": "raum1",
+        "exhibitID": "Schrank"
+      },
+      "description": "Alte brauen farbige Schrank. Es befinden sich in der Nähe von dem groß Fenster.",
+      "coordinateX": 10,
+      "coordinateY": 10,
+      "batteryLife": 100,
+      "timestamp" : 0
+    },
+    "FDA50693-A4E2-4FB1-AFCF-C6EB07647825:10:2": {
+      "triggerDistanceI": -60,
+      "triggerDistance": -70,
+      "rssi":-59,
+      "triggerAddress": {
+        "buildingID": "building1",
+        "floorID": "floor1",
+        "roomID": "raum1",
+        "exhibitID": "Krokodil"
+      },
+      "description": "Es ist gehängt, in der mittel.",
+      "coordinateX": 10,
+      "coordinateY": 10,
+      "batteryLife": 100,
+      "timestamp" : 0
+    },
+    "FDA50693-A4E2-4FB1-AFCF-C6EB07647825:10:3": {
+      "triggerDistanceI": -60,
+      "triggerDistance": -70,
+      "rssi":-59,
+      "triggerAddress": {
+        "buildingID": "building1",
+        "floorID": "floor1",
+        "roomID": "raum1",
+        "exhibitID": "Knochen"
+      },
+      "description": "Es ist in der Schrank geliegt.",
+      "coordinateX": 10,
+      "coordinateY": 10,
+      "batteryLife": 100,
+      "timestamp" : 0
+    },
+    "FDA50693-A4E2-4FB1-AFCF-C6EB07647825:10:4": {
+      "triggerDistanceI": -60,
+      "triggerDistance": -70,
+      "rssi":-59,
+      "triggerAddress": {
+        "buildingID": "building1",
+        "floorID": "floor1",
+        "roomID": "raum1",
+        "exhibitID": "Fachwerk-Modell"
+      },
+      "description": "Es ist in der Schrank geliegt.",
+      "coordinateX": 10,
+      "coordinateY": 10,
+      "batteryLife": 100,
+      "timestamp" : 0
+    },
+    "FDA50693-A4E2-4FB1-AFCF-C6EB07647825:10:5": {
+      "triggerDistanceI": -60,
+      "triggerDistance": -70,
+      "rssi":-59,
+      "triggerAddress": {
+        "buildingID": "building1",
+        "floorID": "floor1",
+        "roomID": "raum1",
+        "exhibitID": "Welt-Karte"
+      },
+      "description": "Es ist auf der Wand geklebt.",
+      "coordinateX": 10,
+      "coordinateY": 10,
+      "batteryLife": 100,
+      "timestamp" : 0
+    },
+    "FDA50693-A4E2-4FB1-AFCF-C6EB07647825:10:6": {
+      "triggerDistanceI": -60,
+      "triggerDistance": -70,
+      "rssi":-59,
+      "triggerAddress": {
+        "buildingID": "building1",
+        "floorID": "floor1",
+        "roomID": "raum2",
+        "exhibitID": "Teenkanne"
+      },
+      "description": "Der Weiße Keramik im Schrank.",
+      "coordinateX": 10,
+      "coordinateY": 10,
+      "batteryLife": 100,
+      "timestamp" : 0
+    },
+    "FDA50693-A4E2-4FB1-AFCF-C6EB07647825:10:7": {
+      "triggerDistanceI": -60,
+      "triggerDistance": -70,
+      "rssi":-59,
+      "triggerAddress": {
+        "buildingID": "building1",
+        "floorID": "floor1",
+        "roomID": "raum2",
+        "exhibitID": "Alte Kleidung"
+      },
+      "description": "Rot farbige Textile an der Wand gehängt.",
+      "coordinateX": 10,
+      "coordinateY": 10,
+      "batteryLife": 100,
+      "timestamp" : 0
+    },
+    "FDA50693-A4E2-4FB1-AFCF-C6EB07647825:10:8": {
+      "triggerDistanceI": -60,
+      "triggerDistance": -70,
+      "rssi":-59,
+      "triggerAddress": {
+        "buildingID": "building1",
+        "floorID": "floor1",
+        "roomID": "raum2",
+        "exhibitID": "Waisenhaus-Modell"
+      },
+      "description": "In der Mittel von der ganzen Raum. In schrank.",
+      "coordinateX": 10,
+      "coordinateY": 10,
+      "batteryLife": 100,
+      "timestamp" : 0
+    },
+    "FDA50693-A4E2-4FB1-AFCF-C6EB07647825:10:9": {
+      "triggerDistanceI": -60,
+      "triggerDistance": -70,
+      "rssi":-59,
+      "triggerAddress": {
+        "buildingID": "building1",
+        "floorID": "floor1",
+        "roomID": "raum2",
+        "exhibitID": "Elfenbein"
+      },
+      "description": "Sensor versteckt sich hinter der Elfenbein an der Wand.",
+      "coordinateX": 10,
+      "coordinateY": 10,
+      "batteryLife": 100,
+      "timestamp" : 0
+    },
+    "FDA50693-A4E2-4FB1-AFCF-C6EB07647825:10:10": {
+      "triggerDistanceI": -60,
+      "triggerDistance": -70,
+      "rssi":-59,
+      "triggerAddress": {
+        "buildingID": "building1",
+        "floorID": "floor1",
+        "roomID": "raum2",
+        "exhibitID": "Altes-Buch"
+      },
+      "description": "In der Schrank, in der Nähe von weiße Keramik",
+      "coordinateX": 10,
+      "coordinateY": 10,
+      "batteryLife": 100,
+      "timestamp" : 0
+    },"FDA50693-A4E2-4FB1-AFCF-C6EB07647825:20:1": {
+      "triggerDistanceI": -56,
+      "triggerDistance": -58,
+      "rssi":-59,
+      "triggerAddress": {
+        "buildingID": "building2",
+        "floorID": "floor1",
+        "roomID": "raum2",
+        "exhibitID": "Kinder Kleidung"
+      },
+      "description": "haegt an der Wandt",
+      "coordinateX": 493,
+      "coordinateY": 0,
+      "batteryLife": 100,
+      "timestamp" : 0
+    },"FDA50693-A4E2-4FB1-AFCF-C6EB07647825:20:2": {
+      "triggerDistanceI": -60,
+      "triggerDistance": -70,
+      "rssi":-59,
+      "triggerAddress": {
+        "buildingID": "building2",
+        "floorID": "floor1",
+        "roomID": "raum2",
+        "exhibitID": "Lehrbuch"
+      },
+      "description": "Auf dem Tisch",
+      "coordinateX": 0,
+      "coordinateY": 206,
+      "batteryLife": 100,
+      "timestamp" : 0
+    },"FDA50693-A4E2-4FB1-AFCF-C6EB07647825:20:3": {
+      "triggerDistanceI": -60,
+      "triggerDistance": -70,
+      "rssi":-59,
+      "triggerAddress": {
+        "buildingID": "building2",
+        "floorID": "floor1",
+        "roomID": "raum2",
+        "exhibitID": "Lehrbuch"
+      },
+      "description": "Auf dem Tisch",
+      "coordinateX": 0,
+      "coordinateY": 555,
+      "batteryLife": 100,
+      "timestamp" : 0
+    },"FDA50693-A4E2-4FB1-AFCF-C6EB07647825:20:4": {
+      "triggerDistanceI": -58,
+      "triggerDistance": -60,
+      "rssi":-59,
+      "triggerAddress": {
+        "buildingID": "building2",
+        "floorID": "floor1",
+        "roomID": "raum2",
+        "exhibitID": "Lehrbuch"
+      },
+      "description": "Auf dem Tisch",
+      "coordinateX": 0,
+      "coordinateY": 809,
+      "batteryLife": 100,
+      "timestamp" : 0
+    },"FDA50693-A4E2-4FB1-AFCF-C6EB07647825:20:5": {
+      "triggerDistanceI": -60,
+      "triggerDistance": -70,
+      "rssi":-59,
+      "triggerAddress": {
+        "buildingID": "building2",
+        "floorID": "floor1",
+        "roomID": "raum2",
+        "exhibitID": "Lehrbuch"
+      },
+      "description": "Auf dem Tisch",
+      "coordinateX": 375,
+      "coordinateY": 802,
+      "batteryLife": 100,
+      "timestamp" : 0
+    },"FDA50693-A4E2-4FB1-AFCF-C6EB07647825:20:6": {
+      "triggerDistanceI": -54,
+      "triggerDistance": -56,
+      "rssi":-59,
+      "triggerAddress": {
+        "buildingID": "building2",
+        "floorID": "floor1",
+        "roomID": "raum2",
+        "exhibitID": "Lehrbuch"
+      },
+      "description": "Auf dem Tisch",
+      "coordinateX": 780,
+      "coordinateY": 809,
+      "batteryLife": 100,
+      "timestamp" : 0
+    },"FDA50693-A4E2-4FB1-AFCF-C6EB07647825:20:7": {
+      "triggerDistanceI": -60,
+      "triggerDistance": -70,
+      "rssi":-59,
+      "triggerAddress": {
+        "buildingID": "building2",
+        "floorID": "floor1",
+        "roomID": "raum2",
+        "exhibitID": "Lehrbuch"
+      },
+      "description": "Auf dem Tisch",
+      "coordinateX": 777,
+      "coordinateY": 554,
+      "batteryLife": 100,
+      "timestamp" : 0
+    },"FDA50693-A4E2-4FB1-AFCF-C6EB07647825:20:8": {
+      "triggerDistanceI": -60,
+      "triggerDistance": -70,
+      "rssi":-59,
+      "triggerAddress": {
+        "buildingID": "building2",
+        "floorID": "floor1",
+        "roomID": "raum2",
+        "exhibitID": "Lehrbuch"
+      },
+      "description": "Auf dem Tisch",
+      "coordinateX": 772,
+      "coordinateY": 208,
+      "batteryLife": 100,
+      "timestamp" : 0
+    },"FDA50693-A4E2-4FB1-AFCF-C6EB07647825:20:9": {
+      "triggerDistanceI": -59,
+      "triggerDistance": -63,
+      "rssi":-59,
+      "triggerAddress": {
+        "buildingID": "building2",
+        "floorID": "floor1",
+        "roomID": "raum2",
+        "exhibitID": "Lehrbuch"
+      },
+      "description": "Auf dem Tisch",
+      "coordinateX": 310,
+      "coordinateY": 510,
+      "batteryLife": 100,
+      "timestamp" : 0
+    },"FDA50693-A4E2-4FB1-AFCF-C6EB07647825:30:1": {
+      "triggerDistanceI": -60,
+      "triggerDistance": -70,
+      "rssi":-59,
+      "triggerAddress": {
+        "buildingID": "building3",
+        "floorID": "floor3",
+        "roomID": "raum3",
+        "exhibitID": "Handschuhe"
+      },
+      "description": "Ein paar",
+      "coordinateX": 10,
+      "coordinateY": 10,
+      "batteryLife": 100,
+      "timestamp" : 0
+    },"FDA50693-A4E2-4FB1-AFCF-C6EB07647825:30:2": {
+      "triggerDistanceI": -60,
+      "triggerDistance": -70,
+      "rssi":-59,
+      "triggerAddress": {
+        "buildingID": "building3",
+        "floorID": "floor3",
+        "roomID": "raum3",
+        "exhibitID": "Lampe"
+      },
+      "description": "Auf dem Fussboden",
+      "coordinateX": 10,
+      "coordinateY": 10,
+      "batteryLife": 100,
+      "timestamp" : 0
+    },"FDA50693-A4E2-4FB1-AFCF-C6EB07647825:40:1": {
+      "triggerDistanceI": -60,
+      "triggerDistance": -70,
+      "rssi":-59,
+      "triggerAddress": {
+        "buildingID": "building4",
+        "floorID": "floor4",
+        "roomID": "raum4",
+        "exhibitID": "foo"
+      },
+      "description": "Auf dem Fussboden",
+      "coordinateX": 10,
+      "coordinateY": 10,
+      "batteryLife": 100,
+      "timestamp" : 0
+    },"FDA50693-A4E2-4FB1-AFCF-C6EB07647825:40:2": {
+      "triggerDistanceI": -60,
+      "triggerDistance": -70,
+      "rssi":-59,
+      "triggerAddress": {
+        "buildingID": "building4",
+        "floorID": "floor4",
+        "roomID": "raum4",
+        "exhibitID": "bar"
+      },
+      "description": "Auf dem Fussboden",
+      "coordinateX": 10,
+      "coordinateY": 10,
+      "batteryLife": 100,
+      "timestamp" : 0
+    },"FDA50693-A4E2-4FB1-AFCF-C6EB07647825:50:1": {
+      "triggerDistanceI": -60,
+      "triggerDistance": -70,
+      "rssi":-59,
+      "triggerAddress": {
+        "buildingID": "building5",
+        "floorID": "floor5",
+        "roomID": "raum5",
+        "exhibitID": "boobar"
+      },
+      "description": "Auf dem Fussboden",
+      "coordinateX": 10,
+      "coordinateY": 10,
+      "batteryLife": 100,
+      "timestamp" : 0
+    },"FDA50693-A4E2-4FB1-AFCF-C6EB07647825:50:2": {
+      "triggerDistanceI": -60,
+      "triggerDistance": -70,
+      "rssi":-59,
+      "triggerAddress": {
+        "buildingID": "building5",
+        "floorID": "floor5",
+        "roomID": "raum5",
+        "exhibitID": "barboo"
+      },
+      "description": "Auf dem Fussboden",
+      "coordinateX": 10,
+      "coordinateY": 10,
+      "batteryLife": 100,
+      "timestamp" : 0
+    },"FDA50693-A4E2-4FB1-AFCF-C6EB07647825:1000:1000": {
+      "triggerDistanceI": -60,
+      "triggerDistance": -70,
+      "rssi":-59,
+      "triggerAddress": {
+        "buildingID": "building5",
+        "floorID": "floor5",
+        "roomID": "raum5",
+        "exhibitID": "barboo"
+      },
+      "description": "Auf dem Fussboden",
+      "coordinateX": 10,
+      "coordinateY": 10,
+      "batteryLife": 100,
+      "timestamp" : 0
+    }
+  }
+}
