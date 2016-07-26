@@ -1,33 +1,28 @@
 var app = (function()
 {
-	// Application object.
-	var app = {};
 
+	var app = {}; 	// Application object.
 	// Specify your beacon 128bit UUIDs here.
 	var regions =	[{uuid:'FDA50693-A4E2-4FB1-AFCF-C6EB07647825'}];
-
-	// Dictionary of beacons.
-	var beacons = {};
-
+	var beacons = {}; // Dictionary of beacons.
 	// Timer that displays list of beacons.
 	var updateTimer = null;
 
-	app.initialize = function()
-	{
+
+
+
+	app.initialize = function(){
 		document.addEventListener(
 			'deviceready',
 			function() { evothings.scriptsLoaded(onDeviceReady) },
 			false);
 	};
 
-	function onDeviceReady()
-	{
+	function onDeviceReady(){
 		// Specify a shortcut for the location manager holding the iBeacon functions.
 		window.locationManager = cordova.plugins.locationManager;
-
 		// Start tracking beacons!
 		startScan();
-
 		// Display refresh timer.
 		updateTimer = setInterval(displayBeaconList, 500);
 	}
@@ -36,9 +31,8 @@ var app = (function()
 
 
 
-
-	function startScan()
-	{
+	// Handling the beacons
+	function startScan(){
 		// The delegate object holds the iBeacon callback functions
 		// specified below.
 		var delegate = new locationManager.Delegate();
@@ -95,9 +89,8 @@ var app = (function()
 
 
 
-
-	function displayBeaconList()
-	{
+	// Block to display things onto screen
+	function displayBeaconList(){
 		// Clear beacon list.
 		$('#found-beacons').empty();
 
@@ -133,7 +126,12 @@ var app = (function()
 		});
 	}
 
+
+
+
+
 	return app;
 })();
+
 
 app.initialize();
