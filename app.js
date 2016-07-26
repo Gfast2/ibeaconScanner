@@ -100,7 +100,7 @@ var app = (function()
 		for (var i in pluginResult.beacons)
 		{
 			var beacon = pluginResult.beacons[i];
-			beacon.timeStamp = Date.now(); // There is already timeStamp build in. this will override it(?)
+			// beacon.timeStamp = Date.now(); // There is already timeStamp build in. this will override it(?)
 			beacon.numStamp = this.state.num;
 
 			// LOGGING DATA TO WEBSERVER.
