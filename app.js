@@ -5,22 +5,25 @@ var beaconstmp = {}; // json for debouncing
 
 
 
+var tmpBeaconTester = []; // JSON that transport the result of beaconState() to visualization.
 
 
 
 
 var beaconLibrary = {};
-jQuery.getJSON("beacon.json", function(beacons)
+$.getJSON("beacon.json", function(beacons)
 {
-	beaconLibrary = beacons;
+	beaconLibrary = beacons; // I think it can be refactoring through "return beacons;"
 });
 
 
 
+// console.log("beaconLibrary:" + JSON.stringify(beaconLibrary));
 
 
 
-var app = (function(bLibrary){
+
+var app = (function(){
 
 	// console.log("Hi abc " + JSON.stringify(bLibrary));
 	// console.log("Hi abc " + JSON.stringify(beaconLibrary));
@@ -38,12 +41,11 @@ var app = (function(bLibrary){
 		dict = "",
 		beaconComponents = [],
 		bufferDepth = 3,
-		beaconsRSSI = [],
+		beaconsRSSI = [], // buffer  object that save "bufferDepth" defined times 'beacons' object.
 		beaconNear = undefined,
 		num = 0,
 		entered = 0,
-		entered_small = 0,
-		radio_small = -60;
+		entered_small = 0;
 	
 
 
@@ -92,6 +94,7 @@ var app = (function(bLibrary){
 				beacon.timeStamp = Date.now();
 				var key = beacon.uuid + ':' + beacon.major + ':' + beacon.minor;
 				beacons[key] = beacon; // From here get the beacons array.
+				beacon.numStamp = num;
 			}
 			// Here will read in the beacon scan result & output the sorted beacon result. /////////////////////////////////			
 			beaconState(pluginResult);
@@ -140,20 +143,23 @@ var app = (function(bLibrary){
 
 
 	function beaconState(pluginResult){
+		// This step has finished in 'startScan();'
 		// update beacon dictionary:
-		for (var i in pluginResult.beacons)
-		{
-			var beacon = pluginResult.beacons[i];
-			// beacon.timeStamp = Date.now(); // There is already timeStamp build in. this will override it(?)
-			beacon.numStamp = num;
+		// for (var i in pluginResult.beacons)
+		// {
+		// 	var beacon = pluginResult.beacons[i];
+		// 	beacon.timeStamp = Date.now(); // There is already timeStamp build in. this will override it(?)
+		// 	beacon.numStamp = num;
 
-			var key = beacon.uuid + ':' + beacon.major + ':' + beacon.minor;
-			// build up main beacons object with all available (appeared at leat onces) beacons in it.
-			beacons[key] = beacon;			
-		}
+		// 	var key = beacon.uuid + ':' + beacon.major + ':' + beacon.minor;
+		// 	// build up main beacons object with all available (appeared at leat onces) beacons in it.
+		// 	beacons[key] = beacon;			
+		// }
 
 		// Here I pass the beacons object into "Beacons Buffer System"
 		// beacons (INPUT) -> BeaconBuffer() -> beacons (OUTPUT)
+		///////////////////////// MODULE DIVIDER ////////////////////////////////////
+		///////////////////// DEBOUNCING RSSI VALUE /////////////////////////////////
 		function clone(obj) { // Make a copy of the new updated beacons object.
 		    if (null == obj || "object" != typeof obj) return obj;
 		    var copy = obj.constructor();
@@ -181,6 +187,7 @@ var app = (function(bLibrary){
 */
 
 		var maxNumStamp = 0; // The most up-to-Date 'numStamp' of the whole array.
+		// console.log('beaconsRSSI: ' +JSON.stringify(beaconsRSSI));
 		$.each(beaconsRSSI, function(key,beacon){
 			$.each(beacon, function(key_, beacon_){
 				maxNumStamp = maxNumStamp > beacon_['numStamp'] ? maxNumStamp : beacon_['numStamp'];
@@ -204,7 +211,7 @@ var app = (function(bLibrary){
 
 		$.each(beaconsRSSI, function(key,beacon){
 			$.each(beacon, function(key_, beacon_){
-				if(isNaN(beacon_['rssi']) == true){
+				if(isNaN(beacon_['rssi'])){
 					beacon_['rssi'] = 0; // When there is no signal, rssi return NaN
 				}
 				if(beacon_['rssi'] != 0){
@@ -223,10 +230,10 @@ var app = (function(bLibrary){
 			beacons[key].accuracyE = "Empty";
 			// console.log('beacons[key].rssiE & num:' + beacons[key].rssiE + " " + beacon.rssiE_tmp + " " + beacon.num);
 		});
-
-		///////////////////////// MODULE DIVIDER ////////////////////////////////////
-		// this.setState({num : this.state.num+1}); // increment number tag of beacons.
+		// console.log('beaconsRSSI: ' + JSON.stringify(beaconsRSSI));
+		// console.log('beaconstmp: ' + JSON.stringify(beaconstmp));
 		num++;
+		///////////////////////// MODULE DIVIDER ////////////////////////////////////
 
 		var _beacons = [];
 		var _beacons_tmp = [];
@@ -251,10 +258,12 @@ var app = (function(bLibrary){
 		});
 	*/
 
-		// SORT BEACON ACCORDING TO ITS RSSI
+		// SORT BEACON ACCORDING TO ITS everaged RSSI
 		_beacons_tmp.sort(function(a,b){ // Nearst to farst.
 			return (b.rssiE - a.rssiE);
 		});
+
+		console.log("_beacons_tmp: " + JSON.stringify(_beacons_tmp));
 
 		$.each(_beacons_tmp, function(key, beacon){
 			if(key == 0){
@@ -340,6 +349,7 @@ var app = (function(bLibrary){
 			beacon.triggerDistance = beaconLibrary["beacons"][key]["triggerDistance"];
 			beacon.triggerDistanceI = beaconLibrary["beacons"][key]["triggerDistanceI"];
 		}
+		// console.log("HI a: " + JSON.stringify(_beacons_tmp));
 
 		////////////// MODULE DIVIDER //////////////////////////////////
 		///////////// "Enter-Locking Module" ///////////////////////////
@@ -406,8 +416,11 @@ var app = (function(bLibrary){
 			if(majorOri != beacon.major){
 				majorOri = beacon.major;
 				zebra = !zebra;	
-			}	
-		});
+			}
+			tmpBeaconTester.push(beacon);
+		}.bind(this));
+
+		// console.log("tmpBeaconTester: " + JSON.stringify(tmpBeaconTester));
 
 		/*this.setState(function(state){ 
 			return{ 
@@ -415,7 +428,6 @@ var app = (function(bLibrary){
 				dict : JSON.stringify(beacons)
 			}
 		});*/
-
 	}
 
 
@@ -433,8 +445,12 @@ var app = (function(bLibrary){
 
 		var timeNow = Date.now();
 
+
+		// console.log("tmpBeaconTester: " + JSON.stringify(beacons/*tmpBeaconTester*/));
+
+
 		// Update beacon list.
-		$.each(beacons, function(key, beacon)
+		$.each(beacons/*tmpBeaconTester*/, function(key, beacon)
 		{
 			// Only show beacons that are updated during the last 60 seconds.
 			if (beacon.timeStamp + 60000 > timeNow)
@@ -452,6 +468,7 @@ var app = (function(bLibrary){
 					+	'Minor: ' + beacon.minor + '<br />'
 					+	'Proximity: ' + beacon.proximity + '<br />'
 					+	'RSSI: ' + beacon.rssi + '<br />'
+					+	'RSSIE: ' + beacon.rssiE + '<br />'
 					+ 	'<div style="background:rgb(255,128,64);height:20px;width:'
 					+ 		rssiWidth + '%;"></div>'
 					+ '</li>'
@@ -464,7 +481,7 @@ var app = (function(bLibrary){
 	}
 
 	return app;
-}(beaconLibrary)); // from here inject the library of beaconinfo.
+}()); // from here inject the library of beaconinfo.
 
 app.initialize();
 
