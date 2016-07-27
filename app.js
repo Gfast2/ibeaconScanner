@@ -234,15 +234,16 @@ var app = (function(){
 		// console.log('beaconstmp: ' + JSON.stringify(beaconstmp));
 		num++;
 		///////////////////////// MODULE DIVIDER ////////////////////////////////////
+		/////////////////////// SORTING BEACON LIST /////////////////////////////////
 
 		var _beacons = [];
-		var _beacons_tmp = [];
+		var _beacons_tmp = []; // copy of all scanned beacons.
 
 		$.each(beacons, function(key, beacon){
 			_beacons_tmp.push(beacon);			
 		}.bind(this));
 		
-	/*
+	/*  // Alternatively: 
 		// SORT BEACON ACCORDING TO ITS ACCURANCY.
 		// IN ORDER TO FIND OUT WHICH ONE THE NEARST ONE		
 		_beacons_tmp.sort(function(a,b){ // Nearst to farst.
@@ -258,12 +259,10 @@ var app = (function(){
 		});
 	*/
 
-		// SORT BEACON ACCORDING TO ITS everaged RSSI
+		// SORT BEACON ACCORDING TO ITS EVERAGED RSSI
 		_beacons_tmp.sort(function(a,b){ // Nearst to farst.
 			return (b.rssiE - a.rssiE);
 		});
-
-		console.log("_beacons_tmp: " + JSON.stringify(_beacons_tmp));
 
 		$.each(_beacons_tmp, function(key, beacon){
 			if(key == 0){
@@ -273,15 +272,24 @@ var app = (function(){
 			}
 		});
 
+
+
 		// SORT BEACON ACCORDING TO ITS MINOR
-		// IN ORDER LET EACH HAVE A FIX POSITION
+		// IN ORDER TO LET EACH HAVE A FIX POSITION
 		_beacons_tmp.sort(function(a,b){
 			return (a.minor - b.minor);
 		});
+
+		
 		// SORT BEACON ACCORDING TO ITS GROUP
-		_beacons_tmp.sort(function(a,b){
-			return (a.major - b.major);
-		});
+		_beacons_tmp.sort(function(a,b){ // from small to big
+			return (a.major - b.major);  // TODO: It return small unsorted elements in front of the return array.
+		});				
+
+		
+
+		///////////////////////// MODULE DIVIDER ////////////////////////////////////
+		//////////////// BUILD 2D ARRAY ACCORDING TO MAJOR //////////////////////////
 
 		var object = []; // beacons array of beacons with same major
 		var result = []; // Multi array save beacons with different major in different subarray
@@ -291,16 +299,18 @@ var app = (function(){
 		{
 			if(major_tmp == _beacons_tmp[i].major){
 				object.push(_beacons_tmp[i]);
-				if(i == _beacons_tmp.length-1){
-					result.push(object);
-				}
 			}else{
 				result.push(object);
 				object = [];
 				object.push(_beacons_tmp[i]);
 				major_tmp = _beacons_tmp[i].major;
-			}				
+			}
+			if(i == _beacons_tmp.length-1){
+				result.push(object);
+			}
 		}
+
+		console.log("result: " + JSON.stringify(result));
 
 		var groupNear = 0; //major value of the near group
 		var averageDistance = -200; // when use accuracy -> 10
