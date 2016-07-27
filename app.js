@@ -1,12 +1,9 @@
 "use strict"
 
-// var beacons = {}; // available beacon list.
-var beaconstmp = {}; // json for debouncing
-
-
-
-var tmpBeaconTester = []; // JSON that transport the result of beaconState() to visualization.
-
+var beaconstmp = {}; // json for debouncing rssi read value direct from beacons.
+var tmpBeaconTester = []; 	// JSON that transport the result of beaconState() to visualization. (should be used temporaryly)
+var entered = 0;			// 0 or 'key' (uuid+major+minor)
+var entered_small = 0;		// 0 or 'key' (uuid+major+minor)
 
 
 
@@ -15,7 +12,6 @@ $.getJSON("beacon.json", function(beacons)
 {
 	beaconLibrary = beacons; // I think it can be refactoring through "return beacons;"
 });
-
 
 
 // console.log("beaconLibrary:" + JSON.stringify(beaconLibrary));
@@ -43,9 +39,8 @@ var app = (function(){
 		bufferDepth = 3,
 		beaconsRSSI = [], // buffer  object that save "bufferDepth" defined times 'beacons' object.
 		beaconNear = undefined,
-		num = 0,
-		entered = 0,
-		entered_small = 0;
+		num = 0;
+		
 	
 
 
@@ -143,6 +138,7 @@ var app = (function(){
 
 
 	function beaconState(pluginResult){
+
 		// This step has finished in 'startScan();'
 		// update beacon dictionary:
 		// for (var i in pluginResult.beacons)
@@ -160,6 +156,7 @@ var app = (function(){
 		// beacons (INPUT) -> BeaconBuffer() -> beacons (OUTPUT)
 		///////////////////////// MODULE DIVIDER ////////////////////////////////////
 		///////////////////// DEBOUNCING RSSI VALUE /////////////////////////////////
+
 		function clone(obj) { // Make a copy of the new updated beacons object.
 		    if (null == obj || "object" != typeof obj) return obj;
 		    var copy = obj.constructor();
@@ -286,7 +283,6 @@ var app = (function(){
 			return (a.major - b.major);  // TODO: It return small unsorted elements in front of the return array.
 		});				
 
-		
 
 		///////////////////////// MODULE DIVIDER ////////////////////////////////////
 		//////////////// BUILD 2D ARRAY ACCORDING TO MAJOR //////////////////////////
@@ -310,14 +306,23 @@ var app = (function(){
 			}
 		}
 
-		console.log("result: " + JSON.stringify(result));
+		// SORTING EACH GROUP IN RESULT.
+		for (var i=0; i<result.length; i++){
+			result[i].sort(function(a,b){
+					return (b.rssiE - a.rssiE);
+				}
+			);
+		}
+
+		///////////////////////// MODULE DIVIDER ////////////////////////////////////
+		////////////////////// FIND THE NEARST GROUP ////////////////////////////////
 
 		var groupNear = 0; //major value of the near group
 		var averageDistance = -200; // when use accuracy -> 10
-		var avg = 0;		
-		for(var i=0; i<result.length;i++){
+		var avg = 0;
+		
+		for(var i=0; i<result.length;i++){ // loop each sub array in it.
 			if(result[i].length <= 3){
-				//console.log("avg start value: " + avg);
 				for(var j=0; j<result[i].length; j++){
 					avg += result[i][j].rssiE; //change "accuracy" to "rssi" when wanna based on rssi.
 				}
@@ -328,7 +333,7 @@ var app = (function(){
 				}
 				avg = avg / 3;
 			}
-			
+
 			if(avg > averageDistance){ // when use accuracy -> <, when use rssi -> >
 				averageDistance = avg;
 				groupNear = result[i][0].major;			
@@ -346,80 +351,68 @@ var app = (function(){
 			}
 		});
 
-		// build beacons object with in info from beacon.json
+		///////////////////////// MODULE DIVIDER ////////////////////////////////////
+		//////////////////// ADD INFO FROM BEACON.JSON //////////////////////////////
+
 		for (var i in _beacons_tmp)
 		{
 			var beacon = _beacons_tmp[i];
 			beacon.timeStamp = Date.now();
-			var key = beacon.uuid + ':' + beacon.major + ':' + beacon.minor;
+			var key = beacon.uuid + ':' + beacon.major + ':' + beacon.minor; // TODO: add the "key" to beacons object. I order not do this again and again.
 			key = key.toUpperCase();
-			// From here, we indexing the beacon library and try to add some infomation from 
-			// the JSON library into our final beacons object.
-			beacon.triggerAddress = beaconLibrary["beacons"][key]["triggerAddress"]; // this.props
-			beacon.triggerDistance = beaconLibrary["beacons"][key]["triggerDistance"];
+			// add some infomation from the JSON library into our final beacons object.
+			beacon.triggerAddress   = beaconLibrary["beacons"][key]["triggerAddress"  ];
+			beacon.triggerDistance  = beaconLibrary["beacons"][key]["triggerDistance" ];
 			beacon.triggerDistanceI = beaconLibrary["beacons"][key]["triggerDistanceI"];
 		}
-		// console.log("HI a: " + JSON.stringify(_beacons_tmp));
 
-		////////////// MODULE DIVIDER //////////////////////////////////
-		///////////// "Enter-Locking Module" ///////////////////////////
-		// When one beacon is entered and entered into "entered_small", This module lock this
-		// beacon as the entered beacon. Only when visiter leave the bigger circle of this beacon,
-		// Then the Lock is open, and new beacon can be sets as the new beacon that locking focus.
-		// TODO: Transmit the status of each beacon from BLE.jsx into Beacon.jsx to do visuallization.
+		///////////////////////// MODULE DIVIDER ////////////////////////////////////
+		////////////////////// BEACON ENTER-LOCKING /////////////////////////////////
+
+		// When one beacon is entered & entered into its "entered_small", This module lock this
+		// beacon as  the 'entered beacon'. Only when visiter leave the bigger circle of this
+		// beacon, then the Lock is open, and other beacon can get the lock.
+		// The result of this module will be sent from this part through 'mediator'
+
 		$.each(_beacons_tmp, function(key, beacon){
 			var k = beacon.uuid + ':' + beacon.major + ':' + beacon.minor;
 			var rE = beacon.rssiE;
-			var tD = beacon.triggerDistance;
-			var tDI= beacon.triggerDistanceI;
+			var tD = beacon.triggerDistance;	// big trigger distance circle of this beacon.
+			var tDI= beacon.triggerDistanceI;	// small trigger distance circle of this beacon.
 			if(entered == 0){
 				if(rE >= tD){
 					// mediator.publish("beacon.entered", beacon.triggerAddress);
-					// this.setState({entered: k}); // start lock
-					entered = k;
-					// console.log('beacon entered:' + k);
+					entered = k; // start lock
 					if(rE >= tDI){
 						if(entered_small == 0){
 							// mediator.publish("beacon.entered.small", beacon.triggerAddress);
-							// this.setState({entered_small: k});
 							entered_small = k;
-							// console.log('enter beacon small:' + k);
 						}
 					}
 				} 
-			} else if(k == entered){ // When this beacon has the lock
+			} else if (k == entered){ // When this beacon has the lock
 				if(rE >= tDI){
 					if(entered_small == 0){
 						// mediator.publish("beacon.entered.small", beacon.triggerAddress);
-						//this.setState({entered_small: k});
 						entered_small = k;
-						// console.log('enter beacon small:' + k);
 					}
 				} else if(rE < tD){
 					// mediator.publish("beacon.left", beacon.triggerAddress);
-					// this.setState({entered: 0}); //free the lock
-					entered = 0;
-					// this.setState({entered_small: 0});
+					entered = 0; //free the lock
 					entered_small = 0;
-					// console.log('beacon left:' + k);
-					// console.log(beacon.rssiE);
 				} else if(rE < tDI && rE >= tD){
 					if(entered_small == k){
 						// mediator.publish("beacon.left.small", beacon.triggerAddress);
-						// this.setState({entered_small: 0}); // ONLY when beacon leave the big circle will free this lock. (Debouncing)
-						// console.log('enter left small:' + k);
-						// console.log(beacon.rssiE);
+						entered_small = 0; // ONLY when beacon leave the big circle will free this lock. (Debouncing)
 					}
-				} else {
-					// When 'this' beacon is not the locking one, and one beacon is setten.
-					// console.log('lock beacon: ' + k);
 				}
 			}
 		}.bind(this));
 
-		////////////// MODULE DIVIDER //////////////////////////////////
+		///////////////////////// MODULE DIVIDER ////////////////////////////////////
+		////////////////////// ******************** /////////////////////////////////
 
-		// This is the last part, that I push the out coming data array into another React Module
+		// This is the last part. I push the out coming data array into another React Module
 		var zebra = false;
 		var majorOri = _beacons_tmp[0].major;
 		$.each(_beacons_tmp, function(key, beacon){
@@ -427,17 +420,10 @@ var app = (function(){
 				majorOri = beacon.major;
 				zebra = !zebra;	
 			}
-			tmpBeaconTester.push(beacon);
 		}.bind(this));
 
+		tmpBeaconTester = _beacons_tmp; // tmpBeaconTester is only the reference of )beacons_tmp 
 		// console.log("tmpBeaconTester: " + JSON.stringify(tmpBeaconTester));
-
-		/*this.setState(function(state){ 
-			return{ 
-				beaconComponents : _beacons, // The final product.
-				dict : JSON.stringify(beacons)
-			}
-		});*/
 	}
 
 
@@ -456,11 +442,8 @@ var app = (function(){
 		var timeNow = Date.now();
 
 
-		// console.log("tmpBeaconTester: " + JSON.stringify(beacons/*tmpBeaconTester*/));
-
-
 		// Update beacon list.
-		$.each(beacons/*tmpBeaconTester*/, function(key, beacon)
+		$.each(/*beacons*/tmpBeaconTester, function(key, beacon)
 		{
 			// Only show beacons that are updated during the last 60 seconds.
 			if (beacon.timeStamp + 60000 > timeNow)
@@ -473,11 +456,10 @@ var app = (function(){
 				// Create tag to display beacon data.
 				var element = $(
 					'<li>'
-					+	'<strong>UUID: ' + beacon.uuid + '</strong><br />'
+					// +	'UUID: ' + beacon.uuid + '<br />'
 					+	'Major: ' + beacon.major + '<br />'
 					+	'Minor: ' + beacon.minor + '<br />'
-					+	'Proximity: ' + beacon.proximity + '<br />'
-					+	'RSSI: ' + beacon.rssi + '<br />'
+					+	'RSSI: '  + beacon.rssi  + '<br />'
 					+	'RSSIE: ' + beacon.rssiE + '<br />'
 					+ 	'<div style="background:rgb(255,128,64);height:20px;width:'
 					+ 		rssiWidth + '%;"></div>'
