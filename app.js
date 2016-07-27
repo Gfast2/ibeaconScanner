@@ -14,11 +14,6 @@ $.getJSON("beacon.json", function(beacons)
 });
 
 
-// console.log("beaconLibrary:" + JSON.stringify(beaconLibrary));
-
-
-
-
 var app = (function(){
 
 	// console.log("Hi abc " + JSON.stringify(bLibrary));
@@ -32,11 +27,7 @@ var app = (function(){
 	var updateTimer = null;
 
 	// Variable from react's "state"
-	var activeTourID = "", // comment test
-		activeTour = "",
-		dict = "",
-		beaconComponents = [],
-		bufferDepth = 3,
+	var bufferDepth = 3,
 		beaconsRSSI = [], // buffer  object that save "bufferDepth" defined times 'beacons' object.
 		beaconNear = undefined,
 		num = 0;
@@ -82,15 +73,7 @@ var app = (function(){
 		delegate.didRangeBeaconsInRegion = function(pluginResult)
 		{
 			// console.log('didRangeBeaconsInRegion: ' + JSON.stringify(pluginResult))
-			for (var i in pluginResult.beacons)
-			{
-				// Insert beacon into table of found beacons.
-				var beacon = pluginResult.beacons[i];
-				beacon.timeStamp = Date.now();
-				var key = beacon.uuid + ':' + beacon.major + ':' + beacon.minor;
-				beacons[key] = beacon; // From here get the beacons array.
-				beacon.numStamp = num;
-			}
+			
 			// Here will read in the beacon scan result & output the sorted beacon result. /////////////////////////////////			
 			beaconState(pluginResult);
 		};
@@ -129,7 +112,26 @@ var app = (function(){
 		}
 	}
 
+	function stopScan(){
+		console.log("stopScan");
+		for (var i in regions)
+		{
+			var beaconRegion = new locationManager.BeaconRegion(
+				i + 1,
+				regions[i].uuid);
 
+			// Start ranging.
+			locationManager.stopRangingBeaconsInRegion(beaconRegion)
+				.fail(console.error)
+				.done();
+
+			// Start monitoring.
+			// (Not used in this example, included as a reference.)
+			locationManager.stopMonitoringForRegion(beaconRegion)
+				.fail(console.error)
+				.done();
+		}
+	}
 
 
 
@@ -139,23 +141,22 @@ var app = (function(){
 
 	function beaconState(pluginResult){
 
-		// This step has finished in 'startScan();'
 		// update beacon dictionary:
-		// for (var i in pluginResult.beacons)
-		// {
-		// 	var beacon = pluginResult.beacons[i];
-		// 	beacon.timeStamp = Date.now(); // There is already timeStamp build in. this will override it(?)
-		// 	beacon.numStamp = num;
+		for (var i in pluginResult.beacons)
+		{
+			// Insert beacon into table of found beacons.
+			var beacon = pluginResult.beacons[i];
+			beacon.timeStamp = Date.now();
+			var key = beacon.uuid + ':' + beacon.major + ':' + beacon.minor;
+			beacons[key] = beacon; // From here get the beacons array.
+			beacon.numStamp = num;
+		}
 
-		// 	var key = beacon.uuid + ':' + beacon.major + ':' + beacon.minor;
-		// 	// build up main beacons object with all available (appeared at leat onces) beacons in it.
-		// 	beacons[key] = beacon;			
-		// }
-
-		// Here I pass the beacons object into "Beacons Buffer System"
-		// beacons (INPUT) -> BeaconBuffer() -> beacons (OUTPUT)
 		///////////////////////// MODULE DIVIDER ////////////////////////////////////
 		///////////////////// DEBOUNCING RSSI VALUE /////////////////////////////////
+
+		// Here I pass the beacons object into "Beacons rssi debouncing Buffer array"
+		// beacons (INPUT) -> BeaconBuffer -> beacons (OUTPUT)
 
 		function clone(obj) { // Make a copy of the new updated beacons object.
 		    if (null == obj || "object" != typeof obj) return obj;
@@ -184,7 +185,6 @@ var app = (function(){
 */
 
 		var maxNumStamp = 0; // The most up-to-Date 'numStamp' of the whole array.
-		// console.log('beaconsRSSI: ' +JSON.stringify(beaconsRSSI));
 		$.each(beaconsRSSI, function(key,beacon){
 			$.each(beacon, function(key_, beacon_){
 				maxNumStamp = maxNumStamp > beacon_['numStamp'] ? maxNumStamp : beacon_['numStamp'];
@@ -227,9 +227,8 @@ var app = (function(){
 			beacons[key].accuracyE = "Empty";
 			// console.log('beacons[key].rssiE & num:' + beacons[key].rssiE + " " + beacon.rssiE_tmp + " " + beacon.num);
 		});
-		// console.log('beaconsRSSI: ' + JSON.stringify(beaconsRSSI));
-		// console.log('beaconstmp: ' + JSON.stringify(beaconstmp));
 		num++;
+
 		///////////////////////// MODULE DIVIDER ////////////////////////////////////
 		/////////////////////// SORTING BEACON LIST /////////////////////////////////
 
@@ -432,18 +431,34 @@ var app = (function(){
 
 
 
-
-
 	// Block to display things onto screen
-	function displayBeaconList(){
+	function displayBeaconList(){		
 		// Clear beacon list.
 		$('#found-beacons').empty();
 
 		var timeNow = Date.now();
 
 
+		// Do the sorting according to rssiE (averaged rssi value).
+		tmpBeaconTester.sort(function(a,b){
+			return b.rssiE - a.rssiE;
+		});
+
+		var rssiTip = $(
+			'<button>start</button>&ensp;&ensp;&ensp;' +
+			'<button id="bt_stop" onclick="test()">stop</button>' +
+			'<div>'
+				+ 'trigger value:first beacon (the nearst):' + '<br />'
+				+ 'big trigger circle   ' + tmpBeaconTester[0].triggerDistance + '<br />'
+				+ 'small trigger circle ' + tmpBeaconTester[0].triggerDistanceI
+			+ '</div>'
+		);
+
+		$('#warning').remove();
+		$('#found-beacons').append(rssiTip);
+
 		// Update beacon list.
-		$.each(/*beacons*/tmpBeaconTester, function(key, beacon)
+		$.each(tmpBeaconTester, function(key, beacon)
 		{
 			// Only show beacons that are updated during the last 60 seconds.
 			if (beacon.timeStamp + 60000 > timeNow)
@@ -457,9 +472,9 @@ var app = (function(){
 				var element = $(
 					'<li>'
 					// +	'UUID: ' + beacon.uuid + '<br />'
-					+	'Major: ' + beacon.major + '<br />'
+					+	'Major: ' + beacon.major + '&ensp;&ensp;'
 					+	'Minor: ' + beacon.minor + '<br />'
-					+	'RSSI: '  + beacon.rssi  + '<br />'
+					+	'RSSI: '  + beacon.rssi  + '&ensp;&ensp;&ensp;'
 					+	'RSSIE: ' + beacon.rssiE + '<br />'
 					+ 	'<div style="background:rgb(255,128,64);height:20px;width:'
 					+ 		rssiWidth + '%;"></div>'
@@ -471,7 +486,6 @@ var app = (function(){
 			}
 		});
 	}
-
 	return app;
 }()); // from here inject the library of beaconinfo.
 
