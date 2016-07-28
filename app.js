@@ -426,6 +426,14 @@ var app = (function(){
 
 
 
+	
+
+
+
+
+
+
+
 	// Block to display things onto screen
 	function displayBeaconList(){		
 		// Clear beacon list.
@@ -442,23 +450,33 @@ var app = (function(){
 		// console.log("tmpBeaconTester" + JSON.stringify(tmpBeaconTester));
 
 		var rssiTip = $(
-			'<button onclick="start()">start</button>&ensp;&ensp;&ensp;' +
-			'<button id="bt_stop" onclick="stop()">stop</button>' +
+			'<button onclick="app.startScan()">start</button>&ensp;&ensp;&ensp;' +
+			'<button onclick="app.stopScan()">stop</button>' +
 			'<div>'
-				+ 'trigger value:first beacon (the nearst):' + '<br />'
-				+ 'big trigger circle   ' + tmpBeaconTester[0].triggerDistance + '<br />'
-				+ 'small trigger circle ' + tmpBeaconTester[0].triggerDistanceI
+				+ 'trigger value of first beacon('
+				+ tmpBeaconTester[0].major + ':' + tmpBeaconTester[0].minor + '):' + '<br />'
+				+ '&ensp;big trigger circle   ' + tmpBeaconTester[0].triggerDistance + '<br />'
+				+ '&ensp;small trigger circle ' + tmpBeaconTester[0].triggerDistanceI
 			+ '</div>'
 		);
 
 		$('#warning').remove();
 		$('#found-beacons').append(rssiTip);
 
+
+		var et = show(entered);
+		var et_small = show(entered_small);
+		function show(e){
+			if(entered!=0) 	return entered.substring(37);
+			else 			return 0;
+		}
+
 		var enterTx = $(
-			'<p> entered: ' + entered
+			'<div>Beacon Locking/Token Status' + '<br />'
+			+ '&ensp;entered: ' + et
 			+ '<br />'
-			+'entered_small:' + entered_small
-			+ '<br /></p>'
+			+'&ensp;entered_small:' + et_small
+			+ '<br /></div>'
 		);
 
 		$('#found-beacons').append(enterTx);

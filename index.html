@@ -24,6 +24,7 @@
 	<script src="libs/evothings/ui/ui.js"></script>
 	<script src="app.js"></script>
 	<script src="beacon.json"></script>
+	<script src="libs/raphael.min.js"></script>
 
 </head>
 
@@ -40,21 +41,16 @@
 	</header>
 
 	<h1>iBeacon Scan</h1>
+	<div id="visualization" style="height:500px; background-color:yellow;">Visualization</div>
 	<p id="warning">To detect iBeacons you will have to add the 128bit UUID's you
 	are looking for to the regions array in app.js of the iBeacon example.
 	</p>
 	<ul id="found-beacons" class="dynamic"></ul>
 	<script>
-		function stop(){
-			console.log("stop");
-			app.stopScan();
-		}
-		function start(){
-			console.log("start");
-			app.startScan();
-		}
-
-
+		var paper = Raphael(0,0,500,500);
+		var circle = paper.circle(50,40,10);
+		circle.attr("fill", "#f00");
+		circle.attr("stroke", "#fff");
 	</script>
 
 </body>
