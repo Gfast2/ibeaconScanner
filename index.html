@@ -45,9 +45,16 @@
 	</p>
 	<ul id="found-beacons" class="dynamic"></ul>
 	<script>
-		function test(){
-			console.log("foo");
+		function stop(){
+			console.log("stop");
+			app.stopScan();
 		}
+		function start(){
+			console.log("start");
+			app.startScan();
+		}
+
+
 	</script>
 
 </body>

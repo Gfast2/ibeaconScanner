@@ -19,7 +19,7 @@ var app = (function(){
 	// console.log("Hi abc " + JSON.stringify(bLibrary));
 	// console.log("Hi abc " + JSON.stringify(beaconLibrary));
 
-	var app = {}; 	// Application object.
+	var abb = {}; 	// Application object.
 	// Specify your beacon 128bit UUIDs here.
 	var regions =	[{uuid:'FDA50693-A4E2-4FB1-AFCF-C6EB07647825'}];
 	var beacons = {}; // Dictionary of beacons.
@@ -39,8 +39,9 @@ var app = (function(){
 
 
 
-
-	app.initialize = function(){
+	// This is the object that can be accessed from outside of the function.
+	// It's "Global"
+	abb.initialize = function(){
 		document.addEventListener(
 			'deviceready',
 			function() { evothings.scriptsLoaded(onDeviceReady) },
@@ -51,7 +52,7 @@ var app = (function(){
 		// Specify a shortcut for the location manager holding the iBeacon functions.
 		window.locationManager = cordova.plugins.locationManager;
 		// Start tracking beacons!
-		startScan();
+		abb.startScan();
 		// Display refresh timer.
 		updateTimer = setInterval(displayBeaconList, 500);
 	}
@@ -64,7 +65,9 @@ var app = (function(){
 
 
 	// Handling the beacons
-	function startScan(){
+	// function startScan(){
+	abb.startScan = function(){
+		console.log("start scan");
 		// The delegate object holds the iBeacon callback functions
 		// specified below.
 		var delegate = new locationManager.Delegate();
@@ -112,7 +115,7 @@ var app = (function(){
 		}
 	}
 
-	function stopScan(){
+	abb.stopScan = function(){
 		console.log("stopScan");
 		for (var i in regions)
 		{
@@ -445,8 +448,8 @@ var app = (function(){
 		});
 
 		var rssiTip = $(
-			'<button>start</button>&ensp;&ensp;&ensp;' +
-			'<button id="bt_stop" onclick="test()">stop</button>' +
+			'<button onclick="start()">start</button>&ensp;&ensp;&ensp;' +
+			'<button id="bt_stop" onclick="stop()">stop</button>' +
 			'<div>'
 				+ 'trigger value:first beacon (the nearst):' + '<br />'
 				+ 'big trigger circle   ' + tmpBeaconTester[0].triggerDistance + '<br />'
@@ -486,7 +489,7 @@ var app = (function(){
 			}
 		});
 	}
-	return app;
+	return abb;
 }()); // from here inject the library of beaconinfo.
 
 app.initialize();
