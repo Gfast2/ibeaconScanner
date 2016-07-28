@@ -5,6 +5,11 @@ var tmpBeaconTester = []; 	// JSON that transport the result of beaconState() to
 var entered = 0;			// 0 or 'key' (uuid+major+minor)
 var entered_small = 0;		// 0 or 'key' (uuid+major+minor)
 
+var paper = {};
+var tx1 = {};
+var tx2 = {};
+var key = {};
+var bk = {};
 
 
 var beaconLibrary = {};
@@ -55,6 +60,30 @@ var app = (function(){
 		abb.startScan();
 		// Display refresh timer.
 		updateTimer = setInterval(displayBeaconList, 500);
+
+		paper = Raphael(document.getElementById("visualization"),500,500);
+		var circle = paper.circle(230,250,150);
+		circle.attr("fill", "#f00");
+		circle.attr("stroke", "green");
+		circle.attr("opacity", 0.75);
+		var circle2 = paper.circle(230,250,80);
+		circle2.attr("fill", "blue");
+		circle2.attr("stroke", "green");
+		circle2.attr("opacity", 0.5);
+		var txParam = {fill:"#000","font-size":12};
+		tx1 = paper.text(230, 250-150, "test1").attr(txParam);
+		tx2 = paper.text(230, 250-80,  "test2").attr(txParam);
+		var recParam = {fill:"#fff",stroke:"green",opacity:0.9};
+
+		// The "moving part" of the visualization.
+		var rect = paper.rect(50,250,60,30,10).attr(recParam);
+		bk = paper.text(50+60/2,250+30/2,"-67.55").attr(txParam); // rssiE value of this beacon.
+		var ln = paper.path("M80 250L80 10").attr(recParam);
+
+		var txParam2 = {fill:"#000", "font-size":20, "text-anchor":"start"};
+		key=paper.text(10,20,"Loking beacon: 20:1").attr(txParam2);
+
+		tx1.attr("text","abc"); // change the text content.
 	}
 
 
@@ -423,10 +452,9 @@ var app = (function(){
 
 
 
+		
 
 
-
-	
 
 
 
@@ -435,7 +463,8 @@ var app = (function(){
 
 
 	// Block to display things onto screen
-	function displayBeaconList(){		
+	function displayBeaconList(){
+
 		// Clear beacon list.
 		$('#found-beacons').empty();
 
@@ -447,8 +476,25 @@ var app = (function(){
 			return b.rssiE - a.rssiE;
 		});
 
-		// console.log("tmpBeaconTester" + JSON.stringify(tmpBeaconTester));
 
+
+
+
+		var rE = tmpBeaconTester[0].rssiE;
+		bk.attr("text",rE); // change the text content.
+
+
+
+
+
+
+
+
+
+
+
+
+		
 		var rssiTip = $(
 			'<button onclick="app.startScan()">start</button>&ensp;&ensp;&ensp;' +
 			'<button onclick="app.stopScan()">stop</button>' +
@@ -463,7 +509,8 @@ var app = (function(){
 		$('#warning').remove();
 		$('#found-beacons').append(rssiTip);
 
-
+		/*
+		// Info table. Version before info graphic 
 		var et = show(entered);
 		var et_small = show(entered_small);
 		function show(e){
@@ -480,6 +527,7 @@ var app = (function(){
 		);
 
 		$('#found-beacons').append(enterTx);
+		*/
 
 		// Update beacon list.
 		$.each(tmpBeaconTester, function(key, beacon)
@@ -510,9 +558,9 @@ var app = (function(){
 			}
 		});
 	}
+
 	return abb;
 }()); // from here inject the library of beaconinfo.
 
 app.initialize();
-
 
