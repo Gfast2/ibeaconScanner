@@ -1,0 +1,1414 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"stop",
+				"stopScan"
+			],
+			[
+				"group",
+				"groupNear"
+			],
+			[
+				"plugin",
+				"pluginResult"
+			],
+			[
+				"fileget",
+				"file_get_html"
+			],
+			[
+				"mag",
+				"magazinetitle"
+			],
+			[
+				"ne",
+				"pinNextButton"
+			],
+			[
+				"word",
+				"word-break"
+			],
+			[
+				"addMa",
+				"addMarkerByLatLong"
+			],
+			[
+				"getLa",
+				"getLngLat"
+			],
+			[
+				"anima",
+				"animateToCenter"
+			],
+			[
+				"clas",
+				"className"
+			],
+			[
+				"utf8",
+				"utf8_decode"
+			],
+			[
+				"uplo",
+				"uploadedFile"
+			],
+			[
+				"maxU",
+				"maxUploadSizeInBytes"
+			],
+			[
+				"random",
+				"randomEmail"
+			],
+			[
+				"ge",
+				"get"
+			],
+			[
+				"utf",
+				"imap_utf8"
+			],
+			[
+				"inline",
+				"inline-block"
+			],
+			[
+				"_S",
+				"_SESSION"
+			],
+			[
+				"Send",
+				"sendActivationMail"
+			],
+			[
+				"valida",
+				"validationKey"
+			],
+			[
+				"url",
+				"urlencode"
+			],
+			[
+				"currenPa",
+				"currentPageDiv"
+			],
+			[
+				"encode",
+				"utf8_encode"
+			],
+			[
+				"html",
+				"htmlspecialchars"
+			],
+			[
+				"deco",
+				"utf8_decode"
+			],
+			[
+				"titl",
+				"title_string"
+			],
+			[
+				"curren",
+				"currentPage"
+			],
+			[
+				"base",
+				"base64_decode"
+			],
+			[
+				"checkbo",
+				"checkboxesChanged"
+			],
+			[
+				"checkB",
+				"checkboxesChanged"
+			],
+			[
+				"checBo",
+				"checkboxesChanged"
+			],
+			[
+				"curr",
+				"currentPageTitle"
+			],
+			[
+				"setTime",
+				"setTimeout(${0:func}, delay)	Window"
+			],
+			[
+				"getElement",
+				"getElementById(${0:id})	Element"
+			],
+			[
+				"font",
+				"font-family"
+			],
+			[
+				"get",
+				"getHours()	Date"
+			],
+			[
+				"desire",
+				"desiredResult"
+			],
+			[
+				"Ran",
+				"Range"
+			],
+			[
+				"MakeLi",
+				"MakeListItem"
+			],
+			[
+				"strc",
+				"strcmp"
+			],
+			[
+				"str_re",
+				"str_replace"
+			],
+			[
+				"return",
+				"returned_content"
+			],
+			[
+				"introDuc",
+				"introductionHeightAuto"
+			],
+			[
+				"introd",
+				"introductionHeightAuto"
+			],
+			[
+				"curre",
+				"currentlySelectedItem"
+			],
+			[
+				"php",
+				"php"
+			],
+			[
+				"impres",
+				"impressumBtn"
+			],
+			[
+				"imprss",
+				"impressumVisible"
+			],
+			[
+				"s",
+				"dashed  (value)"
+			],
+			[
+				"text",
+				"text-decoration"
+			],
+			[
+				"sele",
+				"currentlySelectedItem"
+			],
+			[
+				"cur",
+				"currentlySelectedItem"
+			],
+			[
+				"font-s",
+				"font-style"
+			],
+			[
+				"Show",
+				"ShowLightBox"
+			],
+			[
+				"Remo",
+				"RemoveLightbox"
+			],
+			[
+				"animate",
+				"doAnimate"
+			],
+			[
+				"left",
+				"leftColumn"
+			],
+			[
+				"anim",
+				"animateAnimation"
+			],
+			[
+				"click",
+				"clickedFilter"
+			],
+			[
+				"in",
+				"animateInteractive  (variable)"
+			],
+			[
+				"cick",
+				"clickedFilter"
+			],
+			[
+				"circle",
+				"circleGoDown"
+			],
+			[
+				"conta",
+				"contactVisible"
+			],
+			[
+				"back",
+				"background-position"
+			],
+			[
+				"Transi",
+				"TransitionToOverview"
+			],
+			[
+				"current",
+				"currentlySelectedItem"
+			],
+			[
+				"Hide",
+				"HideItem"
+			],
+			[
+				"cate",
+				"categories"
+			],
+			[
+				"filter",
+				"filterBtns"
+			],
+			[
+				"backgro",
+				"backgroundColor"
+			],
+			[
+				"bac",
+				"backgroundColor"
+			],
+			[
+				"pick",
+				"PickTargetNearMouse"
+			],
+			[
+				"prot",
+				"prototype"
+			],
+			[
+				"window",
+				"windowWidth"
+			],
+			[
+				"place",
+				"placedSymbol"
+			],
+			[
+				"product",
+				"product_code"
+			],
+			[
+				"dist",
+				"distanceToParent"
+			],
+			[
+				"maxVo",
+				"absoluteMaxVolts"
+			],
+			[
+				"powe",
+				"powerToCollect"
+			],
+			[
+				"fares",
+				"farestPoint"
+			],
+			[
+				"point",
+				"pointsInRange"
+			],
+			[
+				"pos",
+				"pointsInRange"
+			],
+			[
+				"master",
+				"masterPoint"
+			],
+			[
+				"masterP",
+				"masterPointInList"
+			],
+			[
+				"balk",
+				"balkenzahl"
+			],
+			[
+				"dis",
+				"imgDiskette"
+			],
+			[
+				"size",
+				"sizeSpeed"
+			],
+			[
+				"folien",
+				"folienMarkierungen"
+			],
+			[
+				"field",
+				"fieldSize"
+			],
+			[
+				"lasers",
+				"laserSound"
+			],
+			[
+				"raumschiff",
+				"raumschiffTextur"
+			],
+			[
+				"laser",
+				"laserstrahlen"
+			],
+			[
+				"laer",
+				"laserSpeed"
+			],
+			[
+				"kometengr",
+				"kometenGrafiken"
+			],
+			[
+				"sterne_",
+				"sterne_nah"
+			],
+			[
+				"sterne",
+				"sterne_fern"
+			],
+			[
+				"ster",
+				"sternengroesse"
+			],
+			[
+				"umlauf",
+				"umlaufbahnMars"
+			],
+			[
+				"sonnenSY",
+				"sonnensystemPrevPosition"
+			],
+			[
+				"sonnen",
+				"sonnensystemPosition"
+			],
+			[
+				"sonne",
+				"sonnensystemPrevPosition"
+			],
+			[
+				"demo",
+				"demoMode"
+			],
+			[
+				"game",
+				"gameIsRunning"
+			],
+			[
+				"twen",
+				"tweenSteps"
+			],
+			[
+				"tweenS",
+				"tweenStepVektor"
+			],
+			[
+				"tween",
+				"tweenSteps"
+			],
+			[
+				"twee",
+				"tweenStepVektor"
+			],
+			[
+				"daten",
+				"datenpunkte"
+			],
+			[
+				"focus",
+				"focusColor"
+			],
+			[
+				"drawRas",
+				"drawRasterPoints"
+			],
+			[
+				"zoo",
+				"zoomSteps"
+			],
+			[
+				"y",
+				"y"
+			],
+			[
+				"linie",
+				"linienFarbe"
+			],
+			[
+				"translat",
+				"translateY"
+			],
+			[
+				"trans",
+				"translateY"
+			],
+			[
+				"tr",
+				"translateX"
+			],
+			[
+				"spielsteine",
+				"spielsteinThreshold"
+			],
+			[
+				"eck",
+				"eckpunkteThreshold"
+			],
+			[
+				"ist",
+				"istAufgedeckt"
+			],
+			[
+				"nB",
+				"nMehrBomben"
+			],
+			[
+				"winds",
+				"windStaerke"
+			],
+			[
+				"wind",
+				"windRichtung"
+			],
+			[
+				"diffUnten",
+				"diffUntenLinksX"
+			],
+			[
+				"spiels",
+				"spielsteineMaxSize"
+			],
+			[
+				"w",
+				"while	while"
+			],
+			[
+				"butto",
+				"buttonHeight"
+			],
+			[
+				"cropTo",
+				"cropRotatePoints"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "app.js",
+			"settings":
+			{
+				"buffer_size": 14956,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "index.html",
+			"settings":
+			{
+				"buffer_size": 1392,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+		[
+			[
+				[
+					"Packages/Processing/Build Systems/Processing.sublime-build",
+					""
+				],
+				[
+					"Packages/Processing/Build Systems/Processing.sublime-build",
+					"Re-run sketch"
+				],
+				[
+					"Packages/Processing/Build Systems/Processing.sublime-build",
+					"Run sketch (Processing 3 only)"
+				],
+				[
+					"Packages/Processing/Build Systems/Processing.sublime-build",
+					"Run sketch fullscreen"
+				],
+				[
+					"Packages/Processing/Build Systems/Processing.sublime-build",
+					"Export sketch as application"
+				]
+			],
+			[
+				"Packages/Processing/Build Systems/Processing.sublime-build",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Packages/Processing/Processing 3.sublime-build",
+					""
+				],
+				[
+					"Packages/Processing/Processing 3.sublime-build",
+					"Run sketch fullscreen"
+				],
+				[
+					"Packages/Processing/Processing 3.sublime-build",
+					"Build & run sketch"
+				],
+				[
+					"Packages/Processing/Processing 3.sublime-build",
+					"Build & run sketch fullscreen"
+				],
+				[
+					"Packages/Processing/Processing 3.sublime-build",
+					"Export sketch as a 32-bit linux application"
+				],
+				[
+					"Packages/Processing/Processing 3.sublime-build",
+					"Export sketch as a 64-bit linux application"
+				],
+				[
+					"Packages/Processing/Processing 3.sublime-build",
+					"Export sketch as a macosx application"
+				],
+				[
+					"Packages/Processing/Processing 3.sublime-build",
+					"Export sketch as a 32-bit windows application"
+				],
+				[
+					"Packages/Processing/Processing 3.sublime-build",
+					"Export sketch as a 64-bit windows application"
+				],
+				[
+					"Packages/Processing/Processing.sublime-build",
+					""
+				],
+				[
+					"Packages/Processing/Processing.sublime-build",
+					"Run sketch fullscreen"
+				],
+				[
+					"Packages/Processing/Processing.sublime-build",
+					"Export sketch as a 32-bit linux application"
+				],
+				[
+					"Packages/Processing/Processing.sublime-build",
+					"Export sketch as a 64-bit linux application"
+				],
+				[
+					"Packages/Processing/Processing.sublime-build",
+					"Export sketch as a macosx application"
+				],
+				[
+					"Packages/Processing/Processing.sublime-build",
+					"Export sketch as a 32-bit windows application"
+				],
+				[
+					"Packages/Processing/Processing.sublime-build",
+					"Export sketch as a 64-bit windows application"
+				],
+				[
+					"Packages/Unity3D Build System/Unity.sublime-build",
+					""
+				],
+				[
+					"Packages/Unity3D Build System/Unity.sublime-build",
+					"Clean"
+				],
+				[
+					"Packages/User/assembly.sublime-build",
+					""
+				],
+				[
+					"Packages/User/C.sublime-build",
+					""
+				]
+			],
+			[
+				"Packages/Processing/Processing 3.sublime-build",
+				"Build & run sketch"
+			]
+		]
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 400.0,
+		"last_filter": "packa",
+		"selected_items":
+		[
+			[
+				"packa",
+				"Package Control: Install Package"
+			],
+			[
+				"jsonli",
+				"Pretty JSON: Validate"
+			],
+			[
+				"brightsc",
+				"Set Syntax: BrightScript"
+			],
+			[
+				"brow",
+				"SFTP: Browse Server…"
+			],
+			[
+				"brows",
+				"SFTP: Browse Server…"
+			],
+			[
+				"html",
+				"Set Syntax: HTML"
+			],
+			[
+				"json",
+				"Pretty JSON: Validate"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"js",
+				"Set Syntax: JSX"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"package",
+				"Package Control: Install Package"
+			],
+			[
+				"phpforma",
+				"phpfmt: toggle format on save"
+			],
+			[
+				"php format",
+				"phpfmt: toggle format on save"
+			],
+			[
+				"php beau",
+				"phpfmt: toggle smart linebreak after open curly"
+			],
+			[
+				"format",
+				"CodeFormatter: Format Code"
+			],
+			[
+				"set php",
+				"Set Syntax: PHP"
+			],
+			[
+				"pxp",
+				"CodeFormatter: Format as PHP Syntax"
+			],
+			[
+				"codeform",
+				"CodeFormatter: Format Code"
+			],
+			[
+				"",
+				"CodeFormatter: Format as PHP Syntax"
+			],
+			[
+				"php",
+				"Set Syntax: PHP"
+			],
+			[
+				"fz",
+				"SFTP: Browse With FileZilla"
+			],
+			[
+				"filezil",
+				"SFTP: Browse With FileZilla"
+			],
+			[
+				"filezill",
+				"SFTP: Browse With FileZilla"
+			],
+			[
+				"pack",
+				"Package Control: Install Package"
+			],
+			[
+				"sftp",
+				"SFTP: Sync Remote -> Local…"
+			],
+			[
+				"browse",
+				"SFTP: Browse Server…"
+			],
+			[
+				"processing",
+				"Set Syntax: Processing"
+			],
+			[
+				"css",
+				"Set Syntax: CSS"
+			],
+			[
+				"java",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"jav",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"ja",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"xs",
+				"Set Syntax: XSL"
+			],
+			[
+				"sft",
+				"SFTP: Sync Remote -> Local…"
+			],
+			[
+				"serve",
+				"SFTP: Browse Server…"
+			],
+			[
+				"server",
+				"SFTP: Browse Server…"
+			],
+			[
+				"proc",
+				"Set Syntax: Processing"
+			],
+			[
+				"packa ins",
+				"Package Control: Install Package"
+			],
+			[
+				"pro",
+				"Set Syntax: Processing"
+			],
+			[
+				"poc",
+				"Set Syntax: Processing"
+			],
+			[
+				"pyt",
+				"Set Syntax: Python"
+			],
+			[
+				"pyth",
+				"Set Syntax: Python"
+			],
+			[
+				"proce",
+				"Set Syntax: Processing"
+			],
+			[
+				"c++",
+				"Set Syntax: C++"
+			],
+			[
+				"syntax c",
+				"Set Syntax: C"
+			],
+			[
+				"pyh",
+				"Set Syntax: Python"
+			],
+			[
+				"py",
+				"Set Syntax: Python"
+			],
+			[
+				"files",
+				"File: Save All"
+			],
+			[
+				"Snippet: ",
+				"Snippet: While Loop"
+			]
+		],
+		"width": 457.0
+	},
+	"console":
+	{
+		"height": 125.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '7183a2d3e96f11eeadd761d777e62404' + 'e330c659d4bb41d3bdf022e94cab3cd0'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by) "
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": true,
+		"side_bar_visible": false,
+		"status_bar_visible": true
+	},
+	"expanded_folders":
+	[
+		"/Users/sugao/EvothingsStudio/MyApps/ibeacon-scan"
+	],
+	"file_history":
+	[
+		"/Users/sugao/EvothingsStudio/MyApps/ibeacon-scan/app.js",
+		"/Users/sugao/EvothingsStudio/MyApps/ibeacon-scan/index.html",
+		"/Users/sugao/EvothingsStudio/MyApps/ibeacon-scan/libs/evothings/evothings.js",
+		"/Users/sugao/FranckeApp/FRANCKE/www/beacon.json",
+		"/Users/sugao/FranckeApp/FRANCKE/www/js/BLE/BLE.JSX",
+		"/Users/sugao/FranckeApp/FRANCKE/www/js/MediaPlayer/AudioPlayer.js",
+		"/Users/sugao/FranckeApp/FRANCKE/www/js/MediaPlayer/Audio/Audio.js",
+		"/Users/sugao/EvothingsStudio/MyApps/ibeacon-scan/beacon.json",
+		"/Users/sugao/FranckeApp/FRANCKE/www/js/app.jsx",
+		"/Users/sugao/FranckeApp/FRANCKE/www/js/BLE/BLE.js",
+		"/Users/sugao/FranckeApp/FRANCKE/www/js/BLE/Beacon.jsx",
+		"/Users/sugao/EvothingsStudio/MyApps/MyNewTestApp/index.html",
+		"/Users/sugao/EvothingsStudio/MyApps/petermetz/www/index.html",
+		"/Users/sugao/Desktop/FrankescheStiftung/PetermezeCordovaBeacon/StartMonitoring.js",
+		"/Users/sugao/Desktop/FrankescheStiftung/petermetz3/www/index.html",
+		"/Users/sugao/Desktop/FrankescheStiftung/petermetz3/config.xml",
+		"/Users/sugao/Desktop/Frankesche Stiftung/Petermetz2/Petermetz2/index.html",
+		"/Users/sugao/Desktop/Frankesche Stiftung/Petermetz2/Petermetz2/libs/evothings/evothings.js",
+		"/Users/sugao/Desktop/Frankesche Stiftung/PetermezeCordovaBeacon/CreatingBeaconRegion.js",
+		"/Users/sugao/Desktop/Frankesche Stiftung/PetermezeCordovaBeacon/EnableDisableBLE.js",
+		"/Users/sugao/Desktop/Frankesche Stiftung/PetermezeCordovaBeacon/StopRangingBeacon.js",
+		"/Users/sugao/Desktop/Frankesche Stiftung/PetermezeCordovaBeacon/StopMonitoringBeacon.js",
+		"/Users/sugao/Desktop/Frankesche Stiftung/PetermezeCordovaBeacon/StartRanging.js",
+		"/Users/sugao/Desktop/Frankesche Stiftung/PetermezeCordovaBeacon/StartMonitoring.js",
+		"/Users/sugao/Desktop/Frankesche Stiftung/react-webpack-tutorial/myapp/app/style.css",
+		"/Users/sugao/Desktop/Frankesche Stiftung/react-webpack-tutorial/myapp/app/main.js",
+		"/Users/sugao/Desktop/react-animation/style.css",
+		"/Users/sugao/Desktop/react-animation/index.html",
+		"/Users/sugao/FranckeApp/FRANCKE/config.xml",
+		"/Users/sugao/FranckeApp/FRANCKE/www/js/index.js",
+		"/D/Projects/2016/Francke_AudioGuide/PhoneGap/App/www/index.html",
+		"/D/Projects/2016/Francke_AudioGuide/PhoneGap/App/plugins/cordova-plugin-media/plugin.xml",
+		"/D/Projects/2016/Francke_AudioGuide/PhoneGap/index.html",
+		"/D/Projects/2016/Francke_AudioGuide/PhoneGap/App/plugins/cordova-plugin-media/www/Media.js",
+		"/D/Projects/2016/Francke_AudioGuide/PhoneGap/App/plugins/cordova-plugin-media/doc/de/index.md",
+		"/D/Projects/2016/Francke_AudioGuide/PhoneGap/App/plugins/cordova-plugin-media/tests/plugin.xml",
+		"/D/Projects/2016/Francke_AudioGuide/PhoneGap/App/plugins/cordova-plugin-media/tests/tests.js",
+		"/D/Projects/2016/Francke_AudioGuide/PhoneGap/App/platforms/android/AndroidManifest.xml",
+		"/D/Projects/2016/Francke_AudioGuide/PhoneGap/App/plugins/cordova-plugin-nativeaudio/test/index.js",
+		"/D/Projects/2016/Francke_AudioGuide/PhoneGap/App/config.xml",
+		"/D/Projects/2016/Francke_AudioGuide/Angular/ng-cordova-master/demo/www/config.xml",
+		"/D/Projects/2016/Francke_AudioGuide/PhoneGap/App/plugins/cordova-plugin-nativeaudio/plugin.xml",
+		"/D/Projects/2016/Francke_AudioGuide/PhoneGap/App/plugins/phonegap-plugin-contentsync/www/index.js",
+		"/D/Projects/2016/Francke_AudioGuide/PhoneGap/App/plugins/phonegap-plugin-contentsync/sample/js/index.js",
+		"/D/Projects/2016/Francke_AudioGuide/PhoneGap/App/www/js/sync.js",
+		"/D/Projects/2016/Francke_AudioGuide/PhoneGap/App/www/index.css",
+		"/D/Projects/2016/Francke_AudioGuide/PhoneGap/App/www/index.js",
+		"/D/Projects/2016/Francke_AudioGuide/Technical/ContentStructure.json",
+		"/D/Projects/2016/Frankesche Stiftung/PhoneGap/BeaconTest/www/css/index.css",
+		"/D/Projects/2016/Frankesche Stiftung/PhoneGap/BeaconTest/plugins/phonegap-plugin-contentsync/sample/index.html",
+		"/D/Projects/2016/Frankesche Stiftung/PhoneGap/BeaconTest/plugins/phonegap-plugin-contentsync/sample/js/index.js",
+		"/D/Projects/2016/Frankesche Stiftung/PhoneGap/BeaconTest/config.xml",
+		"/D/Projects/2016/Frankesche Stiftung/PhoneGap/BeaconTest/plugins/phonegap-plugin-contentsync/plugin.xml",
+		"/D/Projects/2016/Frankesche Stiftung/PhoneGap/BeaconTest/plugins/phonegap-plugin-contentsync/www/index.js",
+		"/D/Projects/2016/Frankesche Stiftung/PhoneGap/BeaconTest/plugins/phonegap-plugin-contentsync/tests/tests.js",
+		"/D/Projects/2016/Frankesche Stiftung/PhoneGap/BeaconTest/www/js/index.js",
+		"/D/Projects/2016/Frankesche Stiftung/PhoneGap/BeaconTest/www/index.html",
+		"/C/Users/marcel/AppData/Roaming/Sublime Text 3/Packages/JSHint Gutter/JSHint.sublime-settings",
+		"/C/Users/marcel/AppData/Roaming/Sublime Text 3/Packages/JSHint Gutter/.jshintrc",
+		"/D/Projects/2016/Frankesche Stiftung/PhoneGap/BeaconTest/BeaconTest/www/index.html",
+		"/D/Servers/hildesheim-cms/test/save.php",
+		"/D/Servers/hildesheim-cms/test/speech.js",
+		"/D/Servers/hildesheim-cms/test/index.php",
+		"/D/Servers/hildesheim-cms/test/test.html",
+		"/D/Projects/2016/Frankesche Stiftung/PhoneGap/BeaconTest/BeaconTest/config.xml",
+		"/D/Servers/hildesheim-cms/test/image.php",
+		"/D/Servers/hildesheim-cms/test/image/index.php",
+		"/D/Servers/hildesheim-cms/test/image/GoogleImageSearch.php",
+		"/D/Servers/hildesheim-cms/test/image/example.php",
+		"/D/Projects/Playgrounds/UnityPlayground/Play/Playground/Assets/Scenes/StreamingCommands/httpserver.html",
+		"/D/Projects/Playgrounds/UnityPlayground/Play/Playground/Assets/Scenes/StreamingCommands/httpserver.php",
+		"/D/Servers/hildesheim-cms/cms/content/overlay.js",
+		"/D/Servers/hildesheim-cms/cms/content/index.php",
+		"/D/Servers/hildesheim-cms/cms/content/header.php",
+		"/D/Servers/hildesheim-cms/cms/content/positioning.js",
+		"/C/Users/marcel/Downloads/morphy-export-20110722.tar/morphy-export-20110722/morphy-export-20110722.xml",
+		"/D/Servers/hildesheim-cms/schaufenster/getContent.php",
+		"/D/Servers/hildesheim-cms/cms/editor/content-editor/editor.php",
+		"/D/Projects/Playgrounds/CSharpPlayground/Scripting/GraphicsScriptingFramework/.gitignore",
+		"/D/Servers/hildesheim-cms/cms/editor/css/coverflow.css",
+		"/D/Servers/hildesheim-cms/schaufenster/js/main.js",
+		"/D/Servers/hildesheim-cms/cms/editor/content-editor/coverflowForm.php",
+		"/D/Servers/hildesheim-cms/schaufenster/index.php",
+		"/D/Servers/hildesheim-cms/cms/editor/header.php",
+		"/D/Servers/hildesheim-cms/schaufenster_ping/index.php",
+		"/D/Servers/hildesheim-cms/schaufenster_ping/online.html",
+		"/D/Servers/hildesheim-cms/brightscript/index.php",
+		"/D/Servers/hildesheim-cms/cms/editor/css/editor.css",
+		"/D/Servers/hildesheim-cms/cms/editor/index.php",
+		"/D/Servers/hildesheim-cms/cms/editor/php.ini",
+		"/C/Users/marcel/AppData/Local/Temp/fz3temp-1/.htaccess",
+		"/D/Servers/hildesheim-cms/brightscript/js/Content.js",
+		"/D/Servers/hildesheim-cms/brightscript/css/style.css",
+		"/D/Servers/hildesheim-cms/brightscript/js/bannerManager.js",
+		"/D/Servers/hildesheim-cms/brightscript/js/Input.js",
+		"/D/Servers/hildesheim-cms/brightscript/js/loop.js",
+		"/D/Servers/hildesheim-cms/brightscript/js/banner.js",
+		"/D/Servers/hildesheim-cms/brightscript/php/getContent.php",
+		"/D/Servers/hildesheim-cms/cms/content/css/overlay.css",
+		"/D/Servers/hildesheim-cms/cms/content/overlay.php",
+		"/D/Servers/hildesheim-cms/brightscript/links.php",
+		"/D/Servers/hildesheim-cms/schaufenster_r/style.css",
+		"/D/Servers/hildesheim-cms/schaufenster_r/index.php",
+		"/D/Servers/hildesheim-cms/brightscript/php/getSchaufensterLinks.php",
+		"/D/Servers/hildesheim-cms/schaufenster/style.css",
+		"/D/Servers/hildesheim-cms/cms/editor/content-editor/content.php",
+		"/D/Servers/hildesheim-cms/cms/editor/content-editor/processChanges.php",
+		"/D/Projects/2015/Pluslab/HildesheimSchaufenster/BrightAuthor/autorun.brs",
+		"/D/Projects/2015/AnatomieSpiegel/.gitignore",
+		"/D/Servers/hildesheim-cms/cms/content/single.php",
+		"/D/Servers/hildesheim-cms/cms/content/GetXML.php",
+		"/D/Servers/hildesheim-cms/cms/content/css/style.css",
+		"/D/Servers/hildesheim-cms/cms/content/css/my-style.css",
+		"/D/Servers/hildesheim-cms/cms/map/js/mapjquery.js",
+		"/D/Servers/hildesheim-cms/cms/content/css/hildesheim-style.css",
+		"/D/Projects/2015/Pluslab/HildesheimSchaufenster/BrightAuthor/autoplugins.brs",
+		"/E/autorun.brs",
+		"/E/local-sync.xml",
+		"/E/autoplugins.brs",
+		"/D/Servers/hildesheim-cms/cms/map/header.php",
+		"/D/Servers/hildesheim-cms/cms/map/js/unity.js",
+		"/D/Servers/hildesheim-cms/cms/map/index.php",
+		"/D/Servers/hildesheim-cms/index.php",
+		"/E/index.html",
+		"/D/Servers/hildesheim-cms/cms/map/js/map.js",
+		"/D/Servers/hildesheim-cms/cms/map/js/url.js",
+		"/C/Users/marcel/Documents/Projekte/Anatomiespiegel/Körperwelten/Angebot_20151122_McWaneScienceCenter.pdf",
+		"/C/Users/marcel/Desktop/world map.ai"
+	],
+	"find":
+	{
+		"height": 38.0
+	},
+	"find_in_files":
+	{
+		"height": 106.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+			"markScriptAsLoaded",
+			"scriptsLoaded",
+			"app",
+			"stop",
+			"test",
+			"a.rssiE",
+			"System",
+			"numStamp",
+			"updateTimer",
+			"activeTourID",
+			"activeTour",
+			"dict",
+			"beaconComponents",
+			"beacons",
+			"beaconLibrary",
+			"file",
+			"beaconstmp",
+			"this",
+			"}, {",
+			"\"minor\": \"5\",",
+			"\"uuid\": \"fda50693-a4e2-4fb1-afcf-c6eb07647825\",",
+			"key",
+			"entered",
+			"new",
+			"and",
+			"result",
+			"minor",
+			"_beacons_tmp",
+			"result",
+			"30",
+			"minor",
+			"_beacons_tmp",
+			"minor",
+			"last_nom",
+			"Surname",
+			"rssiE",
+			"true",
+			"nearst",
+			"rssiE",
+			"major",
+			"rssiE",
+			"_beacons_tmp",
+			"var beaconstmp",
+			"beaconstmp",
+			"beconsRSSI",
+			"beacons",
+			"numStamp",
+			"maxNumStamp",
+			"tmpBeaconTester:",
+			"radio_small",
+			"HI a",
+			"Hi a",
+			"tmpBeaconTester",
+			"displayBeaconList",
+			"Hi a",
+			"beaconLibrary",
+			"Tester:",
+			"beaconLibrary",
+			"tester:",
+			"beaconLibrary",
+			"tmpBeaconTester:",
+			"tmpBeaconTester",
+			"beaconComponents",
+			"_beacons",
+			"num",
+			"bufferDepth",
+			"mediator",
+			"HEHE",
+			"bLibrary",
+			"beaconLibrary",
+			"bLibrary",
+			"beaconLibrary",
+			"stopList",
+			"var audio",
+			".ended",
+			"this.end",
+			"finish",
+			"JSON",
+			"bLibrary",
+			"buildings",
+			"beacons",
+			"data.json",
+			".getJSON",
+			"beacons",
+			"bLibrary",
+			"app",
+			"beacons",
+			"this.props",
+			"this.state",
+			"setState",
+			"this.props.",
+			"this.state",
+			"this",
+			"state",
+			"beaconsRSSI",
+			"state",
+			"num",
+			"state",
+			"console",
+			":",
+			"state",
+			"BeaconRegion",
+			"JSON",
+			"timeStamp",
+			"beacons",
+			"BLE",
+			"beaconstmp",
+			"beacons",
+			"beaconstmp",
+			"requestWhenInUseAuthorization",
+			"startMonitoringForRegion",
+			"consoel",
+			"inBackground",
+			"app.js",
+			"app",
+			"inBackground",
+			"identifier",
+			"regions",
+			"didRangeBeaconsInRegion",
+			"cordova.plugins.locationManager",
+			"25009BEDC65E",
+			"9A13",
+			"42CC",
+			"1B01",
+			"index",
+			"beaconRegion",
+			"cordova.plugins.locationManager",
+			"ready"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": true,
+		"replace_history":
+		[
+			":\n"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "app.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 14956,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1392,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								301,
+								301
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 22.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.clang":
+	{
+		"height": 100.0
+	},
+	"output.exec":
+	{
+		"height": 222.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.sftp":
+	{
+		"height": 158.0
+	},
+	"output.unsaved_changes":
+	{
+		"height": 406.0
+	},
+	"pinned_build_system": "",
+	"project": "this.sublime-project",
+	"replace":
+	{
+		"height": 40.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"inde",
+				"index.html"
+			],
+			[
+				"ap",
+				"app.js"
+			],
+			[
+				"app.j",
+				"app.js"
+			],
+			[
+				"index",
+				"index.html"
+			],
+			[
+				"app",
+				"app.js"
+			],
+			[
+				"ble.jsx",
+				"js/BLE/BLE.JSX"
+			],
+			[
+				"beacon",
+				"beacon.json"
+			],
+			[
+				"audio",
+				"js/MediaPlayer/Audio/Audio.js"
+			],
+			[
+				"au",
+				"js/MediaPlayer/AudioPlayer.js"
+			],
+			[
+				"ble",
+				"js/BLE/BLE.js"
+			],
+			[
+				"app.js",
+				"js/app.jsx"
+			],
+			[
+				"br",
+				"C:\\Users\\marcel\\AppData\\Roaming\\Sublime Text 3\\Packages\\User\\sftp_servers\\gaisterhand.de.json"
+			],
+			[
+				"",
+				"020 webcam mini.py"
+			],
+			[
+				"line",
+				"021 line detection"
+			],
+			[
+				"websi",
+				"016 website scraping"
+			],
+			[
+				"website",
+				"012 website scraping pt2.py"
+			],
+			[
+				"py",
+				"beautifulsoup4-4.3.2/setup.py"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"D:\\Projects\\2015\\GenerativeAnimator\\Animator-Interface\\main\\animator.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 223.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

@@ -65,24 +65,18 @@ var app = (function(){
 
 
 	// Handling the beacons
-	// function startScan(){
 	abb.startScan = function(){
 		console.log("start scan");
-		// The delegate object holds the iBeacon callback functions
-		// specified below.
 		var delegate = new locationManager.Delegate();
 
 		// Called continuously when ranging beacons.
 		delegate.didRangeBeaconsInRegion = function(pluginResult)
 		{
-			// console.log('didRangeBeaconsInRegion: ' + JSON.stringify(pluginResult))
-			
-			// Here will read in the beacon scan result & output the sorted beacon result. /////////////////////////////////			
+			// Here will read in the beacon scan result & output the sorted beacon result. 
 			beaconState(pluginResult);
 		};
 
 		// Called when starting to monitor a region.
-		// (Not used in this example, included as a reference.)
 		delegate.didStartMonitoringForRegion = function(pluginResult)
 		{
 			// console.log('didStartMonitoringForRegion:' + JSON.stringify(pluginResult))
@@ -115,21 +109,19 @@ var app = (function(){
 		}
 	}
 
+	// Stop scanning beacons
 	abb.stopScan = function(){
-		console.log("stopScan");
+		console.log("stop scan");
 		for (var i in regions)
 		{
 			var beaconRegion = new locationManager.BeaconRegion(
 				i + 1,
 				regions[i].uuid);
 
-			// Start ranging.
 			locationManager.stopRangingBeaconsInRegion(beaconRegion)
 				.fail(console.error)
 				.done();
 
-			// Start monitoring.
-			// (Not used in this example, included as a reference.)
 			locationManager.stopMonitoringForRegion(beaconRegion)
 				.fail(console.error)
 				.done();
@@ -447,6 +439,8 @@ var app = (function(){
 			return b.rssiE - a.rssiE;
 		});
 
+		// console.log("tmpBeaconTester" + JSON.stringify(tmpBeaconTester));
+
 		var rssiTip = $(
 			'<button onclick="start()">start</button>&ensp;&ensp;&ensp;' +
 			'<button id="bt_stop" onclick="stop()">stop</button>' +
@@ -460,6 +454,15 @@ var app = (function(){
 		$('#warning').remove();
 		$('#found-beacons').append(rssiTip);
 
+		var enterTx = $(
+			'<p> entered: ' + entered
+			+ '<br />'
+			+'entered_small:' + entered_small
+			+ '<br /></p>'
+		);
+
+		$('#found-beacons').append(enterTx);
+
 		// Update beacon list.
 		$.each(tmpBeaconTester, function(key, beacon)
 		{
@@ -468,8 +471,8 @@ var app = (function(){
 			{
 				// Map the RSSI value to a width in percent for the indicator.
 				var rssiWidth = 1; // Used when RSSI is zero or greater.
-				if (beacon.rssi < -100) { rssiWidth = 100; }
-				else if (beacon.rssi < 0) { rssiWidth = 100 + beacon.rssi; }
+				if (beacon.rssiE < -100) { rssiWidth = 100; }
+				else if (beacon.rssiE < 0) { rssiWidth = 100 + beacon.rssiE; }
 
 				// Create tag to display beacon data.
 				var element = $(
