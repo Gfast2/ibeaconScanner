@@ -70,9 +70,9 @@ var app = (function(){
 		circle2.attr("fill", "blue");
 		circle2.attr("stroke", "green");
 		circle2.attr("opacity", 0.5);
-		var txParam = {fill:"#000","font-size":12};
-		tx1 = paper.text(230, 250-150, "test1").attr(txParam);
-		tx2 = paper.text(230, 250-80,  "test2").attr(txParam);
+		var txParam = {fill:"#000","font-size":18};
+		tx1 = paper.text(230, 250-150-10, "test1").attr(txParam);
+		tx2 = paper.text(230, 250-80-10,  "test2").attr(txParam);
 		var recParam = {fill:"#fff",stroke:"green",opacity:0.9};
 
 		// The "moving part" of the visualization.
@@ -80,7 +80,7 @@ var app = (function(){
 		bk = paper.text(50+60/2,250+30/2,"-67.55").attr(txParam); // rssiE value of this beacon.
 		var ln = paper.path("M80 250L80 10").attr(recParam);
 
-		var txParam2 = {fill:"#000", "font-size":20, "text-anchor":"start"};
+		var txParam2 = {fill:"#000", "font-size":30, "text-anchor":"start"};
 		key=paper.text(10,20,"Loking beacon: 20:1").attr(txParam2);
 
 		tx1.attr("text","abc"); // change the text content.
@@ -479,9 +479,15 @@ var app = (function(){
 
 
 
-
+		// Here use not the real "locking beacon" but the first one in the list.
 		var rE = tmpBeaconTester[0].rssiE;
+		var rD = tmpBeaconTester[0].triggerDistance;
+		var rDI= tmpBeaconTester[0].triggerDistanceI;
+		var bN = tmpBeaconTester[0].major + ":" + tmpBeaconTester[0].minor;
 		bk.attr("text",rE); // change the text content.
+		tx1.attr("text", rD);
+		tx2.attr("text", rDI);
+		key.attr("text", bN);
 
 
 
@@ -494,7 +500,7 @@ var app = (function(){
 
 
 
-		
+
 		var rssiTip = $(
 			'<button onclick="app.startScan()">start</button>&ensp;&ensp;&ensp;' +
 			'<button onclick="app.stopScan()">stop</button>' +
