@@ -8,12 +8,13 @@ var entered_small = 0;		// 0 or 'key' (uuid+major+minor)
 
 // Viable for visualization Raphael Variable.
 var paper = {};
-var tx1 = {};
-var tx2 = {};
+var tx1 = {}; // big circle trigger value of the beacon
+var tx2 = {}; // small circle trigger value of the beacon
 var key = {}; // nearst beacon
-var key2= {}; // locked beacon 
+var key2= {}; // locked beacon
+var key3 ={}; // beacon that being shown on to the graphic.
 var rect= {};
-var bk  = {};
+var bk  = {}; // rssiE value of this beacon.
 var ln  = {};
 var mid = 230; // reference middle point of the line
 var rC  = 80;  // small circle radius
@@ -22,12 +23,13 @@ var locked = undefined; // transporter from beacon module to visualization part.
 var circle = {};
 var circle2= {};
 
-
+// Load info from beacon.json
 var beaconLibrary = {};
 $.getJSON("beacon.json", function(beacons)
 {
 	beaconLibrary = beacons; // I think it can be refactoring through "return beacons;"
 });
+
 
 
 var app = (function(){
@@ -84,7 +86,7 @@ var app = (function(){
 
 		// The "moving part" of the visualization.
 		rect = paper.rect(50,370,60,30,10).attr(recParam);
-		bk = paper.text(50+60/2,370+30/2,"-67.55").attr(txParam);	// rssiE value of this beacon.
+		bk = paper.text(50+60/2,370+30/2,"-67.55").attr(txParam);
 		ln = paper.path("M80 370L80 10").attr(recParam).attr("stroke", "#333");		// Line moving with the box
 
 		var txParam2 = {fill:"#000", "font-size":30, "text-anchor":"start"};
@@ -93,6 +95,7 @@ var app = (function(){
 		key = paper.text(10,50,"20:1").attr(txParam2);
 		var title2 = paper.text(10,80,"Locked:").attr(txParam2);
 		key2 = paper.text(10,110,"Locked").attr(txParam2);
+		key3 = paper.text(mid, 250, "beacon").attr({fill:"#FFF", "font-size":30});
 	}
 
 
@@ -496,21 +499,20 @@ var app = (function(){
 
 
 		var which = 0; // decide the graphic showing the nearst beacon's parameter or the locked one.
-		var cS = 100; // basic circle size
+		var cS = 80; // basic circle size
 		var aD = 500; // The speed of all animation.
+		var bNO= tmpBeaconTester[0].major + ":" + tmpBeaconTester[0].minor;
 
 		if(locked == undefined){
 			// console.log("No locked beacon yet.");
 			key2.attr("text", "none");
 			circle2.animate({"fill":"blue", "opacity":0.6},aD);
-
-
 		}
 		else{
 			var s = locked.major + ":" + locked.minor;
 			// console.log("there is locked beacon:" + s);
 			key2.attr("text", s);
-			// console.log("key2: " + JSON.stringify(locked));
+			key3.attr("text", s);
 			for(var i=0; i<tmpBeaconTester.length; i++){
 				if(tmpBeaconTester[i].major == locked.major){
 					if(tmpBeaconTester[i].minor == locked.minor){
@@ -530,7 +532,11 @@ var app = (function(){
 		
 		tx1.attr("text", rD);
 		tx2.attr("text", rDI);
-		key.attr("text", bN);
+		key.attr("text", bNO);
+
+		if(which == 0){
+			key3.attr("text", bN);
+		}
 
 		circle.animate({"r": cS-rD},aD); // 180 is the base size.
 		circle2.animate({"r": cS-rDI},aD);
@@ -545,17 +551,8 @@ var app = (function(){
 
 
 
-
-
-
-
-
-		/////////////////////// Visualization part //////////////////////////////////
+		
 		///////////////////////// MODULE DIVIDER ////////////////////////////////////
-
-
-
-
 
 
 
