@@ -1,5 +1,6 @@
 "use strict"
 
+// Variable for beacon management library.
 var beaconstmp = {}; 		// json for debouncing rssi read value direct from beacons.
 var tmpBeaconTester = []; 	// JSON that transport the result of beaconState() to visualization. (should be used temporaryly)
 var entered = 0;			// 0 or 'key' (uuid+major+minor)
@@ -9,11 +10,17 @@ var entered_small = 0;		// 0 or 'key' (uuid+major+minor)
 var paper = {};
 var tx1 = {};
 var tx2 = {};
-var key = {};
+var key = {}; // nearst beacon
+var key2= {}; // locked beacon 
 var rect= {};
 var bk  = {};
 var ln  = {};
-
+var mid = 230; // reference middle point of the line
+var rC  = 80;  // small circle radius
+var rCb = 150; // big circle radius
+var locked = undefined; // transporter from beacon module to visualization part.
+var circle = {};
+var circle2= {};
 
 
 var beaconLibrary = {};
@@ -25,12 +32,10 @@ $.getJSON("beacon.json", function(beacons)
 
 var app = (function(){
 
-	var abb = {}; 	// Application object.
-	// Specify your beacon 128bit UUIDs here.
-	var regions =	[{uuid:'FDA50693-A4E2-4FB1-AFCF-C6EB07647825'}];
-	var beacons = {}; // Dictionary of beacons.
-	// Timer that displays list of beacons.
-	var updateTimer = null;
+	var abb = {}; 			// Application object.
+	var regions =	[{uuid:'FDA50693-A4E2-4FB1-AFCF-C6EB07647825'}]; // Specify your beacon 128bit UUIDs here.
+	var beacons = {}; 		// Dictionary of beacons.
+	var updateTimer = null; // Timer that displays list of beacons.
 
 	// Variable from react's "state"
 	var bufferDepth = 3;
@@ -64,28 +69,30 @@ var app = (function(){
 
 		// Init visualization.
 		paper = Raphael(document.getElementById("visualization"),500,500);
-		var circle = paper.circle(230,250,150);
+		circle = paper.circle(mid,250,rCb);
 		circle.attr("fill", "#f00");
 		circle.attr("stroke", "green");
 		circle.attr("opacity", 0.75);
-		var circle2 = paper.circle(230,250,80);
+		circle2 = paper.circle(mid,250,rC);
 		circle2.attr("fill", "blue");
 		circle2.attr("stroke", "green");
 		circle2.attr("opacity", 0.5);
 		var txParam = {fill:"#000","font-size":18};
-		tx1 = paper.text(230, 250-150-10, "test1").attr(txParam);
-		tx2 = paper.text(230, 250-80-10,  "test2").attr(txParam);
+		tx1 = paper.text(mid, 250-150-10, "test1").attr(txParam);
+		tx2 = paper.text(mid, 250-80-10,  "test2").attr(txParam);
 		var recParam = {fill:"#fff",stroke:"green",opacity:0.9};
 
 		// The "moving part" of the visualization.
-		rect = paper.rect(50,250,60,30,10).attr(recParam);
-		bk = paper.text(50+60/2,250+30/2,"-67.55").attr(txParam);	// rssiE value of this beacon.
-		ln = paper.path("M80 250L80 10").attr(recParam);		// Line moving with the box
+		rect = paper.rect(50,370,60,30,10).attr(recParam);
+		bk = paper.text(50+60/2,370+30/2,"-67.55").attr(txParam);	// rssiE value of this beacon.
+		ln = paper.path("M80 370L80 10").attr(recParam);		// Line moving with the box
 
 		var txParam2 = {fill:"#000", "font-size":30, "text-anchor":"start"};
-		var txParam3 = paper.text(10,20,'Focused:').attr(txParam2);
+		var title	 = paper.text(10,20,'Nearst:').attr(txParam2);
 		// The in focus beacon. It can be the locking beacon or the beacon with nearst rssiE (averaged rssi)
-		key=paper.text(10,50,"20:1").attr(txParam2); 
+		key = paper.text(10,50,"20:1").attr(txParam2);
+		var title2 = paper.text(10,80,"Locked:").attr(txParam2);
+		key2 = paper.text(10,110,"Locked").attr(txParam2);
 	}
 
 
@@ -410,6 +417,9 @@ var app = (function(){
 						if(entered_small == 0){
 							// mediator.publish("beacon.entered.small", beacon.triggerAddress);
 							entered_small = k;
+							locked = {};
+							locked.major = beacon.major;
+							locked.minor = beacon.minor;
 						}
 					}
 				} 
@@ -418,11 +428,15 @@ var app = (function(){
 					if(entered_small == 0){
 						// mediator.publish("beacon.entered.small", beacon.triggerAddress);
 						entered_small = k;
+						locked = {};
+						locked.major = beacon.major;
+						locked.minor = beacon.minor;
 					}
 				} else if(rE < tD){
 					// mediator.publish("beacon.left", beacon.triggerAddress);
 					entered = 0; //free the lock
 					entered_small = 0;
+					locked = null;
 				} else if(rE < tDI && rE >= tD){
 					if(entered_small == k){
 						// mediator.publish("beacon.left.small", beacon.triggerAddress);
@@ -476,26 +490,50 @@ var app = (function(){
 			return b.rssiE - a.rssiE;
 		});
 
+		///////////////////////// MODULE DIVIDER ////////////////////////////////////
+		/////////////////////// Visualization part //////////////////////////////////
 
 
+
+		var which = 0; // decide the graphic showing the nearst beacon's parameter or the locked one.
+
+		if(locked == undefined){
+			// console.log("No locked beacon yet.");
+			key2.attr("text", "none");
+		}
+		else{
+			var s = locked.major + ":" + locked.minor;
+			// console.log("there is locked beacon:" + s);
+			key2.attr("text", s);
+			// console.log("key2: " + JSON.stringify(locked));
+			for(var i=0; i<tmpBeaconTester.length; i++){
+				if(tmpBeaconTester[i].major == locked.major){
+					if(tmpBeaconTester[i].minor == locked.minor){
+						which = i;
+					}
+				}
+			}
+		}
 
 		// Here use not the real "locking beacon" but the first one in the list.
-		var mid = 230; // reference middle point of the line
 
-		var rE = tmpBeaconTester[0].rssiE;
-		var rD = tmpBeaconTester[0].triggerDistance;
-		var rDI= tmpBeaconTester[0].triggerDistanceI;
-		var bN = tmpBeaconTester[0].major + ":" + tmpBeaconTester[0].minor;
+		var rE = tmpBeaconTester[which].rssiE;
+		var rD = tmpBeaconTester[which].triggerDistance;
+		var rDI= tmpBeaconTester[which].triggerDistanceI;
+		var bN = tmpBeaconTester[which].major + ":" + tmpBeaconTester[which].minor;
 		tx1.attr("text", rD);
 		tx2.attr("text", rDI);
 		key.attr("text", bN);
 
-		rect.animate({"x": rE+mid},500);
+		circle.animate({"r": 100-rD},500); // 180 is the base size.
+		circle2.animate({"r": 100-rDI},500);
+
+		// the moving pointer
 		bk.attr({"text":rE}); // change the text content.
-		bk.animate({"x":rE+mid+60/2},500);
-		// The vertical line
-		var a = rE+mid+60/2;
-		var ln_str = "M" + a + " 250L" + a + " 10";
+		rect.animate({"x": 100-rE+mid-60/2},500);
+		bk.animate({"x":100-rE+mid},500);
+		var a = 100-rE+mid;
+		var ln_str = "M" + a + " 370L" + a + " 10";
 		ln.animate({path: ln_str},500);
 
 
@@ -504,6 +542,9 @@ var app = (function(){
 
 
 
+
+		/////////////////////// Visualization part //////////////////////////////////
+		///////////////////////// MODULE DIVIDER ////////////////////////////////////
 
 
 
