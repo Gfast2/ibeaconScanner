@@ -1,15 +1,19 @@
 "use strict"
 
-var beaconstmp = {}; // json for debouncing rssi read value direct from beacons.
+var beaconstmp = {}; 		// json for debouncing rssi read value direct from beacons.
 var tmpBeaconTester = []; 	// JSON that transport the result of beaconState() to visualization. (should be used temporaryly)
 var entered = 0;			// 0 or 'key' (uuid+major+minor)
 var entered_small = 0;		// 0 or 'key' (uuid+major+minor)
 
+// Viable for visualization Raphael Variable.
 var paper = {};
 var tx1 = {};
 var tx2 = {};
 var key = {};
-var bk = {};
+var rect= {};
+var bk  = {};
+var ln  = {};
+
 
 
 var beaconLibrary = {};
@@ -21,9 +25,6 @@ $.getJSON("beacon.json", function(beacons)
 
 var app = (function(){
 
-	// console.log("Hi abc " + JSON.stringify(bLibrary));
-	// console.log("Hi abc " + JSON.stringify(beaconLibrary));
-
 	var abb = {}; 	// Application object.
 	// Specify your beacon 128bit UUIDs here.
 	var regions =	[{uuid:'FDA50693-A4E2-4FB1-AFCF-C6EB07647825'}];
@@ -32,10 +33,10 @@ var app = (function(){
 	var updateTimer = null;
 
 	// Variable from react's "state"
-	var bufferDepth = 3,
-		beaconsRSSI = [], // buffer  object that save "bufferDepth" defined times 'beacons' object.
-		beaconNear = undefined,
-		num = 0;
+	var bufferDepth = 3;
+	var beaconsRSSI = []; // buffer  object that save "bufferDepth" defined times 'beacons' object.
+	var beaconNear = undefined;
+	var num = 0;
 		
 	
 
@@ -61,6 +62,7 @@ var app = (function(){
 		// Display refresh timer.
 		updateTimer = setInterval(displayBeaconList, 500);
 
+		// Init visualization.
 		paper = Raphael(document.getElementById("visualization"),500,500);
 		var circle = paper.circle(230,250,150);
 		circle.attr("fill", "#f00");
@@ -76,14 +78,14 @@ var app = (function(){
 		var recParam = {fill:"#fff",stroke:"green",opacity:0.9};
 
 		// The "moving part" of the visualization.
-		var rect = paper.rect(50,250,60,30,10).attr(recParam);
-		bk = paper.text(50+60/2,250+30/2,"-67.55").attr(txParam); // rssiE value of this beacon.
-		var ln = paper.path("M80 250L80 10").attr(recParam);
+		rect = paper.rect(50,250,60,30,10).attr(recParam);
+		bk = paper.text(50+60/2,250+30/2,"-67.55").attr(txParam);	// rssiE value of this beacon.
+		ln = paper.path("M80 250L80 10").attr(recParam);		// Line moving with the box
 
 		var txParam2 = {fill:"#000", "font-size":30, "text-anchor":"start"};
-		key=paper.text(10,20,"Loking beacon: 20:1").attr(txParam2);
-
-		tx1.attr("text","abc"); // change the text content.
+		var txParam3 = paper.text(10,20,'Focused:').attr(txParam2);
+		// The in focus beacon. It can be the locking beacon or the beacon with nearst rssiE (averaged rssi)
+		key=paper.text(10,50,"20:1").attr(txParam2); 
 	}
 
 
@@ -95,7 +97,6 @@ var app = (function(){
 
 	// Handling the beacons
 	abb.startScan = function(){
-		console.log("start scan");
 		var delegate = new locationManager.Delegate();
 
 		// Called continuously when ranging beacons.
@@ -140,7 +141,6 @@ var app = (function(){
 
 	// Stop scanning beacons
 	abb.stopScan = function(){
-		console.log("stop scan");
 		for (var i in regions)
 		{
 			var beaconRegion = new locationManager.BeaconRegion(
@@ -480,14 +480,25 @@ var app = (function(){
 
 
 		// Here use not the real "locking beacon" but the first one in the list.
+		var mid = 230; // reference middle point of the line
+
 		var rE = tmpBeaconTester[0].rssiE;
 		var rD = tmpBeaconTester[0].triggerDistance;
 		var rDI= tmpBeaconTester[0].triggerDistanceI;
 		var bN = tmpBeaconTester[0].major + ":" + tmpBeaconTester[0].minor;
-		bk.attr("text",rE); // change the text content.
 		tx1.attr("text", rD);
 		tx2.attr("text", rDI);
 		key.attr("text", bN);
+
+		rect.animate({"x": rE+mid},500);
+		bk.attr({"text":rE}); // change the text content.
+		bk.animate({"x":rE+mid+60/2},500);
+		// The vertical line
+		var a = rE+mid+60/2;
+		var ln_str = "M" + a + " 250L" + a + " 10";
+		ln.animate({path: ln_str},500);
+
+
 
 
 
