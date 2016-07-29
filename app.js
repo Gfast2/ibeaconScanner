@@ -85,7 +85,7 @@ var app = (function(){
 		// The "moving part" of the visualization.
 		rect = paper.rect(50,370,60,30,10).attr(recParam);
 		bk = paper.text(50+60/2,370+30/2,"-67.55").attr(txParam);	// rssiE value of this beacon.
-		ln = paper.path("M80 370L80 10").attr(recParam);		// Line moving with the box
+		ln = paper.path("M80 370L80 10").attr(recParam).attr("stroke", "#333");		// Line moving with the box
 
 		var txParam2 = {fill:"#000", "font-size":30, "text-anchor":"start"};
 		var title	 = paper.text(10,20,'Nearst:').attr(txParam2);
@@ -496,10 +496,15 @@ var app = (function(){
 
 
 		var which = 0; // decide the graphic showing the nearst beacon's parameter or the locked one.
+		var cS = 100; // basic circle size
+		var aD = 500; // The speed of all animation.
 
 		if(locked == undefined){
 			// console.log("No locked beacon yet.");
 			key2.attr("text", "none");
+			circle2.animate({"fill":"blue", "opacity":0.6},aD);
+
+
 		}
 		else{
 			var s = locked.major + ":" + locked.minor;
@@ -510,6 +515,7 @@ var app = (function(){
 				if(tmpBeaconTester[i].major == locked.major){
 					if(tmpBeaconTester[i].minor == locked.minor){
 						which = i;
+						circle2.animate({"fill":"green", "opacity":0.9},aD);
 					}
 				}
 			}
@@ -521,20 +527,21 @@ var app = (function(){
 		var rD = tmpBeaconTester[which].triggerDistance;
 		var rDI= tmpBeaconTester[which].triggerDistanceI;
 		var bN = tmpBeaconTester[which].major + ":" + tmpBeaconTester[which].minor;
+		
 		tx1.attr("text", rD);
 		tx2.attr("text", rDI);
 		key.attr("text", bN);
 
-		circle.animate({"r": 100-rD},500); // 180 is the base size.
-		circle2.animate({"r": 100-rDI},500);
+		circle.animate({"r": cS-rD},aD); // 180 is the base size.
+		circle2.animate({"r": cS-rDI},aD);
 
 		// the moving pointer
 		bk.attr({"text":rE}); // change the text content.
-		rect.animate({"x": 100-rE+mid-60/2},500);
-		bk.animate({"x":100-rE+mid},500);
-		var a = 100-rE+mid;
+		rect.animate({"x": cS-rE+mid-60/2},aD);
+		bk.animate({"x":cS-rE+mid},aD);
+		var a = cS-rE+mid;
 		var ln_str = "M" + a + " 370L" + a + " 10";
-		ln.animate({path: ln_str},500);
+		ln.animate({path: ln_str},aD);
 
 
 
