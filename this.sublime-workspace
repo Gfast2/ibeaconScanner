@@ -4,6 +4,22 @@
 		"selected_items":
 		[
 			[
+				"txPara",
+				"txParam2"
+			],
+			[
+				"enter",
+				"entered"
+			],
+			[
+				"found",
+				"found-beacons"
+			],
+			[
+				"entered",
+				"entered_small"
+			],
+			[
 				"stop",
 				"stopScan"
 			],
@@ -498,43 +514,11 @@
 			[
 				"diffUnten",
 				"diffUntenLinksX"
-			],
-			[
-				"spiels",
-				"spielsteineMaxSize"
-			],
-			[
-				"w",
-				"while	while"
-			],
-			[
-				"butto",
-				"buttonHeight"
-			],
-			[
-				"cropTo",
-				"cropRotatePoints"
 			]
 		]
 	},
 	"buffers":
 	[
-		{
-			"file": "app.js",
-			"settings":
-			{
-				"buffer_size": 14956,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "index.html",
-			"settings":
-			{
-				"buffer_size": 1392,
-				"line_ending": "Unix"
-			}
-		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -881,18 +865,28 @@
 	},
 	"expanded_folders":
 	[
-		"/Users/sugao/EvothingsStudio/MyApps/ibeacon-scan"
+		"/Users/sugao/EvothingsStudio/MyApps/ibeacon-scan",
+		"/Users/sugao/EvothingsStudio/MyApps/ibeacon-scan/libs",
+		"/Users/sugao/EvothingsStudio/MyApps/ibeacon-scan/libs/jquery"
 	],
 	"file_history":
 	[
+		"/Users/sugao/EvothingsStudio/MyApps/ibeacon-scan/app-icon.png",
+		"/Users/sugao/EvothingsStudio/MyApps/ibeacon-scan/libs/raphael.min.js",
+		"/Users/sugao/EvothingsStudio/MyApps/ibeacon-scan/libs/jquery/version.txt",
+		"/Users/sugao/EvothingsStudio/MyApps/ibeacon-scan/libs/jquery/jquery.js",
+		"/Users/sugao/EvothingsStudio/MyApps/ibeacon-scan/README",
 		"/Users/sugao/EvothingsStudio/MyApps/ibeacon-scan/app.js",
+		"/Users/sugao/EvothingsStudio/MyApps/ibeacon-scan/beacon.json",
+		"/Users/sugao/EvothingsStudio/MyApps/ibeacon-scan/evothings.json",
 		"/Users/sugao/EvothingsStudio/MyApps/ibeacon-scan/index.html",
+		"/Users/sugao/EvothingsStudio/MyApps/ibeacon-scan/this.sublime-project",
+		"/Users/sugao/EvothingsStudio/MyApps/ibeacon-scan/libs/evothings/raphael.js",
 		"/Users/sugao/EvothingsStudio/MyApps/ibeacon-scan/libs/evothings/evothings.js",
 		"/Users/sugao/FranckeApp/FRANCKE/www/beacon.json",
 		"/Users/sugao/FranckeApp/FRANCKE/www/js/BLE/BLE.JSX",
 		"/Users/sugao/FranckeApp/FRANCKE/www/js/MediaPlayer/AudioPlayer.js",
 		"/Users/sugao/FranckeApp/FRANCKE/www/js/MediaPlayer/Audio/Audio.js",
-		"/Users/sugao/EvothingsStudio/MyApps/ibeacon-scan/beacon.json",
 		"/Users/sugao/FranckeApp/FRANCKE/www/js/app.jsx",
 		"/Users/sugao/FranckeApp/FRANCKE/www/js/BLE/BLE.js",
 		"/Users/sugao/FranckeApp/FRANCKE/www/js/BLE/Beacon.jsx",
@@ -1004,15 +998,7 @@
 		"/E/autorun.brs",
 		"/E/local-sync.xml",
 		"/E/autoplugins.brs",
-		"/D/Servers/hildesheim-cms/cms/map/header.php",
-		"/D/Servers/hildesheim-cms/cms/map/js/unity.js",
-		"/D/Servers/hildesheim-cms/cms/map/index.php",
-		"/D/Servers/hildesheim-cms/index.php",
-		"/E/index.html",
-		"/D/Servers/hildesheim-cms/cms/map/js/map.js",
-		"/D/Servers/hildesheim-cms/cms/map/js/url.js",
-		"/C/Users/marcel/Documents/Projekte/Anatomiespiegel/Körperwelten/Angebot_20151122_McWaneScienceCenter.pdf",
-		"/C/Users/marcel/Desktop/world map.ai"
+		"/D/Servers/hildesheim-cms/cms/map/header.php"
 	],
 	"find":
 	{
@@ -1031,6 +1017,40 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"which",
+			"=100",
+			"stroke",
+			"circle2.",
+			"circle2.attr",
+			"500",
+			"100",
+			"250",
+			"mid",
+			"tmpBeaconTester",
+			"0",
+			"key2",
+			"rect",
+			"nearst",
+			"key2",
+			"Focused",
+			"txParam3",
+			"80",
+			"small",
+			"230",
+			"rE",
+			"recParam",
+			".path",
+			"ln",
+			"updateTimer",
+			"focused",
+			"cba",
+			"text",
+			"beacon",
+			"found-beacons",
+			"visualization",
+			"Raphael",
+			"entered",
+			"enterTx",
 			"markScriptAsLoaded",
 			"scriptsLoaded",
 			"app",
@@ -1124,41 +1144,7 @@
 			"this.props.",
 			"this.state",
 			"this",
-			"state",
-			"beaconsRSSI",
-			"state",
-			"num",
-			"state",
-			"console",
-			":",
-			"state",
-			"BeaconRegion",
-			"JSON",
-			"timeStamp",
-			"beacons",
-			"BLE",
-			"beaconstmp",
-			"beacons",
-			"beaconstmp",
-			"requestWhenInUseAuthorization",
-			"startMonitoringForRegion",
-			"consoel",
-			"inBackground",
-			"app.js",
-			"app",
-			"inBackground",
-			"identifier",
-			"regions",
-			"didRangeBeaconsInRegion",
-			"cordova.plugins.locationManager",
-			"25009BEDC65E",
-			"9A13",
-			"42CC",
-			"1B01",
-			"index",
-			"beaconRegion",
-			"cordova.plugins.locationManager",
-			"ready"
+			"state"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1177,73 +1163,14 @@
 	"groups":
 	[
 		{
-			"selected": 1,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "app.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 14956,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "index.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1392,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								301,
-								301
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				}
 			]
 		}
 	],
 	"incremental_find":
 	{
-		"height": 22.0
+		"height": 21.0
 	},
 	"input":
 	{
