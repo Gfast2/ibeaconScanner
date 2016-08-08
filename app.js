@@ -12,7 +12,8 @@ var tx1 = {}; // big circle trigger value of the beacon
 var tx2 = {}; // small circle trigger value of the beacon
 var key = {}; // nearst beacon
 var key2= {}; // locked beacon
-var key3 ={}; // beacon that being shown on to the graphic.
+var key3= {}; // beacon that being shown on to the graphic.
+var key4= {}; // additional infos
 var rect= {};
 var bk  = {}; // rssiE value of this beacon.
 var ln  = {};
@@ -96,6 +97,9 @@ var app = (function(){
 		var title2 = paper.text(10,80,"Locked:").attr(txParam2);
 		key2 = paper.text(10,110,"Locked").attr(txParam2);
 		key3 = paper.text(mid, 250, "beacon").attr({fill:"#FFF", "font-size":30});
+		var title3 = paper.text(10,400, "Info").attr(txParam2);
+		key4 = paper.text(10,430, "waiting").attr(txParam2);
+
 	}
 
 
@@ -416,15 +420,17 @@ var app = (function(){
 				if(rE >= tD){
 					// mediator.publish("beacon.entered", beacon.triggerAddress);
 					entered = k; // start lock
+					key4.attr("text", "entered big1:" + beacon.major + ":" + beacon.minor);
 					if(rE >= tDI){
-						if(entered_small == 0){
+						//if(entered_small == 0){
 							// mediator.publish("beacon.entered.small", beacon.triggerAddress);
 							entered_small = k;
 							// for (var member in myObject) delete myObject[member]; // This will empty this object.
-							locked = undefined;
+							key4.attr("text", "entered small1:" + beacon.major + ":" + beacon.minor);
+							locked = {};
 							locked.major = beacon.major;
 							locked.minor = beacon.minor;
-						}
+						//}
 					}
 				} 
 			} else if (k == entered){ // When this beacon has the lock
@@ -432,7 +438,8 @@ var app = (function(){
 					if(entered_small == 0){
 						// mediator.publish("beacon.entered.small", beacon.triggerAddress);
 						entered_small = k;
-						locked = undefined;
+						key4.attr("text", "entered small2:" + beacon.major + ":" + beacon.minor);
+						locked = {};
 						locked.major = beacon.major;
 						locked.minor = beacon.minor;
 					}
@@ -440,12 +447,26 @@ var app = (function(){
 					// mediator.publish("beacon.left", beacon.triggerAddress);
 					entered = 0; //free the lock
 					entered_small = 0;
+					key4.attr("text", "free lock");
 					locked = undefined;
 				} else if(rE < tDI && rE >= tD){
 					if(entered_small == k){
 						// mediator.publish("beacon.left.small", beacon.triggerAddress);
+						key4.attr("text", "free lock2");
 						entered_small = 0; // ONLY when beacon leave the big circle will free this lock. (Debouncing)
 					}
+				}
+			}
+
+			// if the nearst beacon has have the beacon small signal, It is surely be entered.
+			if(beacon.nearst == true){
+				if(rE > tDI){
+					entered = k;
+					entered_small = k;
+					locked = {};
+					locked.major = beacon.major;
+					locked.minor = beacon.minor;
+					key4.attr("text", "nearst B lock" + beacon.major + ":" + beacon.minor);
 				}
 			}
 		}.bind(this));
@@ -501,8 +522,8 @@ var app = (function(){
 
 
 		var which = 0; // decide the graphic showing the nearst beacon's parameter or the locked one.
-		var cS = 80; // basic circle size
-		var aD = 500; // The speed of all animation.
+		var cS = 60; // basic circle size
+		var aD = 250; // The speed of all animation.
 		var bNO= tmpBeaconTester[0].major + ":" + tmpBeaconTester[0].minor;
 
 		if(locked == undefined){
@@ -612,6 +633,8 @@ var app = (function(){
 					+	'Minor: ' + beacon.minor + '<br />'
 					+	'RSSI: '  + beacon.rssi  + '&ensp;&ensp;&ensp;'
 					+	'RSSIE: ' + beacon.rssiE + '<br />'
+					+	'rD: ' + beacon.triggerDistance + '&ensp;&ensp;'
+					+	'rDI: ' + beacon.triggerDistanceI + '<br />'
 					+ 	'<div style="background:rgb(255,128,64);height:20px;width:'
 					+ 		rssiWidth + '%;"></div>'
 					+ '</li>'

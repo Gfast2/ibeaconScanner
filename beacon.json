@@ -1,8 +1,8 @@
 {
   "beacons": {
     "FDA50693-A4E2-4FB1-AFCF-C6EB07647825:10:1": {
-      "triggerDistanceI": -62,
-      "triggerDistance": -64,
+      "triggerDistanceI": -61,
+      "triggerDistance": -70,
       "rssi":-59,
       "triggerAddress": {
         "buildingID": "building1",
@@ -17,7 +17,7 @@
       "timestamp" : 0
     },
     "FDA50693-A4E2-4FB1-AFCF-C6EB07647825:10:2": {
-      "triggerDistanceI": -60,
+      "triggerDistanceI": -61,
       "triggerDistance": -70,
       "rssi":-59,
       "triggerAddress": {
@@ -33,7 +33,7 @@
       "timestamp" : 0
     },
     "FDA50693-A4E2-4FB1-AFCF-C6EB07647825:10:3": {
-      "triggerDistanceI": -60,
+      "triggerDistanceI": -61,
       "triggerDistance": -70,
       "rssi":-59,
       "triggerAddress": {
@@ -49,7 +49,7 @@
       "timestamp" : 0
     },
     "FDA50693-A4E2-4FB1-AFCF-C6EB07647825:10:4": {
-      "triggerDistanceI": -60,
+      "triggerDistanceI": -61,
       "triggerDistance": -70,
       "rssi":-59,
       "triggerAddress": {
@@ -65,7 +65,7 @@
       "timestamp" : 0
     },
     "FDA50693-A4E2-4FB1-AFCF-C6EB07647825:10:5": {
-      "triggerDistanceI": -60,
+      "triggerDistanceI": -61,
       "triggerDistance": -70,
       "rssi":-59,
       "triggerAddress": {
@@ -81,7 +81,7 @@
       "timestamp" : 0
     },
     "FDA50693-A4E2-4FB1-AFCF-C6EB07647825:10:6": {
-      "triggerDistanceI": -60,
+      "triggerDistanceI": -61,
       "triggerDistance": -70,
       "rssi":-59,
       "triggerAddress": {
@@ -97,7 +97,7 @@
       "timestamp" : 0
     },
     "FDA50693-A4E2-4FB1-AFCF-C6EB07647825:10:7": {
-      "triggerDistanceI": -60,
+      "triggerDistanceI": -61,
       "triggerDistance": -70,
       "rssi":-59,
       "triggerAddress": {
@@ -113,7 +113,7 @@
       "timestamp" : 0
     },
     "FDA50693-A4E2-4FB1-AFCF-C6EB07647825:10:8": {
-      "triggerDistanceI": -60,
+      "triggerDistanceI": -61,
       "triggerDistance": -70,
       "rssi":-59,
       "triggerAddress": {
@@ -129,7 +129,7 @@
       "timestamp" : 0
     },
     "FDA50693-A4E2-4FB1-AFCF-C6EB07647825:10:9": {
-      "triggerDistanceI": -60,
+      "triggerDistanceI": -61,
       "triggerDistance": -70,
       "rssi":-59,
       "triggerAddress": {
@@ -145,7 +145,7 @@
       "timestamp" : 0
     },
     "FDA50693-A4E2-4FB1-AFCF-C6EB07647825:10:10": {
-      "triggerDistanceI": -60,
+      "triggerDistanceI": -61,
       "triggerDistance": -70,
       "rssi":-59,
       "triggerAddress": {
@@ -160,8 +160,8 @@
       "batteryLife": 100,
       "timestamp" : 0
     },"FDA50693-A4E2-4FB1-AFCF-C6EB07647825:20:1": {
-      "triggerDistanceI": -56,
-      "triggerDistance": -58,
+      "triggerDistanceI": -61,
+      "triggerDistance": -70,
       "rssi":-59,
       "triggerAddress": {
         "buildingID": "building2",
@@ -175,7 +175,7 @@
       "batteryLife": 100,
       "timestamp" : 0
     },"FDA50693-A4E2-4FB1-AFCF-C6EB07647825:20:2": {
-      "triggerDistanceI": -60,
+      "triggerDistanceI": -61,
       "triggerDistance": -70,
       "rssi":-59,
       "triggerAddress": {
@@ -190,7 +190,7 @@
       "batteryLife": 100,
       "timestamp" : 0
     },"FDA50693-A4E2-4FB1-AFCF-C6EB07647825:20:3": {
-      "triggerDistanceI": -60,
+      "triggerDistanceI": -61,
       "triggerDistance": -70,
       "rssi":-59,
       "triggerAddress": {
@@ -205,8 +205,8 @@
       "batteryLife": 100,
       "timestamp" : 0
     },"FDA50693-A4E2-4FB1-AFCF-C6EB07647825:20:4": {
-      "triggerDistanceI": -58,
-      "triggerDistance": -60,
+      "triggerDistanceI": -61,
+      "triggerDistance": -70,
       "rssi":-59,
       "triggerAddress": {
         "buildingID": "building2",
@@ -220,7 +220,7 @@
       "batteryLife": 100,
       "timestamp" : 0
     },"FDA50693-A4E2-4FB1-AFCF-C6EB07647825:20:5": {
-      "triggerDistanceI": -60,
+      "triggerDistanceI": -61,
       "triggerDistance": -70,
       "rssi":-59,
       "triggerAddress": {
@@ -235,8 +235,8 @@
       "batteryLife": 100,
       "timestamp" : 0
     },"FDA50693-A4E2-4FB1-AFCF-C6EB07647825:20:6": {
-      "triggerDistanceI": -54,
-      "triggerDistance": -56,
+      "triggerDistanceI": -61,
+      "triggerDistance": -70,
       "rssi":-59,
       "triggerAddress": {
         "buildingID": "building2",
@@ -250,7 +250,7 @@
       "batteryLife": 100,
       "timestamp" : 0
     },"FDA50693-A4E2-4FB1-AFCF-C6EB07647825:20:7": {
-      "triggerDistanceI": -60,
+      "triggerDistanceI": -61,
       "triggerDistance": -70,
       "rssi":-59,
       "triggerAddress": {
@@ -265,7 +265,7 @@
       "batteryLife": 100,
       "timestamp" : 0
     },"FDA50693-A4E2-4FB1-AFCF-C6EB07647825:20:8": {
-      "triggerDistanceI": -60,
+      "triggerDistanceI": -61,
       "triggerDistance": -70,
       "rssi":-59,
       "triggerAddress": {
@@ -280,8 +280,8 @@
       "batteryLife": 100,
       "timestamp" : 0
     },"FDA50693-A4E2-4FB1-AFCF-C6EB07647825:20:9": {
-      "triggerDistanceI": -59,
-      "triggerDistance": -63,
+      "triggerDistanceI": -61,
+      "triggerDistance": -70,
       "rssi":-59,
       "triggerAddress": {
         "buildingID": "building2",
@@ -295,7 +295,7 @@
       "batteryLife": 100,
       "timestamp" : 0
     },"FDA50693-A4E2-4FB1-AFCF-C6EB07647825:30:1": {
-      "triggerDistanceI": -60,
+      "triggerDistanceI": -61,
       "triggerDistance": -70,
       "rssi":-59,
       "triggerAddress": {
@@ -310,7 +310,7 @@
       "batteryLife": 100,
       "timestamp" : 0
     },"FDA50693-A4E2-4FB1-AFCF-C6EB07647825:30:2": {
-      "triggerDistanceI": -60,
+      "triggerDistanceI": -61,
       "triggerDistance": -70,
       "rssi":-59,
       "triggerAddress": {
@@ -325,7 +325,7 @@
       "batteryLife": 100,
       "timestamp" : 0
     },"FDA50693-A4E2-4FB1-AFCF-C6EB07647825:40:1": {
-      "triggerDistanceI": -60,
+      "triggerDistanceI": -61,
       "triggerDistance": -70,
       "rssi":-59,
       "triggerAddress": {
@@ -340,7 +340,7 @@
       "batteryLife": 100,
       "timestamp" : 0
     },"FDA50693-A4E2-4FB1-AFCF-C6EB07647825:40:2": {
-      "triggerDistanceI": -60,
+      "triggerDistanceI": -61,
       "triggerDistance": -70,
       "rssi":-59,
       "triggerAddress": {
@@ -355,7 +355,7 @@
       "batteryLife": 100,
       "timestamp" : 0
     },"FDA50693-A4E2-4FB1-AFCF-C6EB07647825:50:1": {
-      "triggerDistanceI": -60,
+      "triggerDistanceI": -61,
       "triggerDistance": -70,
       "rssi":-59,
       "triggerAddress": {
@@ -370,7 +370,7 @@
       "batteryLife": 100,
       "timestamp" : 0
     },"FDA50693-A4E2-4FB1-AFCF-C6EB07647825:50:2": {
-      "triggerDistanceI": -60,
+      "triggerDistanceI": -61,
       "triggerDistance": -70,
       "rssi":-59,
       "triggerAddress": {
@@ -385,7 +385,7 @@
       "batteryLife": 100,
       "timestamp" : 0
     },"FDA50693-A4E2-4FB1-AFCF-C6EB07647825:1000:1000": {
-      "triggerDistanceI": -60,
+      "triggerDistanceI": -61,
       "triggerDistance": -70,
       "rssi":-59,
       "triggerAddress": {
