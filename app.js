@@ -7,22 +7,22 @@ var entered = 0;			// 0 or 'key' (uuid+major+minor)
 var entered_small = 0;		// 0 or 'key' (uuid+major+minor)
 
 // Viable for visualization Raphael Variable.
-var paper = {};
-var tx1 = {}; // big circle trigger value of the beacon
-var tx2 = {}; // small circle trigger value of the beacon
-var key = {}; // nearst beacon
-var key2= {}; // locked beacon
-var key3= {}; // beacon that being shown on to the graphic.
-var key4= {}; // additional infos
-var rect= {};
-var bk  = {}; // rssiE value of this beacon.
-var ln  = {};
-var mid = 130; // reference middle point of the line
-var rC  = 50;  // small circle radius
-var rCb = 120; // big circle radius
-var locked = undefined; // transporter from beacon module to visualization part.
-var circle = {};
-var circle2= {};
+// var paper = {};
+// var tx1 = {}; // big circle trigger value of the beacon
+// var tx2 = {}; // small circle trigger value of the beacon
+// var key = {}; // nearst beacon
+// var key2= {}; // locked beacon
+// var key3= {}; // beacon that being shown on to the graphic.
+// var key4= {}; // additional infos
+// var rect= {};
+// var bk  = {}; // rssiE value of this beacon.
+// var ln  = {};
+// var mid = 130; // reference middle point of the line
+// var rC  = 50;  // small circle radius
+// var rCb = 120; // big circle radius
+// var locked = undefined; // transporter from beacon module to visualization part.
+// var circle = {};
+// var circle2= {};
 
 // Load info from beacon.json
 var beaconLibrary = {};
@@ -68,37 +68,37 @@ var app = (function(){
 		// Start tracking beacons!
 		abb.startScan();
 		// Display refresh timer.
-		updateTimer = setInterval(displayBeaconList, 500);
+		// updateTimer = setInterval(displayBeaconList, 500);
 
 		// Init visualization.
-		paper = Raphael(document.getElementById("visualization"),500,500);
-		circle = paper.circle(mid,250,rCb);
-		circle.attr("fill", "#f00");
-		circle.attr("stroke", "green");
-		circle.attr("opacity", 0.75);
-		circle2 = paper.circle(mid,250,rC);
-		circle2.attr("fill", "blue");
-		circle2.attr("stroke", "green");
-		circle2.attr("opacity", 0.5);
-		var txParam = {fill:"#000","font-size":18};
-		tx1 = paper.text(mid, 250-150-10, "test1").attr(txParam);
-		tx2 = paper.text(mid, 250-80-10,  "test2").attr(txParam);
-		var recParam = {fill:"#fff",stroke:"green",opacity:0.9};
+		// paper = Raphael(document.getElementById("visualization"),500,500);
+		// circle = paper.circle(mid,250,rCb);
+		// circle.attr("fill", "#f00");
+		// circle.attr("stroke", "green");
+		// circle.attr("opacity", 0.75);
+		// circle2 = paper.circle(mid,250,rC);
+		// circle2.attr("fill", "blue");
+		// circle2.attr("stroke", "green");
+		// circle2.attr("opacity", 0.5);
+		// var txParam = {fill:"#000","font-size":18};
+		// tx1 = paper.text(mid, 250-150-10, "test1").attr(txParam);
+		// tx2 = paper.text(mid, 250-80-10,  "test2").attr(txParam);
+		// var recParam = {fill:"#fff",stroke:"green",opacity:0.9};
 
-		// The "moving part" of the visualization.
-		rect = paper.rect(50,370,60,30,10).attr(recParam);
-		bk = paper.text(50+60/2,370+30/2,"-67.55").attr(txParam);
-		ln = paper.path("M80 370L80 10").attr(recParam).attr("stroke", "#333");		// Line moving with the box
+		// // The "moving part" of the visualization.
+		// rect = paper.rect(50,370,60,30,10).attr(recParam);
+		// bk = paper.text(50+60/2,370+30/2,"-67.55").attr(txParam);
+		// ln = paper.path("M80 370L80 10").attr(recParam).attr("stroke", "#333");		// Line moving with the box
 
-		var txParam2 = {fill:"#000", "font-size":30, "text-anchor":"start"};
-		var title	 = paper.text(10,20,'Nearst:').attr(txParam2);
-		// The in focus beacon. It can be the locking beacon or the beacon with nearst rssiE (averaged rssi)
-		key = paper.text(10,50,"20:1").attr(txParam2);
-		var title2 = paper.text(10,80,"Locked:").attr(txParam2);
-		key2 = paper.text(10,110,"Locked").attr(txParam2);
-		key3 = paper.text(mid, 250, "beacon").attr({fill:"#FFF", "font-size":30});
-		var title3 = paper.text(10,400, "Info").attr(txParam2);
-		key4 = paper.text(10,430, "waiting").attr(txParam2);
+		// var txParam2 = {fill:"#000", "font-size":30, "text-anchor":"start"};
+		// var title	 = paper.text(10,20,'Nearst:').attr(txParam2);
+		// // The in focus beacon. It can be the locking beacon or the beacon with nearst rssiE (averaged rssi)
+		// key = paper.text(10,50,"20:1").attr(txParam2);
+		// var title2 = paper.text(10,80,"Locked:").attr(txParam2);
+		// key2 = paper.text(10,110,"Locked").attr(txParam2);
+		// key3 = paper.text(mid, 250, "beacon").attr({fill:"#FFF", "font-size":30});
+		// var title3 = paper.text(10,400, "Info").attr(txParam2);
+		// key4 = paper.text(10,430, "waiting").attr(txParam2);
 
 	}
 
@@ -426,10 +426,10 @@ var app = (function(){
 							// mediator.publish("beacon.entered.small", beacon.triggerAddress);
 							entered_small = k;
 							// for (var member in myObject) delete myObject[member]; // This will empty this object.
-							key4.attr("text", "entered small1:" + beacon.major + ":" + beacon.minor);
-							locked = {};
-							locked.major = beacon.major;
-							locked.minor = beacon.minor;
+							// key4.attr("text", "entered small1:" + beacon.major + ":" + beacon.minor);
+							// locked = {};
+							// locked.major = beacon.major;
+							// locked.minor = beacon.minor;
 						//}
 					}
 				} 
@@ -438,21 +438,21 @@ var app = (function(){
 					if(entered_small == 0){
 						// mediator.publish("beacon.entered.small", beacon.triggerAddress);
 						entered_small = k;
-						key4.attr("text", "entered small2:" + beacon.major + ":" + beacon.minor);
-						locked = {};
-						locked.major = beacon.major;
-						locked.minor = beacon.minor;
+						// key4.attr("text", "entered small2:" + beacon.major + ":" + beacon.minor);
+						// locked = {};
+						// locked.major = beacon.major;
+						// locked.minor = beacon.minor;
 					}
 				} else if(rE < tD){
 					// mediator.publish("beacon.left", beacon.triggerAddress);
 					entered = 0; //free the lock
 					entered_small = 0;
-					key4.attr("text", "free lock");
-					locked = undefined;
+					// key4.attr("text", "free lock");
+					// locked = undefined;
 				} else if(rE < tDI && rE >= tD){
 					if(entered_small == k){
 						// mediator.publish("beacon.left.small", beacon.triggerAddress);
-						key4.attr("text", "free lock2");
+						// key4.attr("text", "free lock2");
 						entered_small = 0; // ONLY when beacon leave the big circle will free this lock. (Debouncing)
 					}
 				}
@@ -463,10 +463,10 @@ var app = (function(){
 				if(rE > tDI){
 					entered = k;
 					entered_small = k;
-					locked = {};
-					locked.major = beacon.major;
-					locked.minor = beacon.minor;
-					key4.attr("text", "nearst B lock" + beacon.major + ":" + beacon.minor);
+					// locked = {};
+					// locked.major = beacon.major;
+					// locked.minor = beacon.minor;
+					// key4.attr("text", "nearst B lock" + beacon.major + ":" + beacon.minor);
 				}
 			}
 		}.bind(this));
@@ -501,7 +501,7 @@ var app = (function(){
 
 
 
-
+	/*
 	// Block to display things onto screen
 	function displayBeaconList(){
 
@@ -594,25 +594,6 @@ var app = (function(){
 		$('#warning').remove();
 		$('#found-beacons').append(rssiTip);
 
-		/*
-		// Info table. Version before info graphic 
-		var et = show(entered);
-		var et_small = show(entered_small);
-		function show(e){
-			if(entered!=0) 	return entered.substring(37);
-			else 			return 0;
-		}
-
-		var enterTx = $(
-			'<div>Beacon Locking/Token Status' + '<br />'
-			+ '&ensp;entered: ' + et
-			+ '<br />'
-			+'&ensp;entered_small:' + et_small
-			+ '<br /></div>'
-		);
-
-		$('#found-beacons').append(enterTx);
-		*/
 
 		// Update beacon list.
 		$.each(tmpBeaconTester, function(key, beacon)
@@ -645,6 +626,7 @@ var app = (function(){
 			}
 		});
 	}
+	*/
 
 	return abb;
 }()); // from here inject the library of beaconinfo.
