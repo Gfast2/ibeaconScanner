@@ -405,7 +405,7 @@ var app = (function(){
 		// When one beacon is entered & entered into its "entered_small", This module lock this
 		// beacon as  the 'entered beacon'. Only when visiter leave the bigger circle of this
 		// beacon, then the Lock is open, and other beacon can get the lock.
-		// The result of this module will be sent from this part through 'mediator'
+		// THE RESULT OF THIS MODULE WILL BE SENT FROM THIS PART THROUGH 'MEDIATOR'
 
 		$.each(_beacons_tmp, function(key, beacon){
 			var k = beacon.uuid + ':' + beacon.major + ':' + beacon.minor;
@@ -420,7 +420,8 @@ var app = (function(){
 						if(entered_small == 0){
 							// mediator.publish("beacon.entered.small", beacon.triggerAddress);
 							entered_small = k;
-							locked = {};
+							// for (var member in myObject) delete myObject[member]; // This will empty this object.
+							locked = undefined;
 							locked.major = beacon.major;
 							locked.minor = beacon.minor;
 						}
@@ -431,7 +432,7 @@ var app = (function(){
 					if(entered_small == 0){
 						// mediator.publish("beacon.entered.small", beacon.triggerAddress);
 						entered_small = k;
-						locked = {};
+						locked = undefined;
 						locked.major = beacon.major;
 						locked.minor = beacon.minor;
 					}
@@ -439,7 +440,7 @@ var app = (function(){
 					// mediator.publish("beacon.left", beacon.triggerAddress);
 					entered = 0; //free the lock
 					entered_small = 0;
-					locked = null;
+					locked = undefined;
 				} else if(rE < tDI && rE >= tD){
 					if(entered_small == k){
 						// mediator.publish("beacon.left.small", beacon.triggerAddress);
@@ -452,7 +453,8 @@ var app = (function(){
 		///////////////////////// MODULE DIVIDER ////////////////////////////////////
 		////////////////////// ******************** /////////////////////////////////
 
-		// This is the last part. I push the out coming data array into another React Module
+		// This is the last part. I push the out coming data array into another React Module.
+		// For here it is useless.
 		var zebra = false;
 		var majorOri = _beacons_tmp[0].major;
 		$.each(_beacons_tmp, function(key, beacon){
