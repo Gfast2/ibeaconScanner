@@ -418,12 +418,12 @@ var app = (function(){
 			var tDI= beacon.triggerDistanceI;	// small trigger distance circle of this beacon.
 			if(entered == 0){
 				if(rE >= tD){
-					// mediator.publish("beacon.entered", beacon.triggerAddress);
+					mediator.publish("beacon.entered", beacon.triggerAddress);
 					entered = k; // start lock
 					key4.attr("text", "entered big1:" + beacon.major + ":" + beacon.minor);
 					if(rE >= tDI){
 						//if(entered_small == 0){
-							// mediator.publish("beacon.entered.small", beacon.triggerAddress);
+							mediator.publish("beacon.entered.small", beacon.triggerAddress);
 							entered_small = k;
 							// for (var member in myObject) delete myObject[member]; // This will empty this object.
 							// key4.attr("text", "entered small1:" + beacon.major + ":" + beacon.minor);
@@ -436,7 +436,7 @@ var app = (function(){
 			} else if (k == entered){ // When this beacon has the lock
 				if(rE >= tDI){
 					if(entered_small == 0){
-						// mediator.publish("beacon.entered.small", beacon.triggerAddress);
+						mediator.publish("beacon.entered.small", beacon.triggerAddress);
 						entered_small = k;
 						// key4.attr("text", "entered small2:" + beacon.major + ":" + beacon.minor);
 						// locked = {};
@@ -444,14 +444,14 @@ var app = (function(){
 						// locked.minor = beacon.minor;
 					}
 				} else if(rE < tD){
-					// mediator.publish("beacon.left", beacon.triggerAddress);
+					mediator.publish("beacon.left", beacon.triggerAddress);
 					entered = 0; //free the lock
 					entered_small = 0;
 					// key4.attr("text", "free lock");
 					// locked = undefined;
 				} else if(rE < tDI && rE >= tD){
 					if(entered_small == k){
-						// mediator.publish("beacon.left.small", beacon.triggerAddress);
+						mediator.publish("beacon.left.small", beacon.triggerAddress);
 						// key4.attr("text", "free lock2");
 						entered_small = 0; // ONLY when beacon leave the big circle will free this lock. (Debouncing)
 					}
