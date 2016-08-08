@@ -420,7 +420,7 @@ var app = (function(){
 				if(rE >= tD){
 					mediator.publish("beacon.entered", beacon.triggerAddress);
 					entered = k; // start lock
-					key4.attr("text", "entered big1:" + beacon.major + ":" + beacon.minor);
+					// key4.attr("text", "entered big1:" + beacon.major + ":" + beacon.minor);
 					if(rE >= tDI){
 						//if(entered_small == 0){
 							mediator.publish("beacon.entered.small", beacon.triggerAddress);
