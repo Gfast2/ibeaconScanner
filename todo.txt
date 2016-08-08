@@ -1,4 +1,3 @@
 /// TODO ///
 / clean up the Muster code from Evothing. €€
-/ add "beaconState()"
 / add the other functionality for mediator from "Beacon.jsx"
