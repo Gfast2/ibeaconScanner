@@ -401,6 +401,7 @@ var app = (function(){
 			beacon.triggerAddress   = beaconLibrary["beacons"][key]["triggerAddress"  ];
 			beacon.triggerDistance  = beaconLibrary["beacons"][key]["triggerDistance" ];
 			beacon.triggerDistanceI = beaconLibrary["beacons"][key]["triggerDistanceI"];
+			beacon.triggerDistanceX = beaconLibrary["beacons"][key]["triggerDistanceX"];
 		}
 
 		///////////////////////// MODULE DIVIDER ////////////////////////////////////
@@ -416,6 +417,7 @@ var app = (function(){
 			var rE = beacon.rssiE;
 			var tD = beacon.triggerDistance;	// big trigger distance circle of this beacon.
 			var tDI= beacon.triggerDistanceI;	// small trigger distance circle of this beacon.
+			var tDX= beacon.triggerDistanceX;   // the absolute trigger value for this beacon.
 			if(entered == 0){
 				if(rE >= tD){
 					// mediator.publish("beacon.entered", beacon.triggerAddress);
@@ -460,13 +462,13 @@ var app = (function(){
 
 			// if the nearst beacon has have the beacon small signal, It is surely be entered.
 			if(beacon.nearst == true){
-				if(rE > tDI){
+				if(rE > tDX){
 					entered = k;
 					entered_small = k;
 					locked = {};
 					locked.major = beacon.major;
 					locked.minor = beacon.minor;
-					key4.attr("text", "nearst B lock" + beacon.major + ":" + beacon.minor);
+					key4.attr("text", "(direct) nearst B lock" + beacon.major + ":" + beacon.minor);
 				}
 			}
 		}.bind(this));
