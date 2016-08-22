@@ -45,13 +45,6 @@ var app = (function(){
 	var bufferDepth = 3;	// How many scanned results should be stacked in the debouncing 
 	var beaconsRSSI = []; 	// buffer object that save "bufferDepth" defined times 'beacons' object.
 	var num = 0; 			// register to record beacon scan results' time.
-		
-	
-
-
-
-
-
 
 	// This is the object that can be accessed from outside of the function.
 	// It's "Global"
@@ -70,7 +63,7 @@ var app = (function(){
 		// Display refresh timer.
 		updateTimer = setInterval(displayBeaconList, 500);
 
-		// Init visualization elements.
+		// INIT VISUALIZATION ELEMENTS.
 		paper = Raphael(document.getElementById("visualization"),500,500);
 		circle = paper.circle(mid,250,rCb);
 		circle.attr("fill", "#f00");
@@ -91,6 +84,7 @@ var app = (function(){
 		ln = paper.path("M80 370L80 10").attr(recParam).attr("stroke", "#333");		// Line moving with the box
 
 		var txParam2 = {fill:"#000", "font-size":30, "text-anchor":"start"};
+		var txParam3 = {fill:"#000", "font-size":18, "text-anchor":"start"};
 		var title	 = paper.text(10,20,'Nearst:').attr(txParam2);
 
 		// The in focus beacon. It can be the locking beacon or the beacon with nearst rssiE (averaged rssi)
@@ -99,16 +93,9 @@ var app = (function(){
 		key2 = paper.text(10,110,"Locked").attr(txParam2);
 		key3 = paper.text(mid, 250, "beacon").attr({fill:"#FFF", "font-size":30});
 		var title3 = paper.text(10,400, "Info").attr(txParam2);
-		key4 = paper.text(10,430, "waiting").attr(txParam2);
+		key4 = paper.text(10,430, "waiting").attr(txParam3);
 
 	}
-
-
-
-
-
-
-
 
 	// Start scanning beacons
 	abb.startScan = function(){
@@ -434,13 +421,13 @@ var app = (function(){
 				if(rE >= tD){
 					// mediator.publish("beacon.entered", beacon.triggerAddress);
 					entered = k; // start lock
-					key4.attr("text", "entered big1:" + beacon.major + ":" + beacon.minor);
+					key4.attr("text", "entered: big " + beacon.major + ":" + beacon.minor);
 					if(rE >= tDI){
 						//if(entered_small == 0){
 							// mediator.publish("beacon.entered.small", beacon.triggerAddress);
 							entered_small = k;
 							// for (var member in myObject) delete myObject[member]; // This will empty this object.
-							key4.attr("text", "entered small1:" + beacon.major + ":" + beacon.minor);
+							key4.attr("text", "entered: small " + beacon.major + ":" + beacon.minor);
 							locked = {};
 							locked.major = beacon.major;
 							locked.minor = beacon.minor;
@@ -452,7 +439,7 @@ var app = (function(){
 					if(entered_small == 0){
 						// mediator.publish("beacon.entered.small", beacon.triggerAddress);
 						entered_small = k;
-						key4.attr("text", "entered small2:" + beacon.major + ":" + beacon.minor);
+						key4.attr("text", "entered: small " + beacon.major + ":" + beacon.minor);
 						locked = {};
 						locked.major = beacon.major;
 						locked.minor = beacon.minor;
@@ -461,12 +448,12 @@ var app = (function(){
 					// mediator.publish("beacon.left", beacon.triggerAddress);
 					entered = 0; //free the lock
 					entered_small = 0;
-					key4.attr("text", "free lock");
+					key4.attr("text", "free lock: big");
 					locked = undefined;
 				} else if(rE < tDI && rE >= tD){
 					if(entered_small == k){
 						// mediator.publish("beacon.left.small", beacon.triggerAddress);
-						key4.attr("text", "free lock2");
+						key4.attr("text", "free lock: small");
 						entered_small = 0; // ONLY when beacon leave the big circle will free this lock.
 					}
 				}
@@ -480,7 +467,7 @@ var app = (function(){
 					locked = {};
 					locked.major = beacon.major;
 					locked.minor = beacon.minor;
-					key4.attr("text", "(direct) nearst B lock" + beacon.major + ":" + beacon.minor);
+					key4.attr("text", "direct nearst: " + beacon.major + ":" + beacon.minor);
 				}
 			}
 		});
@@ -573,6 +560,7 @@ var app = (function(){
 			key3.attr("text", bN);
 		}
 
+		// The dynamic trigger circle.
 		circle.animate({"r": cS-rD},aD); // 180 is the base size.
 		circle2.animate({"r": cS-rDI},aD);
 
