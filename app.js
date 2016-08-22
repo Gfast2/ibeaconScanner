@@ -1,4 +1,4 @@
-"use strict"
+"use strict";
 
 // Variable for beacon management library.
 var beaconstmp = {}; 		// json for debouncing rssi read value direct from beacons.
@@ -28,23 +28,23 @@ var circle2= {};
 var beaconLibrary = {};
 $.getJSON("beacon.json", function(beacons)
 {
-	beaconLibrary = beacons; // I think it can be refactoring through "return beacons;"
+	beaconLibrary = beacons; // load beacon json data.
+	console.log("beacon library: ", JSON.stringify(beacons));
 });
 
 
-
+// The whole application body.
 var app = (function(){
 
-	var abb = {}; 			// Application object.
+	var abb = {}; 			// Application object. the returned Object returned by "app"
 	var regions =	[{uuid:'FDA50693-A4E2-4FB1-AFCF-C6EB07647825'}]; // Specify your beacon 128bit UUIDs here.
 	var beacons = {}; 		// Dictionary of beacons.
 	var updateTimer = null; // Timer that displays list of beacons.
 
 	// Variable from react's "state"
-	var bufferDepth = 3;
-	var beaconsRSSI = []; // buffer  object that save "bufferDepth" defined times 'beacons' object.
-	var beaconNear = undefined;
-	var num = 0;
+	var bufferDepth = 3;	// How many scanned results should be stacked in the debouncing 
+	var beaconsRSSI = []; 	// buffer object that save "bufferDepth" defined times 'beacons' object.
+	var num = 0; 			// register to record beacon scan results' time.
 		
 	
 
@@ -70,7 +70,7 @@ var app = (function(){
 		// Display refresh timer.
 		updateTimer = setInterval(displayBeaconList, 500);
 
-		// Init visualization.
+		// Init visualization elements.
 		paper = Raphael(document.getElementById("visualization"),500,500);
 		circle = paper.circle(mid,250,rCb);
 		circle.attr("fill", "#f00");
@@ -92,6 +92,7 @@ var app = (function(){
 
 		var txParam2 = {fill:"#000", "font-size":30, "text-anchor":"start"};
 		var title	 = paper.text(10,20,'Nearst:').attr(txParam2);
+
 		// The in focus beacon. It can be the locking beacon or the beacon with nearst rssiE (averaged rssi)
 		key = paper.text(10,50,"20:1").attr(txParam2);
 		var title2 = paper.text(10,80,"Locked:").attr(txParam2);
@@ -109,7 +110,7 @@ var app = (function(){
 
 
 
-	// Handling the beacons
+	// Start scanning beacons
 	abb.startScan = function(){
 		var delegate = new locationManager.Delegate();
 
@@ -176,7 +177,8 @@ var app = (function(){
 
 
 
-
+	// The main part for scanning beacons & handling the results.
+	// It's made of many parts working sequentially.
 	function beaconState(pluginResult){
 
 		// update beacon dictionary:
@@ -194,7 +196,7 @@ var app = (function(){
 		///////////////////// DEBOUNCING RSSI VALUE /////////////////////////////////
 
 		// Here I pass the beacons object into "Beacons rssi debouncing Buffer array"
-		// beacons (INPUT) -> BeaconBuffer -> beacons (OUTPUT)
+		// new beacons (INPUT) -> BeaconBuffer -> debounced beacons (OUTPUT)
 
 		function clone(obj) { // Make a copy of the new updated beacons object.
 		    if (null == obj || "object" != typeof obj) return obj;
@@ -206,9 +208,9 @@ var app = (function(){
 		}
 		
 		var arrayvar = beaconsRSSI.slice();
-		arrayvar.unshift(clone(beacons)); // push new scan result from top.
+		arrayvar.unshift(clone(beacons)); 	// push new scan result from top.
 		if(arrayvar.length > bufferDepth){
-			arrayvar.pop(); // If stack deeper as 'bufferDepth', pop out the deepst.
+			arrayvar.pop(); 				// If stack deeper than 'bufferDepth', pop out the oldest one.
 		}
 
 		beaconsRSSI = arrayvar; // beaconsRSSI is 2D array.
@@ -222,13 +224,17 @@ var app = (function(){
 		console.log(cl); // show object in different layer have different numStamp.
 */
 
-		var maxNumStamp = 0; // The most up-to-Date 'numStamp' of the whole array.
+/*
+		// The most up-to-Date 'numStamp' of the whole array.
+		// Only be used for debug perpose.
+		var maxNumStamp = 0; 
 		$.each(beaconsRSSI, function(key,beacon){
 			$.each(beacon, function(key_, beacon_){
 				maxNumStamp = maxNumStamp > beacon_['numStamp'] ? maxNumStamp : beacon_['numStamp'];
 			}.bind(this));
 		}.bind(this));
-		// console.log('maxNumStamp: ' + maxNumStamp);
+		console.log('maxNumStamp: ' + maxNumStamp);
+*/
 
 		// Zeroing & Init properties.
 		$.each(beaconsRSSI, function(key,beacon){
@@ -241,8 +247,8 @@ var app = (function(){
 					beaconstmp[key_].num = 0;
 					beaconstmp[key_].rssiE_tmp = 0;
 					beaconstmp[key_].accuracyE_tmp = 0;
-			}.bind(this));
-		}.bind(this));
+			});
+		});
 
 		$.each(beaconsRSSI, function(key,beacon){
 			$.each(beacon, function(key_, beacon_){
@@ -253,8 +259,8 @@ var app = (function(){
 					beaconstmp[key_].num += 1;
 					beaconstmp[key_].rssiE_tmp = beaconstmp[key_].rssiE_tmp + beacon_['rssi'];
 				}
-			}.bind(this));
-		}.bind(this));
+			});
+		});
 
 		$.each(beaconstmp, function(key,beacon){
 			var rssiE = beacon.rssiE_tmp / beacon.num;
@@ -275,7 +281,7 @@ var app = (function(){
 
 		$.each(beacons, function(key, beacon){
 			_beacons_tmp.push(beacon);			
-		}.bind(this));
+		});
 		
 	/*  // Alternatively: 
 		// SORT BEACON ACCORDING TO ITS ACCURANCY.
@@ -395,7 +401,7 @@ var app = (function(){
 		{
 			var beacon = _beacons_tmp[i];
 			beacon.timeStamp = Date.now();
-			var key = beacon.uuid + ':' + beacon.major + ':' + beacon.minor; // TODO: add the "key" to beacons object. I order not do this again and again.
+			var key = beacon.uuid + ':' + beacon.major + ':' + beacon.minor;
 			key = key.toUpperCase();
 			// add some infomation from the JSON library into our final beacons object.
 			beacon.triggerAddress   = beaconLibrary["beacons"][key]["triggerAddress"  ];
@@ -471,7 +477,7 @@ var app = (function(){
 					key4.attr("text", "(direct) nearst B lock" + beacon.major + ":" + beacon.minor);
 				}
 			}
-		}.bind(this));
+		});
 
 		///////////////////////// MODULE DIVIDER ////////////////////////////////////
 		////////////////////// ******************** /////////////////////////////////
@@ -485,7 +491,7 @@ var app = (function(){
 				majorOri = beacon.major;
 				zebra = !zebra;	
 			}
-		}.bind(this));
+		});
 
 		tmpBeaconTester = _beacons_tmp; // tmpBeaconTester is only the reference of )beacons_tmp 
 		// console.log("tmpBeaconTester: " + JSON.stringify(tmpBeaconTester));

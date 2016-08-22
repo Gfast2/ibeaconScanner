@@ -345,6 +345,22 @@
       "coordinateY": 10,
       "batteryLife": 100,
       "timestamp" : 0
+    },"FDA50693-A4E2-4FB1-AFCF-C6EB07647825:30:3": {
+      "triggerDistanceX": -55,
+      "triggerDistanceI": -61,
+      "triggerDistance": -70,
+      "rssi":-59,
+      "triggerAddress": {
+        "buildingID": "building3",
+        "floorID": "floor3",
+        "roomID": "raum3",
+        "exhibitID": "Lampe"
+      },
+      "description": "Auf dem Fussboden",
+      "coordinateX": 10,
+      "coordinateY": 10,
+      "batteryLife": 100,
+      "timestamp" : 0
     },"FDA50693-A4E2-4FB1-AFCF-C6EB07647825:40:1": {
       "triggerDistanceX": -55,
       "triggerDistanceI": -61,
