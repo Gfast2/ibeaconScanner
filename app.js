@@ -250,6 +250,7 @@ var app = (function(){
 			});
 		});
 
+		// Summing rssi value and buffer deep.
 		$.each(beaconsRSSI, function(key,beacon){
 			$.each(beacon, function(key_, beacon_){
 				if(isNaN(beacon_['rssi'])){
@@ -262,6 +263,7 @@ var app = (function(){
 			});
 		});
 
+		// Get average beacons RSSI attribute: "rssiE"
 		$.each(beaconstmp, function(key,beacon){
 			var rssiE = beacon.rssiE_tmp / beacon.num;
 			beacons[key].rssiE = Number(rssiE.toFixed(2));
@@ -269,42 +271,44 @@ var app = (function(){
 				beacons[key].rssiE=-200;
 			}
 			beacons[key].accuracyE = "Empty";
-			// console.log('beacons[key].rssiE & num:' + beacons[key].rssiE + " " + beacon.rssiE_tmp + " " + beacon.num);
 		});
+
 		num++;
 
 		///////////////////////// MODULE DIVIDER ////////////////////////////////////
 		/////////////////////// SORTING BEACON LIST /////////////////////////////////
 
-		var _beacons = [];
-		var _beacons_tmp = []; // copy of all scanned beacons.
+		var _beacons = []; // copy of all scanned beacons.
 
+		// Make a copy from the original scan result
 		$.each(beacons, function(key, beacon){
-			_beacons_tmp.push(beacon);			
+			_beacons.push(beacon);			
 		});
-		
-	/*  // Alternatively: 
+
+/*		
+	  	// Alternatively: 
 		// SORT BEACON ACCORDING TO ITS ACCURANCY.
 		// IN ORDER TO FIND OUT WHICH ONE THE NEARST ONE		
-		_beacons_tmp.sort(function(a,b){ // Nearst to farst.
+		_beacons.sort(function(a,b){ // Nearst to farst.
 			return (a.accuracy - b.accuracy);
 		});
 
-		$.each(_beacons_tmp, function(key, beacon){
+		$.each(_beacons, function(key, beacon){
 			if(key == 0){
 				beacon.nearst = true;
 			}else{
 				beacon.nearst = false;
 			}
 		});
-	*/
+*/
 
 		// SORT BEACON ACCORDING TO ITS EVERAGED RSSI
-		_beacons_tmp.sort(function(a,b){ // Nearst to farst.
+		_beacons.sort(function(a,b){ // Nearst to farst.
 			return (b.rssiE - a.rssiE);
 		});
 
-		$.each(_beacons_tmp, function(key, beacon){
+		// MARK THE FIRST BEACONS AS THE NEARST ONE.
+		$.each(_beacons, function(key, beacon){
 			if(key == 0){
 				beacon.nearst = true;
 			}else{
@@ -312,39 +316,41 @@ var app = (function(){
 			}
 		});
 
-
-
+/*
 		// SORT BEACON ACCORDING TO ITS MINOR
 		// IN ORDER TO LET EACH HAVE A FIX POSITION
-		_beacons_tmp.sort(function(a,b){
+		_beacons.sort(function(a,b){
 			return (a.minor - b.minor);
 		});
+*/
 
-		
-		// SORT BEACON ACCORDING TO ITS GROUP
-		_beacons_tmp.sort(function(a,b){ // from small to big
-			return (a.major - b.major);  // TODO: It return small unsorted elements in front of the return array.
-		});				
-
+/*
+		// The following two modules are obsoleted because we do not calculating beacons distance 
+		// according to their group.
 
 		///////////////////////// MODULE DIVIDER ////////////////////////////////////
 		//////////////// BUILD 2D ARRAY ACCORDING TO MAJOR //////////////////////////
 
+		// SORT BEACON ACCORDING TO ITS GROUP
+		_beacons.sort(function(a,b){ 	// from small to big
+			return (a.major - b.major);
+		});				
+
 		var object = []; // beacons array of beacons with same major
 		var result = []; // Multi array save beacons with different major in different subarray
-		var major_tmp =  _beacons_tmp[0].major;
+		var major_tmp =  _beacons[0].major;
 		
-		for(var i=0; i < _beacons_tmp.length; i++)
+		for(var i=0; i < _beacons.length; i++)
 		{
-			if(major_tmp == _beacons_tmp[i].major){
-				object.push(_beacons_tmp[i]);
+			if(major_tmp == _beacons[i].major){
+				object.push(_beacons[i]);
 			}else{
 				result.push(object);
 				object = [];
-				object.push(_beacons_tmp[i]);
-				major_tmp = _beacons_tmp[i].major;
+				object.push(_beacons[i]);
+				major_tmp = _beacons[i].major;
 			}
-			if(i == _beacons_tmp.length-1){
+			if(i == _beacons.length-1){
 				result.push(object);
 			}
 		}
@@ -386,20 +392,20 @@ var app = (function(){
 			avg = 0; 
 		}
 
-		$.each(_beacons_tmp,function(key, beacon){
+		$.each(_beacons,function(key, beacon){
 			if(beacon.major == groupNear){
 				beacon.nearGroup = true;
 			} else {
 				beacon.nearGroup = false;
 			}
 		});
-
+*/
 		///////////////////////// MODULE DIVIDER ////////////////////////////////////
 		//////////////////// ADD INFO FROM BEACON.JSON //////////////////////////////
 
-		for (var i in _beacons_tmp)
+		for (var i in _beacons)
 		{
-			var beacon = _beacons_tmp[i];
+			var beacon = _beacons[i];
 			beacon.timeStamp = Date.now();
 			var key = beacon.uuid + ':' + beacon.major + ':' + beacon.minor;
 			key = key.toUpperCase();
@@ -418,9 +424,9 @@ var app = (function(){
 		// beacon, then the Lock is open, and other beacon can get the lock.
 		// THE RESULT OF THIS MODULE WILL BE SENT FROM THIS PART THROUGH 'MEDIATOR'
 
-		$.each(_beacons_tmp, function(key, beacon){
+		$.each(_beacons, function(key, beacon){
 			var k = beacon.uuid + ':' + beacon.major + ':' + beacon.minor;
-			var rE = beacon.rssiE;
+			var rE = beacon.rssiE;				// Averaged beacon rssi value.
 			var tD = beacon.triggerDistance;	// big trigger distance circle of this beacon.
 			var tDI= beacon.triggerDistanceI;	// small trigger distance circle of this beacon.
 			var tDX= beacon.triggerDistanceX;   // the absolute trigger value for this beacon.
@@ -461,7 +467,7 @@ var app = (function(){
 					if(entered_small == k){
 						// mediator.publish("beacon.left.small", beacon.triggerAddress);
 						key4.attr("text", "free lock2");
-						entered_small = 0; // ONLY when beacon leave the big circle will free this lock. (Debouncing)
+						entered_small = 0; // ONLY when beacon leave the big circle will free this lock.
 					}
 				}
 			}
@@ -484,17 +490,20 @@ var app = (function(){
 
 		// This is the last part. I push the out coming data array into another React Module.
 		// For here it is useless.
+		
+/*		
+		// zebra & majorOri are obsolated, only for old beacon list visualization.
 		var zebra = false;
-		var majorOri = _beacons_tmp[0].major;
-		$.each(_beacons_tmp, function(key, beacon){
+		var majorOri = _beacons[0].major;
+		$.each(_beacons, function(key, beacon){
 			if(majorOri != beacon.major){
 				majorOri = beacon.major;
 				zebra = !zebra;	
 			}
 		});
+*/
 
-		tmpBeaconTester = _beacons_tmp; // tmpBeaconTester is only the reference of )beacons_tmp 
-		// console.log("tmpBeaconTester: " + JSON.stringify(tmpBeaconTester));
+		tmpBeaconTester = _beacons;
 	}
 
 
@@ -513,11 +522,9 @@ var app = (function(){
 	// Block to display things onto screen
 	function displayBeaconList(){
 
-		// Clear beacon list.
-		$('#found-beacons').empty();
+		$('#found-beacons').empty(); // Clear beacon list.
 
 		var timeNow = Date.now();
-
 
 		// Do the sorting according to rssiE (averaged rssi value).
 		tmpBeaconTester.sort(function(a,b){
@@ -527,19 +534,16 @@ var app = (function(){
 		///////////////////////// MODULE DIVIDER ////////////////////////////////////
 		/////////////////////// Visualization part //////////////////////////////////
 
-
-
-		var which = 0; // decide the graphic showing the nearst beacon's parameter or the locked one.
-		var cS = 60; // basic circle size
-		var aD = 250; // The speed of all animation.
+		var which = 0;	// decide the graphic showing the nearst beacon's parameter or the locked one.
+		var cS = 60; 	// basic circle size
+		var aD = 250;	// The speed of all animation.
 		var bNO= tmpBeaconTester[0].major + ":" + tmpBeaconTester[0].minor;
 
 		if(locked == undefined){
 			// console.log("No locked beacon yet.");
 			key2.attr("text", "none");
 			circle2.animate({"fill":"blue", "opacity":0.6},aD);
-		}
-		else{
+		} else {
 			var s = locked.major + ":" + locked.minor;
 			// console.log("there is locked beacon:" + s);
 			key2.attr("text", s);
@@ -572,21 +576,16 @@ var app = (function(){
 		circle.animate({"r": cS-rD},aD); // 180 is the base size.
 		circle2.animate({"r": cS-rDI},aD);
 
-		// the moving pointer
+		// the moving 'pointer'
 		bk.attr({"text":rE}); // change the text content.
-		rect.animate({"x": cS-rE+mid-60/2},aD);
-		bk.animate({"x":cS-rE+mid},aD);
+		rect.animate({"x": cS-rE+mid-60/2}, aD);
+		bk.animate({"x":cS-rE+mid}, aD);
 		var a = cS-rE+mid;
 		var ln_str = "M" + a + " 370L" + a + " 10";
 		ln.animate({path: ln_str},aD);
-
-
-
 		
 		///////////////////////// MODULE DIVIDER ////////////////////////////////////
-
-
-
+		////////////////////// LIST OF FOUND BEACONS ////////////////////////////////
 
 		var rssiTip = $(
 			'<button onclick="app.startScan()">start</button>&ensp;&ensp;&ensp;' +
@@ -602,26 +601,6 @@ var app = (function(){
 		$('#warning').remove();
 		$('#found-beacons').append(rssiTip);
 
-		/*
-		// Info table. Version before info graphic 
-		var et = show(entered);
-		var et_small = show(entered_small);
-		function show(e){
-			if(entered!=0) 	return entered.substring(37);
-			else 			return 0;
-		}
-
-		var enterTx = $(
-			'<div>Beacon Locking/Token Status' + '<br />'
-			+ '&ensp;entered: ' + et
-			+ '<br />'
-			+'&ensp;entered_small:' + et_small
-			+ '<br /></div>'
-		);
-
-		$('#found-beacons').append(enterTx);
-		*/
-
 		// Update beacon list.
 		$.each(tmpBeaconTester, function(key, beacon)
 		{
@@ -636,7 +615,6 @@ var app = (function(){
 				// Create tag to display beacon data.
 				var element = $(
 					'<li>'
-					// +	'UUID: ' + beacon.uuid + '<br />'
 					+	'Major: ' + beacon.major + '&ensp;&ensp;'
 					+	'Minor: ' + beacon.minor + '<br />'
 					+	'RSSI: '  + beacon.rssi  + '&ensp;&ensp;&ensp;'
