@@ -441,6 +441,166 @@
       "coordinateY": 10,
       "batteryLife": 100,
       "timestamp" : 0
+    },"FDA50693-A4E2-4FB1-AFCF-C6EB07647825:12:1": {
+      "triggerDistanceX": -55,
+      "triggerDistanceI": -61,
+      "triggerDistance": -70,
+      "rssi":-59,
+      "triggerAddress": {
+        "buildingID": "building5",
+        "floorID": "floor5",
+        "roomID": "raum5",
+        "exhibitID": "barboo"
+      },
+      "description": "Auf dem Fussboden",
+      "coordinateX": 10,
+      "coordinateY": 10,
+      "batteryLife": 100,
+      "timestamp" : 0
+    },"FDA50693-A4E2-4FB1-AFCF-C6EB07647825:12:2": {
+      "triggerDistanceX": -55,
+      "triggerDistanceI": -61,
+      "triggerDistance": -70,
+      "rssi":-59,
+      "triggerAddress": {
+        "buildingID": "building5",
+        "floorID": "floor5",
+        "roomID": "raum5",
+        "exhibitID": "barboo"
+      },
+      "description": "Auf dem Fussboden",
+      "coordinateX": 10,
+      "coordinateY": 10,
+      "batteryLife": 100,
+      "timestamp" : 0
+    },"FDA50693-A4E2-4FB1-AFCF-C6EB07647825:12:3": {
+      "triggerDistanceX": -55,
+      "triggerDistanceI": -61,
+      "triggerDistance": -70,
+      "rssi":-59,
+      "triggerAddress": {
+        "buildingID": "building5",
+        "floorID": "floor5",
+        "roomID": "raum5",
+        "exhibitID": "barboo"
+      },
+      "description": "Auf dem Fussboden",
+      "coordinateX": 10,
+      "coordinateY": 10,
+      "batteryLife": 100,
+      "timestamp" : 0
+    },"FDA50693-A4E2-4FB1-AFCF-C6EB07647825:12:4": {
+      "triggerDistanceX": -55,
+      "triggerDistanceI": -61,
+      "triggerDistance": -70,
+      "rssi":-59,
+      "triggerAddress": {
+        "buildingID": "building5",
+        "floorID": "floor5",
+        "roomID": "raum5",
+        "exhibitID": "barboo"
+      },
+      "description": "Auf dem Fussboden",
+      "coordinateX": 10,
+      "coordinateY": 10,
+      "batteryLife": 100,
+      "timestamp" : 0
+    },"FDA50693-A4E2-4FB1-AFCF-C6EB07647825:12:5": {
+      "triggerDistanceX": -55,
+      "triggerDistanceI": -61,
+      "triggerDistance": -70,
+      "rssi":-59,
+      "triggerAddress": {
+        "buildingID": "building5",
+        "floorID": "floor5",
+        "roomID": "raum5",
+        "exhibitID": "barboo"
+      },
+      "description": "Auf dem Fussboden",
+      "coordinateX": 10,
+      "coordinateY": 10,
+      "batteryLife": 100,
+      "timestamp" : 0
+    },"FDA50693-A4E2-4FB1-AFCF-C6EB07647825:12:6": {
+      "triggerDistanceX": -55,
+      "triggerDistanceI": -61,
+      "triggerDistance": -70,
+      "rssi":-59,
+      "triggerAddress": {
+        "buildingID": "building5",
+        "floorID": "floor5",
+        "roomID": "raum5",
+        "exhibitID": "barboo"
+      },
+      "description": "Auf dem Fussboden",
+      "coordinateX": 10,
+      "coordinateY": 10,
+      "batteryLife": 100,
+      "timestamp" : 0
+    },"FDA50693-A4E2-4FB1-AFCF-C6EB07647825:12:7": {
+      "triggerDistanceX": -55,
+      "triggerDistanceI": -61,
+      "triggerDistance": -70,
+      "rssi":-59,
+      "triggerAddress": {
+        "buildingID": "building5",
+        "floorID": "floor5",
+        "roomID": "raum5",
+        "exhibitID": "barboo"
+      },
+      "description": "Auf dem Fussboden",
+      "coordinateX": 10,
+      "coordinateY": 10,
+      "batteryLife": 100,
+      "timestamp" : 0
+    },"FDA50693-A4E2-4FB1-AFCF-C6EB07647825:12:8": {
+      "triggerDistanceX": -55,
+      "triggerDistanceI": -61,
+      "triggerDistance": -70,
+      "rssi":-59,
+      "triggerAddress": {
+        "buildingID": "building5",
+        "floorID": "floor5",
+        "roomID": "raum5",
+        "exhibitID": "barboo"
+      },
+      "description": "Auf dem Fussboden",
+      "coordinateX": 10,
+      "coordinateY": 10,
+      "batteryLife": 100,
+      "timestamp" : 0
+    },"FDA50693-A4E2-4FB1-AFCF-C6EB07647825:12:9": {
+      "triggerDistanceX": -55,
+      "triggerDistanceI": -61,
+      "triggerDistance": -70,
+      "rssi":-59,
+      "triggerAddress": {
+        "buildingID": "building5",
+        "floorID": "floor5",
+        "roomID": "raum5",
+        "exhibitID": "barboo"
+      },
+      "description": "Auf dem Fussboden",
+      "coordinateX": 10,
+      "coordinateY": 10,
+      "batteryLife": 100,
+      "timestamp" : 0
+    },"FDA50693-A4E2-4FB1-AFCF-C6EB07647825:12:10": {
+      "triggerDistanceX": -55,
+      "triggerDistanceI": -61,
+      "triggerDistance": -70,
+      "rssi":-59,
+      "triggerAddress": {
+        "buildingID": "building5",
+        "floorID": "floor5",
+        "roomID": "raum5",
+        "exhibitID": "barboo"
+      },
+      "description": "Auf dem Fussboden",
+      "coordinateX": 10,
+      "coordinateY": 10,
+      "batteryLife": 100,
+      "timestamp" : 0
     }
   }
 }

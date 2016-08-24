@@ -160,7 +160,20 @@ var app = (function(){
 	}
 
 
+	function beaconfilter(beacons) {
 
+		var returnBeacons = [];
+
+		for (var i in beacons) {
+			if (beacons[i].major == 12) {
+				returnBeacons.push(beacons[i]);
+			}
+		}
+
+		console.log("Filtered beacons: " + JSON.stringify(returnBeacons));
+
+		return returnBeacons;
+	}
 
 
 
@@ -168,11 +181,14 @@ var app = (function(){
 	// It's made of many parts working sequentially.
 	function beaconState(pluginResult){
 
+
+		var filteredBeacon = beaconfilter(pluginResult.beacons);
+
 		// update beacon dictionary:
-		for (var i in pluginResult.beacons)
+		for (var i in filteredBeacon)
 		{
 			// Insert beacon into table of found beacons.
-			var beacon = pluginResult.beacons[i];
+			var beacon = filteredBeacon[i];
 			beacon.timeStamp = Date.now();
 			var key = beacon.uuid + ':' + beacon.major + ':' + beacon.minor;
 			beacons[key] = beacon; // From here get the beacons array.
