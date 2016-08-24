@@ -428,10 +428,10 @@ var app = (function(){
 			var key = beacon.uuid + ':' + beacon.major + ':' + beacon.minor;
 			key = key.toUpperCase();
 			// add some infomation from the JSON library into our final beacons object.
-			beacon.triggerAddress   = beaconLibrary["beacons"][key]["triggerAddress"  ];
-			beacon.triggerDistance  = beaconLibrary["beacons"][key]["triggerDistance" ];
-			beacon.triggerDistanceI = beaconLibrary["beacons"][key]["triggerDistanceI"];
-			beacon.triggerDistanceX = beaconLibrary["beacons"][key]["triggerDistanceX"];
+			// beacon.triggerAddress   = beaconLibrary["beacons"][key]["triggerAddress"  ];
+			beacon.triggerDistance  = beaconLibrary["beacons"][key]["triggerDistanceOuter" ];
+			beacon.triggerDistanceI = beaconLibrary["beacons"][key]["triggerDistanceInner"];
+			beacon.triggerDistanceX = beaconLibrary["beacons"][key]["triggerDistanceImmediate"];
 		}
 
 		///////////////////////// MODULE DIVIDER ////////////////////////////////////
