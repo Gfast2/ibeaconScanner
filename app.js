@@ -14,15 +14,19 @@ var key = {}; // nearst beacon
 var key2= {}; // locked beacon
 var key3= {}; // beacon that being shown on to the graphic.
 var key4= {}; // additional infos
-var rect= {};
-var bk  = {}; // rssiE value of this beacon.
-var ln  = {};
+// var rect= {}; // Box of the moving pointer
+// var bk  = {}; // rssiE value of this beacon in moving pointer
+// var ln  = {}; // The line of the pointer
+var bk2 = {}; // rssiE value of this beacon. (under the beacon's name in circle)
 var mid = 130; // reference middle point of the line
 var rC  = 50;  // small circle radius
 var rCb = 120; // big circle radius
 var locked = undefined; // transporter from beacon module to visualization part.
 var circle = {};
 var circle2= {};
+var sortList = true;
+var toList = {}; // List to be displayed
+
 
 // Load info from beacon.json
 var beaconLibrary = {};
@@ -42,7 +46,7 @@ var app = (function(){
 	var updateTimer = null; // Timer that displays list of beacons.
 
 	// Variable from react's "state"
-	var bufferDepth = 3;	// How many scanned results should be stacked in the debouncing 
+	var bufferDepth = 2;	// How many scanned results should be stacked in the debouncing 
 	var beaconsRSSI = []; 	// buffer object that save "bufferDepth" defined times 'beacons' object.
 	var num = 0; 			// register to record beacon scan results' time.
 
@@ -64,7 +68,7 @@ var app = (function(){
 		updateTimer = setInterval(displayBeaconList, 500);
 
 		// INIT VISUALIZATION ELEMENTS.
-		paper = Raphael(document.getElementById("visualization"),500,500);
+		paper = Raphael(document.getElementById("visualization"),300,450);
 		circle = paper.circle(mid,250,rCb);
 		circle.attr("fill", "#f00");
 		circle.attr("stroke", "green");
@@ -73,27 +77,37 @@ var app = (function(){
 		circle2.attr("fill", "blue");
 		circle2.attr("stroke", "green");
 		circle2.attr("opacity", 0.5);
-		var txParam = {fill:"#000","font-size":18};
-		tx1 = paper.text(mid, 250-150-10, "test1").attr(txParam);
-		tx2 = paper.text(mid, 250-80-10,  "test2").attr(txParam);
+
+		var txParam  = {fill:"#000","font-size":18};
+		var txParam2 = {fill:"#000", "font-size":22, "text-anchor":"start"};
+		var txParam3 = {fill:"#000", "font-size":18, "text-anchor":"start"};
+		var txParam4 = {fill:"#FFF", "font-size":30};
+		var txParam5 = {fill:"#FFF", "font-size":14};
+		var txParam6 = {fill:"#FFF"};
+
+		tx1 = paper.text(mid, 250-135-10, "big circle").attr(txParam);
+		tx2 = paper.text(mid, 250-90-10,  "small circle")
+			.attr(txParam)
+			.attr(txParam6);
 		var recParam = {fill:"#fff",stroke:"green",opacity:0.9};
 
+		/*
 		// The "moving part" of the visualization.
 		rect = paper.rect(50,370,60,30,10).attr(recParam);
-		bk = paper.text(50+60/2,370+30/2,"-67.55").attr(txParam);
+		bk = paper.text(50+60/2,370+30/2,"waiting").attr(txParam);
 		ln = paper.path("M80 370L80 10").attr(recParam).attr("stroke", "#333");		// Line moving with the box
+		*/
 
-		var txParam2 = {fill:"#000", "font-size":30, "text-anchor":"start"};
-		var txParam3 = {fill:"#000", "font-size":18, "text-anchor":"start"};
-		var title	 = paper.text(10,20,'Nearst:').attr(txParam2);
+		var title	 = paper.text(0,20,'Nearst:').attr(txParam2);
 
 		// The in focus beacon. It can be the locking beacon or the beacon with nearst rssiE (averaged rssi)
-		key = paper.text(10,50,"20:1").attr(txParam2);
-		var title2 = paper.text(10,80,"Locked:").attr(txParam2);
-		key2 = paper.text(10,110,"Locked").attr(txParam2);
-		key3 = paper.text(mid, 250, "beacon").attr({fill:"#FFF", "font-size":30});
-		var title3 = paper.text(10,400, "Info").attr(txParam2);
-		key4 = paper.text(10,430, "waiting").attr(txParam3);
+		key = paper.text(0,40,"waiting").attr(txParam2);
+		var title2 = paper.text(0,70,"Locked:").attr(txParam2);
+		key2 = paper.text(0,90,"Waiting").attr(txParam2);
+		key3 = paper.text(mid, 250, "beacon").attr(txParam4); // middle of the circle.
+		bk2  = paper.text(mid, 275, "waiting").attr(txParam5); 
+		var title3 = paper.text(0,410, "Info").attr(txParam2);
+		key4 = paper.text(0,430, "waiting").attr(txParam3);
 
 	}
 
@@ -160,6 +174,9 @@ var app = (function(){
 	}
 
 
+
+
+	// Filter which beacons to be processed
 	function beaconfilter(beacons) {
 
 		var returnBeacons = [];
@@ -169,8 +186,6 @@ var app = (function(){
 				returnBeacons.push(beacons[i]);
 			}
 		}
-
-		console.log("Filtered beacons: " + JSON.stringify(returnBeacons));
 
 		return returnBeacons;
 	}
@@ -512,13 +527,21 @@ var app = (function(){
 
 
 
-		
 
 
 
 
 
 
+
+
+	abb.sortOn = function() {
+		sortList = true;
+	}
+
+	abb.sortOff = function() {
+		sortList = false;
+	}
 
 
 
@@ -527,7 +550,7 @@ var app = (function(){
 
 		$('#found-beacons').empty(); // Clear beacon list.
 
-		var timeNow = Date.now();
+		var timeNow = Date.now();		
 
 		// Do the sorting according to rssiE (averaged rssi value).
 		tmpBeaconTester.sort(function(a,b){
@@ -580,6 +603,9 @@ var app = (function(){
 		circle.animate({"r": cS-rD},aD); // 180 is the base size.
 		circle2.animate({"r": cS-rDI},aD);
 
+		bk2.attr({ "text": rE }); // text direct under beacon ID in cicle.
+
+		/*
 		// the moving 'pointer'
 		bk.attr({"text":rE}); // change the text content.
 		rect.animate({"x": cS-rE+mid-60/2}, aD);
@@ -587,23 +613,46 @@ var app = (function(){
 		var a = cS-rE+mid;
 		var ln_str = "M" + a + " 370L" + a + " 10";
 		ln.animate({path: ln_str},aD);
+		*/
 		
 		///////////////////////// MODULE DIVIDER ////////////////////////////////////
 		////////////////////// LIST OF FOUND BEACONS ////////////////////////////////
 
+
+		var color1 = {};
+		var color2 = {};
+
+		if(!sortList) {
+			color1 = '#AAA';
+			color2 = 'limegreen';
+		} else {
+			color1 = 'limegreen';
+			color2 = '#AAA';
+		}
+
 		var rssiTip = $(
-			'<button onclick="app.startScan()">start</button>&ensp;&ensp;&ensp;' +
+			'<span><b> Beacon scan: </b></span>' +
+			'<button onclick="app.startScan()">start</button>&ensp;&ensp;' +
 			'<button onclick="app.stopScan()">stop</button>' +
-			'<div>'
-				+ 'trigger value of first beacon('
-				+ tmpBeaconTester[0].major + ':' + tmpBeaconTester[0].minor + '):' + '<br />'
-				+ '&ensp;big trigger circle   ' + tmpBeaconTester[0].triggerDistance + '<br />'
-				+ '&ensp;small trigger circle ' + tmpBeaconTester[0].triggerDistanceI
-			+ '</div>'
+			'<span><b> Sort List: </b></span>' +
+			'&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;' + 
+			'<button onclick="app.sortOn()" style="background-color:' + 
+			color1 +
+			';">on</button>&ensp;&ensp;' +
+			'<button onclick="app.sortOff()" style="background-color: ' +
+			color2 +
+			';">off</button>'
 		);
 
 		$('#warning').remove();
 		$('#found-beacons').append(rssiTip);
+
+
+		if(!sortList){
+			tmpBeaconTester.sort(function(a,b){
+				return a.minor - b.minor;
+			});
+		} 
 
 		// Update beacon list.
 		$.each(tmpBeaconTester, function(key, beacon)
