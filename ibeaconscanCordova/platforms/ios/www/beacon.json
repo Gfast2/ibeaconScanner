@@ -1,0 +1,304 @@
+{
+  "settings": {
+    "scanRegions": "FDA50693-A4E2-4FB1-AFCF-C6EB07647825",
+    "beaconMinValues": 2,
+    "beaconMaxValues": 4,
+    "beaconMaxAge": 10
+  },
+  "beacons": {
+      "FDA50693-A4E2-4FB1-AFCF-C6EB07647825:10:7": {
+        "triggerDistanceImmediate": -50,
+        "triggerDistanceInner": -60,
+        "triggerDistanceOuter": -67,
+        "rssi": -59,
+        "description": "beschreibung",
+        "batteryLife": 100,
+        "boundingBox": {
+          "top": "5%",
+          "left": "8%",
+          "width": "20%",
+          "height": "20%"
+        }
+      },
+    "FDA50693-A4E2-4FB1-AFCF-C6EB07647825:20:2": {
+      "triggerDistanceImmediate": -50,
+      "triggerDistanceInner": -60,
+      "triggerDistanceOuter": -67,
+      "rssi": -59,
+      "description": "beschreibung",
+      "batteryLife": 100,
+      "boundingBox": {
+        "top": "5%",
+        "left": "8%",
+        "width": "20%",
+        "height": "20%"
+      }
+    },
+    "FDA50693-A4E2-4FB1-AFCF-C6EB07647825:20:8": {
+      "triggerDistanceImmediate": -50,
+      "triggerDistanceInner": -60,
+      "triggerDistanceOuter": -67,
+      "rssi": -59,
+      "description": "beschreibung",
+      "batteryLife": 100,
+      "boundingBox": {
+        "top": "5%",
+        "left": "8%",
+        "width": "20%",
+        "height": "20%"
+      }
+    },
+    "FDA50693-A4E2-4FB1-AFCF-C6EB07647825:20:6": {
+      "triggerDistanceImmediate": -50,
+      "triggerDistanceInner": -60,
+      "triggerDistanceOuter": -67,
+      "rssi": -59,
+      "description": "beschreibung",
+      "batteryLife": 100,
+      "boundingBox": {
+        "top": "5%",
+        "left": "8%",
+        "width": "20%",
+        "height": "20%"
+      }
+    },
+    "FDA50693-A4E2-4FB1-AFCF-C6EB07647825:20:9": {
+      "triggerDistanceImmediate": -50,
+      "triggerDistanceInner": -60,
+      "triggerDistanceOuter": -67,
+      "rssi": -59,
+      "description": "beschreibung",
+      "batteryLife": 100,
+      "boundingBox": {
+        "top": "5%",
+        "left": "8%",
+        "width": "20%",
+        "height": "20%"
+      }
+    },
+    "FDA50693-A4E2-4FB1-AFCF-C6EB07647825:20:7": {
+      "triggerDistanceImmediate": -50,
+      "triggerDistanceInner": -60,
+      "triggerDistanceOuter": -67,
+      "rssi": -59,
+      "description": "beschreibung",
+      "batteryLife": 100,
+      "boundingBox": {
+        "top": "5%",
+        "left": "8%",
+        "width": "20%",
+        "height": "20%"
+      }
+    },
+    "FDA50693-A4E2-4FB1-AFCF-C6EB07647825:20:3": {
+      "triggerDistanceImmediate": -50,
+      "triggerDistanceInner": -60,
+      "triggerDistanceOuter": -67,
+      "rssi": -59,
+      "description": "beschreibung",
+      "batteryLife": 100,
+      "boundingBox": {
+        "top": "5%",
+        "left": "8%",
+        "width": "20%",
+        "height": "20%"
+      }
+    },
+    "FDA50693-A4E2-4FB1-AFCF-C6EB07647825:20:1": {
+      "triggerDistanceImmediate": -50,
+      "triggerDistanceInner": -60,
+      "triggerDistanceOuter": -67,
+      "rssi": -59,
+      "description": "beschreibung",
+      "batteryLife": 100,
+      "boundingBox": {
+        "top": "5%",
+        "left": "8%",
+        "width": "20%",
+        "height": "20%"
+      }
+    },
+    "FDA50693-A4E2-4FB1-AFCF-C6EB07647825:20:4": {
+      "triggerDistanceImmediate": -50,
+      "triggerDistanceInner": -60,
+      "triggerDistanceOuter": -67,
+      "rssi": -59,
+      "description": "beschreibung",
+      "batteryLife": 100,
+      "boundingBox": {
+        "top": "5%",
+        "left": "8%",
+        "width": "20%",
+        "height": "20%"
+      }
+  },
+    "FDA50693-A4E2-4FB1-AFCF-C6EB07647825:30:1": {
+      "triggerDistanceImmediate": -50,
+      "triggerDistanceInner": -60,
+      "triggerDistanceOuter": -67,
+      "rssi": -59,
+      "description": "beschreibung",
+      "batteryLife": 100,
+      "boundingBox": {
+        "top": "5%",
+        "left": "8%",
+        "width": "20%",
+        "height": "20%"
+      }
+    },
+    "FDA50693-A4E2-4FB1-AFCF-C6EB07647825:30:3": {
+      "triggerDistanceImmediate": -50,
+      "triggerDistanceInner": -60,
+      "triggerDistanceOuter": -67,
+      "rssi": -59,
+      "description": "beschreibung",
+      "batteryLife": 100,
+      "boundingBox": {
+        "top": "5%",
+        "left": "8%",
+        "width": "20%",
+        "height": "20%"
+      }
+    },
+    "FDA50693-A4E2-4FB1-AFCF-C6EB07647825:12:1": {
+      "triggerDistanceImmediate": -50,
+      "triggerDistanceInner": -67,
+      "triggerDistanceOuter": -67,
+      "rssi": -59,
+      "description": "beschreibung",
+      "batteryLife": 100,
+      "boundingBox": {
+        "top": "5%",
+        "left": "8%",
+        "width": "20%",
+        "height": "20%"
+      }
+    },
+    "FDA50693-A4E2-4FB1-AFCF-C6EB07647825:12:2": {
+      "triggerDistanceImmediate": -50,
+      "triggerDistanceInner": -63,
+      "triggerDistanceOuter": -67,
+      "rssi": -59,
+      "description": "beschreibung",
+      "batteryLife": 100,
+      "boundingBox": {
+        "top": "5%",
+        "left": "8%",
+        "width": "20%",
+        "height": "20%"
+      }
+    },
+    "FDA50693-A4E2-4FB1-AFCF-C6EB07647825:12:3": {
+      "triggerDistanceImmediate": -50,
+      "triggerDistanceInner": -63,
+      "triggerDistanceOuter": -67,
+      "rssi": -59,
+      "description": "beschreibung",
+      "batteryLife": 100,
+      "boundingBox": {
+        "top": "5%",
+        "left": "8%",
+        "width": "20%",
+        "height": "20%"
+      }
+    },
+    "FDA50693-A4E2-4FB1-AFCF-C6EB07647825:12:4": {
+      "triggerDistanceImmediate": -50,
+      "triggerDistanceInner": -63,
+      "triggerDistanceOuter": -67,
+      "rssi": -59,
+      "description": "beschreibung",
+      "batteryLife": 100,
+      "boundingBox": {
+        "top": "5%",
+        "left": "8%",
+        "width": "20%",
+        "height": "20%"
+      }
+    },
+    "FDA50693-A4E2-4FB1-AFCF-C6EB07647825:12:5": {
+      "triggerDistanceImmediate": -50,
+      "triggerDistanceInner": -63,
+      "triggerDistanceOuter": -67,
+      "rssi": -59,
+      "description": "beschreibung",
+      "batteryLife": 100,
+      "boundingBox": {
+        "top": "5%",
+        "left": "8%",
+        "width": "20%",
+        "height": "20%"
+      }
+    },
+    "FDA50693-A4E2-4FB1-AFCF-C6EB07647825:12:6": {
+      "triggerDistanceImmediate": -50,
+      "triggerDistanceInner": -63,
+      "triggerDistanceOuter": -67,
+      "rssi": -59,
+      "description": "beschreibung",
+      "batteryLife": 100,
+      "boundingBox": {
+        "top": "5%",
+        "left": "8%",
+        "width": "20%",
+        "height": "20%"
+      }
+    },
+    "FDA50693-A4E2-4FB1-AFCF-C6EB07647825:12:7": {
+      "triggerDistanceImmediate": -50,
+      "triggerDistanceInner": -67,
+      "triggerDistanceOuter": -67,
+      "rssi": -59,
+      "description": "beschreibung",
+      "batteryLife": 100,
+      "boundingBox": {
+        "top": "5%",
+        "left": "8%",
+        "width": "20%",
+        "height": "20%"
+      }
+    },
+    "FDA50693-A4E2-4FB1-AFCF-C6EB07647825:12:8": {
+      "triggerDistanceImmediate": -50,
+      "triggerDistanceInner": -63,
+      "triggerDistanceOuter": -67,
+      "rssi": -59,
+      "description": "beschreibung",
+      "batteryLife": 100,
+      "boundingBox": {
+        "top": "5%",
+        "left": "8%",
+        "width": "20%",
+        "height": "20%"
+      }
+    },
+    "FDA50693-A4E2-4FB1-AFCF-C6EB07647825:12:9": {
+      "triggerDistanceImmediate": -50,
+      "triggerDistanceInner": -67,
+      "triggerDistanceOuter": -67,
+      "rssi": -59,
+      "description": "beschreibung",
+      "batteryLife": 100,
+      "boundingBox": {
+        "top": "5%",
+        "left": "8%",
+        "width": "20%",
+        "height": "20%"
+      }
+    },
+    "FDA50693-A4E2-4FB1-AFCF-C6EB07647825:12:10": {
+      "triggerDistanceImmediate": -50,
+      "triggerDistanceInner": -67,
+      "triggerDistanceOuter": -67,
+      "rssi": -59,
+      "description": "beschreibung",
+      "batteryLife": 100,
+      "boundingBox": {
+        "top": "5%",
+        "left": "8%",
+        "width": "20%",
+        "height": "20%"
+      }
+    }
+  }
+}

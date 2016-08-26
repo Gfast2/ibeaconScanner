@@ -1,0 +1,5 @@
+This is the module tester for projectk: "Franckessche Stiftung Audio Guide"
+
+This Module is served as the most important module for bluetooth beacons detecting & calculating & emitting. 
+
+This is only the repo for evothing studio, the cordova compilable version is “ibeaconscanCordova”.
